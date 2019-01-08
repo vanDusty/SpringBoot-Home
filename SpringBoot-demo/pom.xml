@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>demo</name>
-    <description>我的第一个SpringBoot项目</description>
+    <description>第一个SpringBoot项目</description>
 
     <!--版本采用的是最新的 2.1.1.RELEASE TODO 开发中请记得版本一定要选择 RELEASE 哦 -->
     <parent>
@@ -41,13 +41,12 @@
 
     <build>
         <plugins>
-            <!-- 编译插件 -->
+            <!-- 编译插件 maven -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
