@@ -17,8 +17,8 @@
     </parent>
 
     <modules>
-        <module>springboot-logging</module>
         <module>springboot-demo-logback</module>
+        <module>springboot-demo-aop</module>
     </modules>
 
     <!-- 设置我们项目的一些版本属性 -->
