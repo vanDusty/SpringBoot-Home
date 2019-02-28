@@ -42,30 +42,4 @@ public class WebLogAspect {
 
     }
 
-    @AfterReturning(returning = "ret", pointcut = "webLogPointcut()")
-    public void doAfterReturning(Object ret) throws Throwable {
-        // 处理完请求，返回内容
-        logger.info("RESPONSE : " + ret);
-    }
-
-    @Around("webLogPointcut()")
-    public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        // 接收到请求，记录请求内容
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
-
-        // 记录下请求内容
-        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("HTTP_METHOD : " + request.getMethod());
-        logger.info("IP : " + request.getRemoteAddr());
-        logger.info("CLASS_METHOD : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
-        logger.info("ARGS : " + Arrays.toString(pjp.getArgs()));
-
-        Object ret = pjp.proceed();
-
-        // 处理完请求，返回内容
-        logger.info("RESPONSE : " + ret);
-        return ret;
-    }
-
 }

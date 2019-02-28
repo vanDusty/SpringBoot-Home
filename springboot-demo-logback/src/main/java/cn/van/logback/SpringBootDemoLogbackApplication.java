@@ -18,6 +18,6 @@ public class SpringBootDemoLogbackApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoLogbackApplication.class);
-        logger.info("SpringBootDemoLogbackApplication end!");
+        logger.info("SpringBootDemoLogbackApplication start!");
     }
 }

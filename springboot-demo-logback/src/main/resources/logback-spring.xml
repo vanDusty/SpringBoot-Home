@@ -9,13 +9,11 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     name: 变量的名称,下文可以使“${}”来使用变量
     source: 变量定义的值(放在配置文件中)-->
     <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
-    <springProperty scope="context" name="logger_dao_level" source="logger_dao_level"/>
 
     <!-- 定义日志文件名称 -->
     <property name="fileName" value="spring-boot-logback"></property>
-    <property name="sqlFileName" value="logback-sql"></property>
     <!-- <appender>是负责写日志的组件，它有两个必要属性name和class。name指定appender名称，class指定appender的全限定名 -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="consoleLogAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
             <charset>utf-8</charset>
@@ -23,7 +21,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     </appender>
     <!-- 把日志添加到文件
     ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
-    <appender name="user" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="fileLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 -->
         <file>${LOG_PATH}/${fileName}.log</file>
         <!--<append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。-->
@@ -44,7 +42,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--
             滚动时产生的文件的存放位置及文件名称 %d{yyyy-MM-dd}：按天进行日志滚动
-            %i：当文件大小超过maxFileSize时，按照i进行文件滚动
+            %i：按天进行打包
             -->
             <fileNamePattern>${LOG_PATH}/${fileName}.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <!--
@@ -56,18 +54,6 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
             <!-- 活动文件的大小，默认值是10MB -->
         </rollingPolicy>
     </appender>
-    <!--<appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<file>${LOG_PATH}/${sqlFileName}.log</file>-->
-        <!--<encoder>-->
-            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>-->
-            <!--<charset>utf-8</charset>-->
-        <!--</encoder>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--<fileNamePattern>${LOG_PATH}/${fileName}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>-->
-            <!--<maxHistory>365</maxHistory>-->
-            <!--<maxFileSize>10MB</maxFileSize>-->
-        <!--</rollingPolicy>-->
-    <!--</appender>-->
 
     <!--
 		logger主要用于存放日志对象，也可以定义日志类型、级别
@@ -77,10 +63,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 		false：表示只用当前logger的appender-ref，true：表示当前logger的appender-ref和rootLogger的appender-ref都有效
     -->
     <root level="INFO">
-        <appender-ref ref="console"/>
-        <appender-ref ref="user"/>
+        <appender-ref ref="consoleLogAppender"/>
+        <appender-ref ref="fileLogAppender"/>
     </root>
-    <!--<logger name="cn.van.mapper" level="${logger_dao_level}" additivity="false">-->
-        <!--<appender-ref ref="sql"/>-->
-    <!--</logger>-->
 </configuration>

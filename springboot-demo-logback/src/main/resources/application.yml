@@ -2,7 +2,4 @@
 # Location of the log file. For instance, `/var/log`.
 logging:
   path: '/Users/zhangfan/Documents/log/common_log'
-  # Register a shutdown hook for the logging system when it is initialized.
   register-shutdown-hook: true
-
-logger_dao_level: '/Users/zhangfan/Documents/log/dao_log'
