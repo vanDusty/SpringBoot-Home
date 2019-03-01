@@ -36,4 +36,9 @@ public class AopServiceTest {
     public void insertLog() {
         aopService.insertLog(1l,"van");
     }
+
+    @Test
+    public void throwException() {
+        aopService.throwException("模拟抛出异常");
+    }
 }

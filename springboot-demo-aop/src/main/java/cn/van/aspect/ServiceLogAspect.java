@@ -11,6 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 /**
@@ -27,13 +28,14 @@ public class ServiceLogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     // 进入方法
-    private Long startTime ;
+    private LocalDateTime startTime ;
     // 方法结束(用户计时)
-    private Long endTime ;
+    private LocalDateTime endTime ;
     // 异常发生时间
-    private Long happenTime ;
+    private LocalDateTime happenTime ;
 
-//    定义请求日志切入点，其切入点表达式有多种匹配方式,这里是指定路径
+
+    //    定义请求日志切入点，其切入点表达式有多种匹配方式,这里是指定路径
     @Pointcut("execution(public * cn.van.service..*.*(..))")
     public void serviceLogPointcut(){}
 
@@ -49,14 +51,13 @@ public class ServiceLogAspect {
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        startTime = System.currentTimeMillis();
-        logger.info("开始时间："+ startTime);
+        logger.info("请求开始时间："+ startTime.now());
         // 记录下请求内容
-        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("HTTP_METHOD : " + request.getMethod());
-        logger.info("IP : " + request.getRemoteAddr());
-        logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        logger.info("请求Url : " + request.getRequestURL().toString());
+        logger.info("请求方式 : " + request.getMethod());
+        logger.info("请求ip : " + request.getRemoteAddr());
+        logger.info("请求方法 : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        logger.info("请求参数 : " + Arrays.toString(joinPoint.getArgs()));
     }
 
     /**
@@ -69,12 +70,10 @@ public class ServiceLogAspect {
      */
     @AfterReturning(returning = "ret", pointcut = "serviceLogPointcut()")
     public void doAfterReturning(Object ret) throws Throwable {
-        // 记录方法耗时
-        endTime = System.currentTimeMillis();
-        logger.info("方法耗时："+ (endTime - startTime));
+        logger.info("请求结束时间："+ endTime.now());
 
         // 处理完请求，返回内容
-        logger.info("RESPONSE : " + ret);
+        logger.info("请求返回 : " + ret);
     }
 
     /**
@@ -85,9 +84,8 @@ public class ServiceLogAspect {
      */
     @AfterThrowing(value = "serviceLogPointcut()",throwing = "throwable")
     public void doAfterThrowing(Throwable throwable) {
-        happenTime = System.currentTimeMillis();
         // 保存异常日志记录
-        logger.error(throwable.getMessage());
+        logger.error("抛出的异常："+throwable.getMessage());
     }
 
     /**
@@ -102,18 +100,18 @@ public class ServiceLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
+        logger.info("请求开始时间："+ startTime.now());
         // 记录下请求内容
-        logger.info("URL : " + request.getRequestURL().toString());
-        logger.info("HTTP_METHOD : " + request.getMethod());
-        logger.info("IP : " + request.getRemoteAddr());
-        logger.info("CLASS_METHOD : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
-        logger.info("ARGS : " + Arrays.toString(pjp.getArgs()));
-        startTime = System.currentTimeMillis();
+        logger.info("请求Url : " + request.getRequestURL().toString());
+        logger.info("请求方式 : " + request.getMethod());
+        logger.info("请求ip : " + request.getRemoteAddr());
+        logger.info("请求方法 : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
+        logger.info("请求参数 : " + Arrays.toString(pjp.getArgs()));
+        // pjp.proceed()：当我们执行完切面代码之后，还有继续处理业务相关的代码。proceed()方法会继续执行业务代码，并且其返回值，就是业务处理完成之后的返回值。
         Object ret = pjp.proceed();
-        endTime = System.currentTimeMillis();
-        logger.info("方法耗时："+ (endTime - startTime));
+        logger.info("请求结束时间："+ endTime.now());
         // 处理完请求，返回内容
-        logger.info("RESPONSE : " + ret);
+        logger.info("请求返回 : " + ret);
         return ret;
     }
 

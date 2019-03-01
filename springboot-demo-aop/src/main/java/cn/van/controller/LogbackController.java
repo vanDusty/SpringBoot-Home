@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019.2.26
  */
 @RestController
-@RequestMapping("/logback")
+@RequestMapping("/aop")
 public class LogbackController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -21,4 +21,6 @@ package cn.van.service;
 public interface AopService {
 
     public String insertLog(Long id, String userName);
+
+    public String throwException(String message);
 }

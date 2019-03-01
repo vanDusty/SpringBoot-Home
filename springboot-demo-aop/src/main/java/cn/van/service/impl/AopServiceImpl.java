@@ -26,12 +26,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class AopServiceImpl implements AopService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AopServiceImpl.class);
-
 
     @Override
     public String insertLog(Long id, String userName) {
-        logger.info("测试");
         return "success";
+    }
+
+    @Override
+    public String throwException(String message) {
+        throw new RuntimeException(message);
     }
 }
