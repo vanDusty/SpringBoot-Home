@@ -19,5 +19,6 @@
     <modules>
         <module>springboot-demo-logback</module>
         <module>springboot-demo-aop</module>
+        <module>springboot-demo-timedTask</module>
     </modules>
 </project>
