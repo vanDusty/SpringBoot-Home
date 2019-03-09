@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @since 2019.2.26
  */
 @SpringBootApplication
-@EnableScheduling
+@EnableScheduling // 开启定时
 public class SpringBootDemoTimeTaskApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringBootDemoTimeTaskApplication.class);

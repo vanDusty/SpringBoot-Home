@@ -24,7 +24,7 @@ import java.util.Date;
  * @create 2019-03-08
  * @since 1.0.0
  */
-@Component
+//@Component
 public class Scheduler2Task {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
