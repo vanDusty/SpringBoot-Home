@@ -10,6 +10,9 @@
  */
 package cn.van.task.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -24,12 +27,19 @@ import java.util.Date;
  * @create 2019-03-08
  * @since 1.0.0
  */
-//@Component
+@Component
+@Async
 public class Scheduler2Task {
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    private static final Logger logger = LoggerFactory.getLogger(SchedulerTask.class);
 
-    @Scheduled(fixedRate = 6000)
-    public void reportCurrentTime() {
-        System.out.println("现在时间：" + dateFormat.format(new Date()));
+    @Scheduled(cron = "0/5 * * * * *")
+    public void scheduled(){
+        logger.info("=====>>>>>使用cron执行定时任务-1");
     }
+
+    @Scheduled(cron="*/6 * * * * ?")
+    public void scheduled3(){
+        logger.info("=====>>>>>使用cron执行定时任务-2");
+    }
+
 }

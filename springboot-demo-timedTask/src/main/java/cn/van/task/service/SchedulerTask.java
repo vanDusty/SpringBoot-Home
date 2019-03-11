@@ -12,6 +12,7 @@ package cn.van.task.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Component;
  * @create 2019-03-08
  * @since 1.0.0
  */
-@Component
+//@Component
 public class SchedulerTask {
     private static final Logger logger = LoggerFactory.getLogger(SchedulerTask.class);
 
@@ -44,7 +45,7 @@ public class SchedulerTask {
     }
 
     @Scheduled(cron="*/6 * * * * ?")
-    private void scheduled3(){
-        logger.info("使用cron执行定时任务");
+    public void scheduled3(){
+        logger.info("=====>>>>>使用cron执行定时任务");
     }
 }
