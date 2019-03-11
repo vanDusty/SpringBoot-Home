@@ -107,8 +107,66 @@ public class SchedulerTask {
 1. fixedDelay：定义一个按一定频率执行的定时任务，与上面不同的是，改属性可以配合initialDelay， 定义该任务延迟执行时间。
 1. cron：通过表达式来配置任务执行时间
 
+## 三、多线程执行定时任务
 
-## 三、源码及其延伸
+> SpringBoot定时任务默认单线程，可以看到三个定时任务都已经执行，并且使同一个线程中串行执行，如果只有一个定时任务，这样做肯定没问题，当定时任务增多，**如果一个任务卡死，会导致其他任务也无法执行**。
+
+### 3.1 使用config配置类的方式添加配置:新建一个`AsyncConfig.class`
+
+```java 
+@Configuration // 表明该类是一个配置类
+@EnableAsync // 开启异步事件的支持
+public class AsyncConfig {
+    
+    @Value("${myProps.corePoolSize}")
+    private int corePoolSize;
+    @Value("${myProps.maxPoolSize}")
+    private int maxPoolSize;
+    @Value("${myProps.queueCapacity}")
+    private int queueCapacity;
+
+    @Bean
+    public Executor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(corePoolSize);
+        executor.setMaxPoolSize(maxPoolSize);
+        executor.setQueueCapacity(queueCapacity);
+        executor.initialize();
+        return executor;
+    }
+}
+```
+
+### 3.2 配置文件`application.yml`中添加多线程配置
+
+```yml
+myProps:
+  corePoolSize: 10
+  maxPoolSize: 100
+  queueCapacity: 10
+```
+
+### 3.3 在定时任务的类或者方法上添加`@Async`
+
+> 此时，可让每一个任务都是在不同的线程中，启动项目，日志打印如下：
+
+```java
+2019-03-11 15:16:54.855  INFO 10782 --- [           main] c.v.t.SpringBootDemoTimeTaskApplication  : SpringBootDemoTimeTaskApplication start!
+2019-03-11 15:16:55.015  INFO 10782 --- [ taskExecutor-1] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+2019-03-11 15:17:00.002  INFO 10782 --- [ taskExecutor-2] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-2
+2019-03-11 15:17:00.002  INFO 10782 --- [ taskExecutor-3] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+2019-03-11 15:17:05.003  INFO 10782 --- [ taskExecutor-4] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+2019-03-11 15:17:06.005  INFO 10782 --- [ taskExecutor-5] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-2
+2019-03-11 15:17:10.004  INFO 10782 --- [ taskExecutor-6] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+2019-03-11 15:17:12.005  INFO 10782 --- [ taskExecutor-7] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-2
+2019-03-11 15:17:15.006  INFO 10782 --- [ taskExecutor-8] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+2019-03-11 15:17:18.004  INFO 10782 --- [ taskExecutor-9] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-2
+2019-03-11 15:17:20.004  INFO 10782 --- [taskExecutor-10] cn.van.task.service.SchedulerTask        : =====>>>>>使用cron执行定时任务-1
+```
+
+日志打印证明了我的预测，至此，多线程中执行定时任务完毕！
+
+## 四、源码及其延伸
 
 1. 源码地址：[https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-timeTask](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-timeTask)
 2. 整理不易，如果帮你解决了问题麻烦点个star，谢谢！

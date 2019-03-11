@@ -31,9 +31,6 @@ import java.util.concurrent.Executor;
 @EnableAsync // 开启异步事件的支持
 public class AsyncConfig {
 
-    /*
-    此处成员变量应该使用@Value从配置中读取
-     */
     @Value("${myProps.corePoolSize}")
     private int corePoolSize;
     @Value("${myProps.maxPoolSize}")

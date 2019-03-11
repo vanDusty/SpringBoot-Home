@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈定时任务1〉
+ * 〈定时任务1:单线程执行〉
  *
  * @author zhangfan
  * @create 2019-03-08

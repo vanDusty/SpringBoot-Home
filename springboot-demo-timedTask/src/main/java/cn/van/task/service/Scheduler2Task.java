@@ -17,11 +17,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈定时任务2〉
+ * 〈定时任务2:多线程执行〉
  *
  * @author zhangfan
  * @create 2019-03-08
