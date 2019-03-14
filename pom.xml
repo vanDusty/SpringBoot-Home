@@ -20,5 +20,6 @@
         <module>springboot-demo-logback</module>
         <module>springboot-demo-aop</module>
         <module>springboot-demo-timedTask</module>
+        <module>springboot-demo-cors</module>
     </modules>
 </project>
