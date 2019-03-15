@@ -111,7 +111,7 @@ VM156:8 hello world --- 2
 
 说明跨域成功！
 
-* 在[https://www.dustyblog.cn](https://www.dustyblog.cn)按照上述方法测试一下，返回结果：
+* 在[https://www.baidu.com](https://www.baidu.com)按照上述方法测试一下，返回结果：
 
 ```js
 OPTIONS http://127.0.0.1:8080/demo2/sayHello 403
@@ -124,4 +124,67 @@ No 'Access-Control-Allow-Origin' header is present on the requested resource.
 
 说明跨域失败！证明该方案成功！
 
-**太晚了，未完待续**
+
+### 2.3 方案二：CORS全局配置-实现`WebMvcConfigurer`
+
+* 新建跨域配置类：`CorsConfig.class`:
+
+```java
+/**
+ * 跨域配置
+ */
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer()
+    {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").
+                        allowedOrigins("https://www.dustyblog.cn"). //允许跨域的域名，可以用*表示允许任何域名使用
+                        allowedMethods("*"). //允许任何方法（post、get等）
+		                allowedHeaders("*"). //允许任何请求头
+                        allowCredentials(true). //带上cookie信息
+                        exposedHeaders(HttpHeaders.SET_COOKIE).maxAge(3600L); //maxAge(3600)表明在3600秒内，不需要再发送预检验请求，可以缓存该结果
+            }
+        };
+    }
+}
+```
+
+* 测试，在允许访问的域名[https://www.dustyblog.cn/](https://www.dustyblog.cn/)控制台输入(注意，这里请求的是http://127.0.0.1:8080/demo3)：
+
+```js
+var token= "LtSFVqKxvpS1nPARxS2lpUs2Q2IpGstidMrS8zMhNV3rT7RKnhLN6d2FFirkVEzVIeexgEHgI/PtnynGqjZlyGkJa4+zYIXxtDMoK/N+AB6wtsskYXereH3AR8kWErwIRvx+UOFveH3dgmdw1347SYjbL/ilGKX5xkoZCbfb1f0=,LZkg22zbNsUoHAgAUapeBn541X5OHUK7rLVNHsHWDM/BA4DCIP1f/3Bnu4GAElQU6cds/0fg9Li5cSPHe8pyhr1Ii/TNcUYxqHMf9bHyD6ugwOFTfvlmtp6RDopVrpG24RSjJbWy2kUOOjjk5uv6FUTmbrSTVoBEzAXYKZMM2m4=,R4QeD2psvrTr8tkBTjnnfUBw+YR4di+GToGjWYeR7qZk9hldUVLlZUsEEPWjtBpz+UURVmplIn5WM9Ge29ft5aS4oKDdPlIH8kWNIs9Y3r9TgH3MnSUTGrgayaNniY9Ji5wNZiZ9cE2CFzlxoyuZxOcSVfOxUw70ty0ukLVM/78=";
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://127.0.0.1:8080/demo3/sayHello');
+xhr.setRequestHeader("x-access-token",token);
+xhr.send(null);
+xhr.onload = function(e) {
+    var xhr = e.target;
+    console.log(xhr.responseText);
+}
+```
+
+输出结果
+
+```js
+ƒ (e) {
+    var xhr = e.target;
+    console.log(xhr.responseText);
+}
+VM433:8 hello world --- 3
+```
+
+说明跨域成功，换个网址如[https://www.baidu.com](https://www.baidu.com)测试依旧出现需要跨域的错误提示，证明该配置正确，该方案测试通过。
+
+### 2.3 拦截器实现
+
+博主没有实现这种方式，原理和Cors差不多， 各位大佬自己去试试吧！
+
+
+## 三、源码
+
+详见[https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-cors](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-cors)

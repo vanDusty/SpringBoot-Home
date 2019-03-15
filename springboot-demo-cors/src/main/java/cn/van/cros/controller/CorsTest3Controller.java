@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/demo3")
 @RestController
-//@CrossOrigin
 public class CorsTest3Controller {
 
     @GetMapping("/sayHello")
