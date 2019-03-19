@@ -1,0 +1,50 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /sb
+spring:
+  datasource:
+    druid:
+      master:
+        username: user
+        password: bn74wtCJjSpDrdaA
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://47.98.178.84:3306/user
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+      db2:
+        username: root
+        password: password!@#
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://47.112.2.235:3306/hr
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+mybatis-plus:
+  # 配置mapper .xml文件所在的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 配置数据库操作类所在的包
+  type-aliases-package: cn.van.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 mp_
+    #table-prefix: mp_
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #逻辑删除配置（下面3个配置）
+    logic-delete-value: 4
+    logic-not-delete-value: 0
+  configuration:
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
