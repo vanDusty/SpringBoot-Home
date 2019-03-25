@@ -22,5 +22,6 @@
         <module>springboot-demo-timedTask</module>
         <module>springboot-demo-cors</module>
         <module>springboot-demo-multipleData</module>
+        <module>springboot-demo-redis</module>
     </modules>
 </project>
