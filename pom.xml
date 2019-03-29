@@ -23,5 +23,7 @@
         <module>springboot-demo-cors</module>
         <module>springboot-demo-multipleData</module>
         <module>springboot-demo-redis</module>
+        <module>springboot-mybatis-multipleData</module>
+        <module>springboot-demo-excel</module>
     </modules>
 </project>

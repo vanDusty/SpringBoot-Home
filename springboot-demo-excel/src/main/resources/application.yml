@@ -1,0 +1,28 @@
+#server:
+#  port: 8080
+##  servlet:
+##    context-path: /sb
+#spring:
+#  datasource:
+#    druid:
+#      master:
+#        username: user
+#        password: bn74wtCJjSpDrdaA
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://47.98.178.84:3306/user
+#        initialSize: 5
+#        minIdle: 5
+#        maxActive: 20
+#      db2:
+#        username: root
+#        password: password!@#
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://47.112.2.235:3306/hr
+#        initialSize: 5
+#        minIdle: 5
+#        maxActive: 20
+#mybatis:
+#  # 配置mapper .xml文件所在的位置
+#  mapper-locations: classpath:mapper/*.xml
+#  # 配置数据库操作类所在的包
+#  type-aliases-package: cn.van.entity
