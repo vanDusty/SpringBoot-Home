@@ -2,4 +2,4 @@
 # Location of the log file. For instance, `/var/log`.
 logging:
   path: '/Users/zhangfan/Documents/log/common_log'
-  register-shutdown-hook: true
+#  register-shutdown-hook: true

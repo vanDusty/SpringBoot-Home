@@ -25,5 +25,6 @@
         <module>springboot-demo-redis</module>
         <module>springboot-mybatis-multipleData</module>
         <module>springboot-demo-excel</module>
+        <module>springboot-demo-swagger</module>
     </modules>
 </project>
