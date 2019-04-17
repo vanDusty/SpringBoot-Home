@@ -1,5 +1,3 @@
-# https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
-# Location of the log file. For instance, `/var/log`.
+# 配置的是日志的存放路径
 logging:
-  path: '/Users/zhangfan/Documents/log/common_log'
-#  register-shutdown-hook: true
+  path: '/Users/zhangfan/Documents/Git-public/Springboot-Home/springboot-demo-logback/log'
