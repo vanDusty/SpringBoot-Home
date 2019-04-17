@@ -1,8 +1,5 @@
-# https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
-# Location of the log file. For instance, `/var/log`.
+# 保存一般日志的地址
 logging:
-  path: '/Users/zhangfan/Documents/Git-public/Springboot-Home/log/common_log'
-  # Register a shutdown hook for the logging system when it is initialized.
-  register-shutdown-hook: true
-
+  path: '/Users/zhangfan/Documents/Git-public/Springboot-Home/springboot-demo-aop/log'
+# 保存数据库日志的地址
 logger_dao_level: '/Users/zhangfan/Documents/log/dao_log'
