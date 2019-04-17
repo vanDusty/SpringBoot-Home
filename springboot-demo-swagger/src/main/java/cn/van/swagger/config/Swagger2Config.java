@@ -66,5 +66,18 @@ public class Swagger2Config {
                 .version("v1.0")//定义版本号
                 .build();
     }
+    //
+    /**
+     * 取消 security 对接口的拦截，只在 swaggerui 进行拦截
+     *
+     * @param web
+     * @throws Exception
+     */
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        super.configure(web);
+//        //这里填写需要过滤的路径
+//        web.ignoring().antMatchers("/api/v1/admin/**");
+//    }
 
 }
