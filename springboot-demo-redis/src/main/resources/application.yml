@@ -3,10 +3,10 @@ spring:
     host: 47.112.2.235
     port: 6379
     database: 0
-    password: dh4zVyjxBv8MacDs
+    password: password
     timeout: 60s  # 连接超时时间，2.0 中该参数的类型为Duration，这里在配置的时候需要指明单位
     # 连接池配置，2.0中直接使用jedis或者lettuce配置连接池
-    jedis:
+    lettuce:
       pool:
         # 最大空闲连接数
         max-idle: 500

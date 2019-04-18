@@ -30,7 +30,20 @@ SpringBoot中使用注解@Autowired 即可
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-pool2</artifactId>
+    <version>2.0</version>
 </dependency>
 ```
 
@@ -42,10 +55,10 @@ spring:
     host: 47.112.2.235
     port: 6379
     database: 0
-    password: root
+    password: password
     timeout: 60s  # 连接超时时间，2.0 中该参数的类型为Duration，这里在配置的时候需要指明单位
     # 连接池配置，2.0中直接使用jedis或者lettuce配置连接池
-    jedis:
+    lettuce:
       pool:
         # 最大空闲连接数
         max-idle: 500
@@ -54,8 +67,7 @@ spring:
         # 等待可用连接的最大时间，负数为不限制
         max-wait:  -1s
         # 最大活跃连接数，负数为不限制
-        max-active: -1
-```
+        max-active: -1```
 
 ### 2.3 Redis配置类-RedisConfig
 
@@ -180,7 +192,7 @@ public class StringCacheTest {
 
     @Test
     public void setAndGet() {
-        stringCache.setValue("name","琪仔1");
+        stringCache.setValue("name","Van");
         String name = stringCache.getValue("name");
         logger.info(name);
         stringCache.delKey("name");
@@ -209,4 +221,8 @@ public class StringCacheTest {
 }
 ```
 
-未完待续。。。。
+## 三、 Redis 可视化客户端 - rdm
+
+> 通常情况下，我们可以在命令行下查看 Redis 数据库，但是可视化工具能更真实地让我们看到数据的结构。
+
+可见[rdm](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-redis/file/redis-desktop-manager-0.8.3-2550.dmg)下载

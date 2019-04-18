@@ -38,7 +38,7 @@ public class StringCacheTest {
 
     @Test
     public void setAndGet() {
-        stringCache.setValue("name","琪仔1");
+        stringCache.setValue("name","redis测试");
         String name = stringCache.getValue("name");
         logger.info(name);
         stringCache.delKey("name");
