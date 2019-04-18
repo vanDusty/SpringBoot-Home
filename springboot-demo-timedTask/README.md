@@ -1,6 +1,6 @@
 # SpringBoot 实现定时任务
 
-> 文末附源码demo 
+
 
 ## 一、定时任务实现的几种方式：
 
@@ -23,13 +23,11 @@ Quartz：这是一个功能比较强大的的调度器，可以让你的程序�
 ### 2.1 导入SpringBoot启动包
 
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-    </dependency>
-</dependencies>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.1.RELEASE</version>
+</dependency>
 ```
 
 ### 2.2 启动类启用定时
@@ -105,7 +103,7 @@ public class SchedulerTask {
 
 1. fixedRate：定义一个按一定频率执行的定时任务
 1. fixedDelay：定义一个按一定频率执行的定时任务，与上面不同的是，改属性可以配合initialDelay， 定义该任务延迟执行时间。
-1. cron：通过表达式来配置任务执行时间
+1. cron：通过表达式来配置任务执行时间--[在线cron表达式生成器](http://cron.qqe2.com/)
 
 ## 三、多线程执行定时任务
 
