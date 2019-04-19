@@ -1,0 +1,4 @@
+# 在这里编写springboot的配置信息
+server:
+  port: 8090
+  context-path: /

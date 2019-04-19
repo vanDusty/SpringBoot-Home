@@ -19,5 +19,6 @@
         <module>springboot-mybatis-multipleData</module>
         <module>springboot-demo-excel</module>
         <module>springboot-demo-swagger</module>
+        <module>springboot-demo-dubbo</module>
     </modules>
 </project>
