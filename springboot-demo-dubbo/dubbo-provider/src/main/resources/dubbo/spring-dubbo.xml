@@ -7,7 +7,7 @@
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="provider"/>
+    <dubbo:application name="${dubbo.application.name}"/>
     <!-- 注册中心的ip地址 -->
     <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"/>
     <!-- 协议/端口-->
