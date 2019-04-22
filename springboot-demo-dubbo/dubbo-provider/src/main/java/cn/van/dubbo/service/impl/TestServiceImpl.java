@@ -12,8 +12,7 @@ package cn.van.dubbo.service.impl;
 
 import cn.van.dubbo.domain.User;
 import cn.van.dubbo.service.TestService;
-//import org.springframework.stereotype.Service;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,7 +25,7 @@ import java.util.Date;
  * @create 2019-04-19
  * @since 1.0.0
  */
-@Service
+@Service("testService")
 public class TestServiceImpl implements TestService {
 
     @Override

@@ -1,4 +1,12 @@
-# 在这里编写springboot的配置信息
 server:
+  # 指定端口号
   port: 8090
-  context-path: /
+  servlet:
+    # 指定项目地址
+    context-path: /dubbo
+# dubbo 相关配置
+dubbo:
+  registry:
+    address: 127.0.0.1:2181
+  protocol:
+    port: 20880

@@ -6,11 +6,13 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-
+    <!-- 应用名 -->
     <dubbo:application name="consumer"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
-    <!--<dubbo:annotation package="cn.van.dubbo.controller"/>-->
-    <!-- hr服务 -->
+    <!-- 注册中心的ip地址 -->
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"/>
+    <!-- 消费方用什么协议获取服务（用dubbo协议在20880端口暴露服务）-->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+    <!-- 消费的服务 -->
     <dubbo:reference id="testService" interface="cn.van.dubbo.service.TestService" check="false" timeout="5000" lazy="true" />
 
 </beans>
