@@ -20,5 +20,6 @@
         <module>springboot-demo-excel</module>
         <module>springboot-demo-swagger</module>
         <module>springboot-demo-dubbo</module>
+        <module>springboot-demo-mybatis</module>
     </modules>
 </project>
