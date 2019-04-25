@@ -33,30 +33,31 @@ import javax.sql.DataSource;
  * @since 1.0.0
  */
 @Configuration
-@MapperScan(basePackages = "cn.van.mybatis.dao", sqlSessionTemplateRef  = "test2SqlSessionTemplate")
+@MapperScan(basePackages = "cn.van.mybatis.dao", sqlSessionTemplateRef  = "db2SqlSessionTemplate")
+// 指定分库扫描的 dao包，并给 dao层注入指定的 SqlSessionTemplate
 public class DataSource2Config {
-
-    @Bean(name = "test2DataSource")
+    //    首先创建 DataSource
+    @Bean(name = "db2DataSource")
     @ConfigurationProperties(prefix = "spring.datasource.druid.db2")
     public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
-
-    @Bean(name = "test2SqlSessionFactory")
-    public SqlSessionFactory testSqlSessionFactory(@Qualifier("test2DataSource") DataSource dataSource) throws Exception {
+    //  然后创建 SqlSessionFactory
+    @Bean(name = "db2SqlSessionFactory")
+    public SqlSessionFactory testSqlSessionFactory(@Qualifier("db2DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
         return bean.getObject();
     }
-
-    @Bean(name = "test2TransactionManager")
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("test2DataSource") DataSource dataSource) {
+    //  再创建事务
+    @Bean(name = "db2TransactionManager")
+    public DataSourceTransactionManager testTransactionManager(@Qualifier("db2DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
-
-    @Bean(name = "test2SqlSessionTemplate")
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("test2SqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    //  最后包装到 SqlSessionTemplate 中
+    @Bean(name = "db2SqlSessionTemplate")
+    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("db2SqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

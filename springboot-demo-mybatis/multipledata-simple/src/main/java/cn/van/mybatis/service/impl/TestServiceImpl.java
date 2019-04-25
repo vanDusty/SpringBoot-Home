@@ -11,7 +11,7 @@
 package cn.van.mybatis.service.impl;
 
 
-import cn.van.mybatis.dao.test1.User1Mapper;
+import cn.van.mybatis.dao.master.User1Mapper;
 import cn.van.mybatis.dao.User2Mapper;
 import cn.van.mybatis.entity.User;
 import cn.van.mybatis.service.TestService;
@@ -34,20 +34,11 @@ public class TestServiceImpl implements TestService {
     @Resource
     User2Mapper user2Mapper;
 
-    public void insert() {
-        User user = new User();
-        user.setUserName("van");
-        user.setPassWord("333");
-        user.setUserSex("eeee");
+    public void insertMater(User user) {
         user1Mapper.insert(user);
     }
 
-    public void insert2() {
-        System.out.println(111);
-        User user = new User();
-        user.setUserName("van");
-        user.setPassWord("222");
-        user.setUserSex("eeee");
+    public void insert(User user) {
         user2Mapper.insert(user);
     }
 }

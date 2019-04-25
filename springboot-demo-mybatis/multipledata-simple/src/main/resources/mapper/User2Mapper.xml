@@ -3,53 +3,23 @@
 <mapper namespace="cn.van.mybatis.dao.User2Mapper" >
     <resultMap id="BaseResultMap" type="cn.van.mybatis.entity.User" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="userName" property="userName" />
-        <result column="passWord" property="passWord" />
+        <result column="user_name" property="userName" />
+        <result column="pass_word" property="passWord" />
         <result column="user_sex" property="userSex" />
         <result column="nick_name" property="nickName"/>
+        <result column="gmt_create" property="gmtCreate"/>
     </resultMap>
 
     <sql id="Base_Column_List" >
         id, userName, passWord, user_sex, nick_name
     </sql>
 
-    <select id="getAll" resultMap="BaseResultMap"  >
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM users
-    </select>
-
-    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM users
-        WHERE id = #{id}
-    </select>
-
     <insert id="insert" parameterType="cn.van.mybatis.entity.User" >
         INSERT INTO
         users
-        (userName,passWord,user_sex)
+        (user_name,pass_word,user_sex,nick_name,gmt_create)
         VALUES
-        (#{userName}, #{passWord}, #{userSex})
+        (#{userName}, #{passWord}, #{userSex}, #{nickName}, #{gmtCreate})
     </insert>
-
-    <update id="update" parameterType="cn.van.mybatis.entity.User" >
-        UPDATE
-        users
-        SET
-        <if test="userName != null">userName = #{userName},</if>
-        <if test="passWord != null">passWord = #{passWord},</if>
-        nick_name = #{nickName}
-        WHERE
-        id = #{id}
-    </update>
-
-    <delete id="delete" parameterType="java.lang.Long" >
-        DELETE FROM
-        users
-        WHERE
-        id =#{id}
-    </delete>
 
 </mapper>

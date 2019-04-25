@@ -24,7 +24,7 @@ import java.io.IOException;
  * @since 1.0.0
  */
 @SpringBootApplication
-//@MapperScan("cn.van.mybatis.dao.test1")
+//@MapperScan("cn.van.mybatis.dao.master")
 public class MultipledataSimpleApplication {
 
     public static void main(String[] args) {

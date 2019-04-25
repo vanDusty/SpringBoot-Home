@@ -12,6 +12,8 @@ package cn.van.mybatis.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
@@ -27,4 +29,5 @@ public class User {
     private String passWord;
     private String userSex;
     private String nickName;
+    private LocalDateTime gmtCreate;
 }

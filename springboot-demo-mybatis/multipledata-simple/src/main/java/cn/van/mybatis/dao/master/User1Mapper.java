@@ -1,29 +1,28 @@
 /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: TestService
+ * FileName: User1Mapper
  * Author:   zhangfan
- * Date:     2019-03-19 15:05
+ * Date:     2019-03-29 15:06
  * Description:
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.service;
+package cn.van.mybatis.dao.master;
 
-import cn.van.entity.ChildDO;
-import cn.van.entity.ParentDO;
-import javafx.scene.Parent;
+import cn.van.mybatis.entity.User;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
  *
  * @author zhangfan
- * @create 2019-03-19
+ * @create 2019-03-29
  * @since 1.0.0
  */
-public interface TestService {
-    ChildDO insertOne(ChildDO obj);
+public interface User1Mapper {
+    void insert(User user);
 
-    ParentDO insert (ParentDO obj);
 }

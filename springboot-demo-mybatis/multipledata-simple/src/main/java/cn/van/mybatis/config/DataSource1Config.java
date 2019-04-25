@@ -26,7 +26,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈主数据源配置〉<br>
  * 〈〉
  *
  * @author zhangfan
@@ -34,34 +34,35 @@ import javax.sql.DataSource;
  * @since 1.0.0
  */
 @Configuration
-@MapperScan(basePackages = "cn.van.mybatis.dao.test1", sqlSessionTemplateRef  = "test1SqlSessionTemplate")
+@MapperScan(basePackages = "cn.van.mybatis.dao.master", sqlSessionTemplateRef  = "masterSqlSessionTemplate")
+// 指定主库扫描的 dao包，并给 dao层注入指定的 SqlSessionTemplate
 public class DataSource1Config {
-
-    @Bean(name = "test1DataSource")
+//    首先创建 DataSource
+    @Bean(name = "masterDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.druid.master")
-    @Primary
+    @Primary // 指定是主库
     public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
-
-    @Bean(name = "test1SqlSessionFactory")
+//  然后创建 SqlSessionFactory
+    @Bean(name = "masterSqlSessionFactory")
     @Primary
-    public SqlSessionFactory testSqlSessionFactory(@Qualifier("test1DataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory testSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
         return bean.getObject();
     }
-
-    @Bean(name = "test1TransactionManager")
+//  再创建事务
+    @Bean(name = "masterTransactionManager")
     @Primary
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("test1DataSource") DataSource dataSource) {
+    public DataSourceTransactionManager testTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
-
-    @Bean(name = "test1SqlSessionTemplate")
+//  最后包装到 SqlSessionTemplate 中
+    @Bean(name = "masterSqlSessionTemplate")
     @Primary
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("test1SqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("masterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

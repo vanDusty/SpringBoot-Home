@@ -10,6 +10,8 @@
  */
 package cn.van.mybatis.service;
 
+import cn.van.mybatis.entity.User;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
@@ -19,8 +21,8 @@ package cn.van.mybatis.service;
  * @since 1.0.0
  */
 public interface TestService {
-
-    void insert();
-
-    void insert2();
+    // 插入主库
+    void insertMater(User user);
+    // 插入从库
+    void insert(User user);
 }
