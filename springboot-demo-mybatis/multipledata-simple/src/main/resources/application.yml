@@ -31,16 +31,23 @@
 
 spring:
   datasource:
-    test1:
-      jdbc-url: jdbc:mysql://47.98.178.84:3306/user
-      username: user
-      password: van937170
-      driver-class-name: com.mysql.jdbc.Driver
-    test2:
-      jdbc-url: jdbc:mysql://47.112.2.235:3306/hr
-      username: root
-      password: password!@#
-      driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      master:
+        username: user
+        password: van937170
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://47.98.178.84:3306/user
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+      db2:
+        username: root
+        password: password!@#
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://47.112.2.235:3306/hr
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
 #mybatis:
 #  # 配置mapper .xml文件所在的位置
 #  mapper-locations: classpath:mapper/*.xml

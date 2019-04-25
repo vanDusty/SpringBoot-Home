@@ -10,7 +10,7 @@
  */
 package cn.van.mybatis;
 import cn.van.mybatis.dao.test1.User1Mapper;
-import cn.van.mybatis.dao.test2.User2Mapper;
+import cn.van.mybatis.dao.User2Mapper;
 import cn.van.mybatis.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +49,7 @@ public class MybatisTest {
     public void insert2() {
         System.out.println(111);
         User user = new User();
-        user.setUserName("van");
+        user.setUserName("Van");
         user.setPassWord("222");
         user.setUserSex("eeee");
         user2Mapper.insert(user);

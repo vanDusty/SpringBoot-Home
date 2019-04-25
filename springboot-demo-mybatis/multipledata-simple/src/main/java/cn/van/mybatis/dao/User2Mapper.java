@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.mybatis.dao.test2;
+package cn.van.mybatis.dao;
 
 import cn.van.mybatis.entity.User;
 

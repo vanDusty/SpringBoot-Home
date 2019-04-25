@@ -1,31 +1,26 @@
 /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: User1Mapper
+ * FileName: TestService
  * Author:   zhangfan
- * Date:     2019-03-29 15:06
+ * Date:     2019-04-25 10:42
  * Description:
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.mybatis.dao.test1;
-
-import cn.van.mybatis.entity.User;
-
-import java.util.List;
+package cn.van.mybatis.service;
 
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
  *
  * @author zhangfan
- * @create 2019-03-29
+ * @create 2019-04-25
  * @since 1.0.0
  */
-public interface User1Mapper {
-    List<User> getAll();
-    User getOne(Long id);
-    void insert(User user);
-    void update(User user);
-    void delete(Long id);
+public interface TestService {
+
+    void insert();
+
+    void insert2();
 }

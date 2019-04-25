@@ -33,11 +33,11 @@ import javax.sql.DataSource;
  * @since 1.0.0
  */
 @Configuration
-@MapperScan(basePackages = "cn.van.mybatis.dao.test2", sqlSessionTemplateRef  = "test2SqlSessionTemplate")
+@MapperScan(basePackages = "cn.van.mybatis.dao", sqlSessionTemplateRef  = "test2SqlSessionTemplate")
 public class DataSource2Config {
 
     @Bean(name = "test2DataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.test2")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.db2")
     public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -46,7 +46,7 @@ public class DataSource2Config {
     public SqlSessionFactory testSqlSessionFactory(@Qualifier("test2DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/test2/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
         return bean.getObject();
     }
 
