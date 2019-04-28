@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.178.84:3306/dev
+    username: dev
+    password: Dn3XTGMBtJGhEB8F
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
