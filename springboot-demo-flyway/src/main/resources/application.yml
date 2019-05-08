@@ -1,0 +1,12 @@
+spring:
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.98.178.84:3306/hope?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=GMT
+      username: hope
+      password: xKk3M4TiL5zSt2kP
+  flyway:
+#      locations:
+#        classpath: db/migration
+      baseline-on-migrate: true
+server:
+  port: 8090
