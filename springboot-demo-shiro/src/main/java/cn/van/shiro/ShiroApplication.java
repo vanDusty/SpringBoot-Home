@@ -11,6 +11,7 @@
 package cn.van.shiro;
 
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,6 +26,7 @@ import java.io.IOException;
  * @since 1.0.0
  */
 @SpringBootApplication
+@MapperScan("cn.van.shiro.mapper")
 public class ShiroApplication {
 
     public static void main(String[] args) {
