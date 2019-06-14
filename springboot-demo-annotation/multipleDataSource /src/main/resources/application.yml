@@ -1,12 +1,14 @@
 spring:
   datasource:
+    # 主数据源
     master:
-      url: jdbc:mysql://47.98.178.84:3306/product_master
-      username: product_master
-      password: product_master
+      url: jdbc:mysql://47.98.178.84:3306/master
+      username: master
+      password: master
       driver-class-name: com.mysql.jdbc.Driver
+    # 其他数据源（可多个）
     slaves:
-      url: jdbc:mysql://47.98.178.84:3306/product_slave_1
-      username: product_slave_1
-      password: product_slave_1
+      url: jdbc:mysql://47.98.178.84:3306/slave
+      username: slave
+      password: slave
       driver-class-name: com.mysql.jdbc.Driver

@@ -1,8 +1,8 @@
 package cn.van.annotation.multipleDataSource.aspect;
 
 import cn.van.annotation.multipleDataSource.annotation.DS;
-import cn.van.annotation.multipleDataSource.config.MultipleDBConfig;
 import cn.van.annotation.multipleDataSource.config.MyDatasource.MyThreadLocal;
+import cn.van.annotation.multipleDataSource.enums.DBEnum;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,24 +19,23 @@ public class DSAspect {
     @Pointcut("execution(* cn.van.annotation.multipleDataSource.service.*.*(..))")
     public void pc(){};
     @Around("pc()")
-    public Object before(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Class<?> aClass = proceedingJoinPoint.getTarget().getClass();
         String name = proceedingJoinPoint.getSignature().getName();
-        System.out.println("该方法的名字时"+name);
+        System.out.println("该方法的名字是："+name);
         Method method = aClass.getMethod(name);
         if(method.isAnnotationPresent(DS.class)){
-            String value = method.getAnnotation(DS.class).value();
-            System.out.println(value);
-            if(value.equals("SLAVES")){
-                System.out.println("我在SLAVES");
-                MyThreadLocal.setLocal(MultipleDBConfig.SLAVES);
+            DBEnum dbEnum = method.getAnnotation(DS.class).value();
+            if(dbEnum.equals(DBEnum.SLAVES)){
+                System.out.println("我在Slave库中");
+                MyThreadLocal.setLocal(DBEnum.SLAVES);
             }else{
-                System.out.println("我在MASTER");
-                MyThreadLocal.setLocal(MultipleDBConfig.MASTER);
+                System.out.println("我在Master库中");
+                MyThreadLocal.setLocal(DBEnum.MASTER);
             }
         }
         Object proceed = proceedingJoinPoint.proceed();
-//        MyThreadLocal.remoceLocal();//每过一个切入点，就将本地线程变量中的key进去清空
+        MyThreadLocal.removeLocal();//每过一个切入点，就将本地线程变量中的key进去清空
         return proceed;
     }
 }

@@ -9,21 +9,28 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cn.van.annotation.multipleDataSource.enums.DBEnum.MASTER;
+import static cn.van.annotation.multipleDataSource.enums.DBEnum.SLAVES;
+
 @Configuration
 public class MultipleDBConfig {
-    public static final String MASTER = "MASTER";
-    public static final String SLAVES = "SLAVES";
-//  将多个数据源放入动态数据源当中AbstractRoutingDataSource
+    /**
+     * 将多个数据源放入动态数据源当中AbstractRoutingDataSource
+     * 以下两个参数跟DBConfig bean配置中保持一致
+     * @param masterDS
+     * @param slavesDS
+     * @return
+     */
     @Bean
-    public AbstractRoutingDataSource dongtaiAbstractDataSource(@Qualifier("masterDatasource")DataSource masterDatasource,
-                                                               @Qualifier("slavesDatasource")DataSource slavesDatasource){
-        MyDatasource datasource = new MyDatasource();
+    public AbstractRoutingDataSource dongtaiAbstractDataSource(@Qualifier("masterDS")DataSource masterDS,
+                                                               @Qualifier("slavesDS")DataSource slavesDS){
+        MyDatasource dataSource = new MyDatasource();
         Map<Object, Object> targetDataSources = new HashMap();
-        targetDataSources.put(MASTER,masterDatasource);
-        targetDataSources.put(SLAVES,slavesDatasource);
-        datasource.setTargetDataSources(targetDataSources);
-        datasource.setDefaultTargetDataSource(masterDatasource);
-        return datasource;
+        targetDataSources.put(MASTER,masterDS);
+        targetDataSources.put(SLAVES,slavesDS);
+        dataSource.setTargetDataSources(targetDataSources);
+        dataSource.setDefaultTargetDataSource(masterDS); // 设置默认数据源
+        return dataSource;
     }
 
 }
