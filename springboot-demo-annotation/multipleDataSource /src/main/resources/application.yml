@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    master:
+      url: jdbc:mysql://47.98.178.84:3306/product_master
+      username: product_master
+      password: product_master
+      driver-class-name: com.mysql.jdbc.Driver
+    slaves:
+      url: jdbc:mysql://47.98.178.84:3306/product_slave_1
+      username: product_slave_1
+      password: product_slave_1
+      driver-class-name: com.mysql.jdbc.Driver
