@@ -10,11 +10,12 @@
  */
 package cn.van.redisLock.redisson.config;
 
-import com.alibaba.fastjson.support.spring.GenericFastJsonRedisSerializer;
+import cn.van.redisLock.redisson.redisson.RedissonLocker;
+import cn.van.redisLock.redisson.utils.LockUtil;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
-import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,17 +32,31 @@ import java.io.IOException;
 @Configuration
 public class RedissonConfig {
 
+    @Value("${spring.redis.host}")
+    private String host;
+    @Value("${spring.redis.port}")
+    private String port;
+    @Value("${spring.redis.password}")
+    private String password;
+
     /**
-     * redisson客户端：单机
+     * RedissonClient,单机模式
      * @return
+     * @throws IOException
      */
-    @Bean(destroyMethod="shutdown")
-    public RedissonClient redisson() {
-        // 构造redisson实现分布式锁必要的Config
+    @Bean(destroyMethod = "shutdown")
+    public RedissonClient redisson() throws IOException {
         Config config = new Config();
-        config.setCodec(new JsonJacksonCodec())
-                .useSingleServer()
-                .setAddress("redis://47.98.178.84:6379").setPassword("van12345");
+        config.useSingleServer().setAddress("redis://" + host + ":" + port).setPassword(password);
         return Redisson.create(config);
     }
+
+    @Bean
+    public RedissonLocker redissonLocker(RedissonClient redissonClient){
+        RedissonLocker locker = new RedissonLocker(redissonClient);
+        //设置LockUtil的锁处理对象
+        LockUtil.setLocker(locker);
+        return locker;
+    }
+
 }
