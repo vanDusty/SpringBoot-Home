@@ -19,5 +19,10 @@
         <module>springboot-demo-swagger</module>
         <module>springboot-demo-dubbo</module>
         <module>springboot-demo-mybatis</module>
+        <module>springboot-demo-shiro</module>
+        <module>springboot-demo-flyway</module>
+        <module>springboot-demo-generator</module>
+        <module>springboot-demo-annotation</module>
+        <module>springboot-demo-redisLock</module>
     </modules>
 </project>
