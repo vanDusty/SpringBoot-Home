@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.van.mybatis.dao.User2Mapper" >
-    <resultMap id="BaseResultMap" type="cn.van.mybatis.entity.User" >
+    <resultMap id="BaseResultMap" type="cn.van.mybatis.cn.van.shiro.entity.User" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="user_name" property="userName" />
         <result column="pass_word" property="passWord" />
@@ -14,7 +14,7 @@
         id, userName, passWord, user_sex, nick_name
     </sql>
 
-    <insert id="insert" parameterType="cn.van.mybatis.entity.User" >
+    <insert id="insert" parameterType="cn.van.mybatis.cn.van.shiro.entity.User" >
         INSERT INTO
         users
         (user_name,pass_word,user_sex,nick_name,gmt_create)

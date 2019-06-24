@@ -1,69 +1,124 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- configuration:
-scan：当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
-scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒当scan为true时，此属性生效。默认的时间间隔为1分钟。
-debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
--->
-<configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <!-- 定义日志的根目录
-    name: 变量的名称,下文可以使“${}”来使用变量
-    source: 变量定义的值(放在配置文件中)-->
-    <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
+<!-- Logback config. See http://logback.qos.ch/manual/index.html -->
+<configuration scan="true" scanPeriod="10 seconds">
+    <!--继承spring boot提供的logback配置-->
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
 
+    <!--设置系统日志目录-->
+    <property name="APP_DIR" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n" />
     <!-- 定义日志文件名称 -->
-    <property name="fileName" value="spring-boot-logback"></property>
-    <!-- <appender>是负责写日志的组件，它有两个必要属性name和class。name指定appender名称，class指定appender的全限定名 -->
+    <property name="fileName" value="springboot-logback"></property>
+    <!-- 彩色日志 -->
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!-- 控制台输出 -->
     <appender name="consoleLogAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
-            <charset>utf-8</charset>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
-    </appender>
-    <!-- 把日志添加到文件
-    ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
-    <appender name="fileLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 -->
-        <file>${LOG_PATH}/${fileName}.log</file>
-        <!--<append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。-->
-        <encoder>
-            <!--
-            日志输出格式：
-                %d表示日期时间，
-                %thread表示线程名，
-                %-5level：级别从左显示5个字符宽度
-                %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
-                %msg：日志消息，
-                %n是换行符
-            -->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
-            <charset>utf-8</charset>
-        </encoder>
-        <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--
-            滚动时产生的文件的存放位置及文件名称 %d{yyyy-MM-dd}：按天进行日志滚动
-            %i：按天进行打包
-            -->
-            <fileNamePattern>${LOG_PATH}/${fileName}.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
-            <!--
-            可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每天滚动，
-            且maxHistory是365，则只保存最近365天的文件，删除之前的旧文件。注意，删除旧文件是，
-            那些为了归档而创建的目录也会被删除。
-            -->
-            <maxHistory>365</maxHistory>
-            <!-- 活动文件的大小，默认值是10MB -->
-        </rollingPolicy>
+        <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
     </appender>
 
+    <!-- 不带彩色的日志在控制台输出时候的设置 -->
+    <!--<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+    <!--<encoder>-->
+    <!--&lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+    <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+    <!--</encoder>-->
+    <!--&lt;!&ndash;此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息&ndash;&gt;-->
+    <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+    <!--<level>debug</level>-->
+    <!--</filter>-->
+    <!--</appender>-->
+
+    <!-- 时间滚动输出 level为 日志 -->
+    <appender name="fileLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 正在记录的日志文件的路径及文件名 -->
+        <!--  把日志添加到文件 -->
+        <file>${LOG_PATH}/${fileName}.log</file>
+        <!--日志文件输出格式-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--
+                归档的日志文件的路径，例如今天是2017-04-26日志，当前写的日志文件路径为file节点指定，可以将此文件与file指定文件路径设置为不同路径，从而将当前日志文件或归档日志文件置不同的目录。
+                而2017-04-26的日志文件在由fileNamePattern指定。%d{yyyy-MM-dd}指定日期格式，%i指定索引
+            -->
+            <fileNamePattern>${LOG_PATH}/${fileName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--
+                除按日志记录之外，还配置了日志文件不能超过500M，若超过500M，日志文件会以索引0开始，
+                命名日志文件，例如log-error-2017-04-26.0.log
+            -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!--日志文件保留天数-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 此日志文件只记录debug级别的 -->
+        <!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+        <!--            <level>debug</level>-->
+        <!--            <onMatch>ACCEPT</onMatch>-->
+        <!--            <onMismatch>DENY</onMismatch>-->
+        <!--        </filter>-->
+    </appender>
     <!--
-		logger主要用于存放日志对象，也可以定义日志类型、级别
-		name：表示匹配的logger类型前缀，也就是包的前半部分
-		level：要记录的日志级别，包括 TRACE < DEBUG < INFO < WARN < ERROR
-		additivity：作用在于children-logger是否使用 rootLogger配置的appender进行输出，
-		false：表示只用当前logger的appender-ref，true：表示当前logger的appender-ref和rootLogger的appender-ref都有效
+        普通的 logger
+        name：类名或包名，标志该 logger 与哪个包或哪个类绑定
+        level：该 logger 的日志级别
+        additivity：是否将日志信息传递给上一级
     -->
-    <root level="INFO">
-        <appender-ref ref="consoleLogAppender"/>
-        <appender-ref ref="fileLogAppender"/>
-    </root>
+    <logger name="org.springframework.web" level="info"/>
+    <logger name="org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor" level="info"/>
+    <logger name="cn.van.logback" level="debug"/>
+
+    <!--开发环境:打印控制台和输出到文件-->
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="consoleLogAppender" />
+            <appender-ref ref="fileLogAppender" />
+        </root>
+    </springProfile>
+
+    <!--仿真环境:打印控制台和输出到文件-->
+    <springProfile name="fzhj">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="INFO_FILE" />
+            <appender-ref ref="WARN_FILE" />
+            <appender-ref ref="ERROR_FILE" />
+        </root>
+    </springProfile>
+
+    <!--测试环境:打印控制台和输出到文件-->
+    <springProfile name="test">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="INFO_FILE" />
+            <appender-ref ref="WARN_FILE" />
+            <appender-ref ref="ERROR_FILE" />
+        </root>
+    </springProfile>
+
+    <!--生产环境:输出到文件-->
+    <springProfile name="pro">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="DEBUG_FILE" />
+            <appender-ref ref="INFO_FILE" />
+            <appender-ref ref="ERROR_FILE" />
+        </root>
+    </springProfile>
+
 </configuration>

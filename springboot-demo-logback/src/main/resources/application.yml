@@ -1,3 +1,4 @@
 # 配置的是日志的存放路径
 logging:
-  path: '/Users/zhangfan/Documents/Git-public/Springboot-Home/springboot-demo-logback/log'
+  path: ./log
+

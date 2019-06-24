@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- configuration:
+<!-- config:
 scan：当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
 scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒当scan为true时，此属性生效。默认的时间间隔为1分钟。
 debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
@@ -80,7 +80,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <appender-ref ref="console"/>
         <appender-ref ref="user"/>
     </root>
-    <!--<logger name="cn.van.mapper" level="${logger_dao_level}" additivity="false">-->
+    <!--<logger name="cn.van.templates" level="${logger_dao_level}" additivity="false">-->
         <!--<appender-ref ref="sql"/>-->
     <!--</logger>-->
 </configuration>
