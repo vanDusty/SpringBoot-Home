@@ -41,8 +41,6 @@
 @Retention(RetentionPolicy.RUNTIME) // 什么时候使用该注解，我们定义为运行时；
 @Target({ElementType.METHOD}) //用于什么地方，我们定义为作用于方法上；
 @Documented //注解是否将包含在 JavaDoc 中
-// 在切点之前， @Order 从小到大被执行，也就是说越小的优先级越高；
-// 在切点之后， @Order 从大到小被执行，也就是说越大的优先级越高；
 public @interface WebLog {
     String description() default "";
 }
@@ -193,4 +191,4 @@ public class WebLogAspect {
 
 ### 5.3 源码地址
 
-[SpringBoot 配置AOP自定义注解：打印入参出参](https://github.com/vanDusty/springboot-home/springboot-demo-annotation/webLog)
+[SpringBoot 配置AOP自定义注解：打印入参出参](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-annotation/webLog)
