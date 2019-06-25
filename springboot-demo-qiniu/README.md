@@ -55,7 +55,7 @@ upload:
 > 稍微解释一下该类的必要性，`QiNiuCloudConfiguration `的租用是将配置文件中数据转换成静态数据，详细介绍见下篇文章。
 
 ```java
-@Component
+@Configuration
 public class QiNiuCloudConfiguration {
     /**
      * 设置账号的AK和SK
