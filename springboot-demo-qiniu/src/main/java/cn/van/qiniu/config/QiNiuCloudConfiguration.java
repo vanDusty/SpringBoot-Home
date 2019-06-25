@@ -39,7 +39,7 @@ public class QiNiuCloudConfiguration {
     public static Double maxSize;
 
     @Value("${qinNiuCloud.ACCESS_KEY}")
-    private String tempAccessKey;
+    private static String tempAccessKey;
     @Value("${qinNiuCloud.SECRET_KEY}")
     private String tempSecretKEY;
 
