@@ -1,16 +1,13 @@
 package cn.van.tx.sms.utils;
 
-import cn.van.tx.sms.domain.SmsCode;
+import cn.van.tx.sms.domain.SmsParams;
 import com.alibaba.fastjson.JSONException;
 import com.github.qcloudsms.*;
 import com.github.qcloudsms.httpclient.HTTPException;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Copyright (C), 2015-2019, 风尘博客
@@ -46,17 +43,17 @@ public class TxCloudSmsUtil {
 
     /**
      * 指定模板 ID 单发短信
-     * @param smsCode
+     * @param smsParams
      */
-    public String sendSms(SmsCode smsCode) {
+    public String sendSms(SmsParams smsParams) {
         String rep = "error";
         try {
-            String verifyCode = smsCode.getVerifyCode();
+            String verifyCode = smsParams.getVerifyCode();
             // 数组具体的元素个数和模板中变量个数必须一致，例如示例中templateId:5678对应一个变量，参数数组中元素个数也必须是一个
             String[] params = {verifyCode,smsEffectiveTime};
             SmsSingleSender smsSingleSender = new SmsSingleSender(appId, appKey);
             // 签名参数未提供或者为空时，会使用默认签名发送短信
-            SmsSingleSenderResult smsSingleSenderResult = smsSingleSender.sendWithParam("86", smsCode.getPhone(),
+            SmsSingleSenderResult smsSingleSenderResult = smsSingleSender.sendWithParam("86", smsParams.getPhone(),
                     templateId, params, smsSign, "", "");
             System.out.println(smsSingleSenderResult);
             // 如果返回码不是0，说明配置有错，返回错误信息

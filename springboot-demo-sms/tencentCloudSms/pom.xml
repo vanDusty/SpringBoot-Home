@@ -23,11 +23,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- 腾讯云sdk-->
         <dependency>
             <groupId>com.github.qcloudsms</groupId>
             <artifactId>qcloudsms</artifactId>
             <version>1.0.6</version>
         </dependency>
+        <!-- lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
