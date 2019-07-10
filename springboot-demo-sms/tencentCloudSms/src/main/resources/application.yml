@@ -1,0 +1,7 @@
+tx:
+  sms:
+    appId: 1400218546
+    appKey: 29c5605eced1400d694cc8d1e6437166
+    templateId: 350978
+    smsSign: 风尘博客
+    smsEffectiveTime: 5
