@@ -4,7 +4,7 @@
 
 ### 一、腾讯短信服务
 
-腾讯提供的短信业务，**提供每个月100 的免费额度**，用来测试足够了。打开https://console.cloud.tencent.com/sms/smslist，在腾讯短信服务的页面，进行简单的注册以及简单的配置：创建签名和模板等，然后采用官方提供的SDK，调用接口即可。详细配置参见文章：https://mp.weixin.qq.com/s/kWR-awfOutRZNAmpxvNzQA
+腾讯提供的短信业务，**提供每个月100 的免费额度**，用来测试足够了。打开[https://console.cloud.tencent.com/sms/smslist](https://console.cloud.tencent.com/sms/smslist)，在腾讯短信服务的页面，进行简单的注册以及简单的配置：创建签名和模板等，然后采用官方提供的SDK，调用接口即可。详细配置参见文章：[https://mp.weixin.qq.com/s/kWR-awfOutRZNAmpxvNzQA](https://mp.weixin.qq.com/s/kWR-awfOutRZNAmpxvNzQA)
 
 
 [Java SDK文档](https://cloud.tencent.com/document/product/382/13613#%E5%8D%95%E5%8F%91%E7%9F%AD%E4%BF%A1)
