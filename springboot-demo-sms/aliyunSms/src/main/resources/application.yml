@@ -1,0 +1,7 @@
+aliyun:
+  sms:
+    accessKeyId: LTAIyD1YiOxXAF1K
+    accessKeySecret: MXdcyVumxDN6U0QFpr3PqaIabUjJrS
+    signName: 风尘博客
+    templateCode: SMS_170181587
+    smsEffectiveTime: 5
