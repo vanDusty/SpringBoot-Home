@@ -1,6 +1,6 @@
-/**
+package cn.van.redis.demo; /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: StringCacheTest
+ * FileName: cn.van.redis.demo.StringCacheTest
  * Author:   zhangfan
  * Date:     2019-03-22 11:30
  * Description:
@@ -8,9 +8,8 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.redis;
 
-import cn.van.redis.utils.StringCache;
+import cn.van.redis.demo.utils.StringCache;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

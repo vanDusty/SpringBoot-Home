@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.redis.config;
+package cn.van.redis.demo.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,12 +33,14 @@ import java.util.Set;
  * @since 1.0.0
  */
 @Configuration
-@EnableCaching//开启注解
+@EnableCaching
 public class RedisConfig {
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();  // 生成一个默认配置，通过config对象即可对缓存进行自定义配置
-        config = config.entryTtl(Duration.ofMinutes(1))     // 设置缓存的默认过期时间，也是使用Duration设置
+        // 生成一个默认配置，通过config对象即可对缓存进行自定义配置
+        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
+        // 设置缓存的默认过期时间，也是使用Duration设置
+        config = config.entryTtl(Duration.ofMinutes(1))
                 .disableCachingNullValues();     // 不缓存空值
 
         // 设置一个初始化的缓存空间set集合
@@ -49,9 +52,10 @@ public class RedisConfig {
         Map<String, RedisCacheConfiguration> configMap = new HashMap<>();
         configMap.put("my-redis-cache1", config);
         configMap.put("my-redis-cache2", config.entryTtl(Duration.ofSeconds(120)));
-
-        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)     // 使用自定义的缓存配置初始化一个cacheManager
-                .initialCacheNames(cacheNames)  // 注意这两句的调用顺序，一定要先调用该方法设置初始化的缓存名，再初始化相关的配置
+        // 使用自定义的缓存配置初始化一个cacheManager
+        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
+                // 注意这两句的调用顺序，一定要先调用该方法设置初始化的缓存名，再初始化相关的配置
+                .initialCacheNames(cacheNames)
                 .withInitialCacheConfigurations(configMap)
                 .build();
         return cacheManager;

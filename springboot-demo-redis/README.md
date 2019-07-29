@@ -88,8 +88,8 @@ spring:
 public class RedisConfig {
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();  // 生成一个默认配置，通过config对象即可对缓存进行自定义配置
-        config = config.entryTtl(Duration.ofMinutes(1))     // 设置缓存的默认过期时间，也是使用Duration设置
+        RedisCacheConfiguration cn.van.redis.demo.config = RedisCacheConfiguration.defaultCacheConfig();  // 生成一个默认配置，通过config对象即可对缓存进行自定义配置
+        cn.van.redis.demo.config = cn.van.redis.demo.config.entryTtl(Duration.ofMinutes(1))     // 设置缓存的默认过期时间，也是使用Duration设置
                 .disableCachingNullValues();     // 不缓存空值
 
         // 设置一个初始化的缓存空间set集合
@@ -99,8 +99,8 @@ public class RedisConfig {
 
         // 对每个缓存空间应用不同的配置
         Map<String, RedisCacheConfiguration> configMap = new HashMap<>();
-        configMap.put("my-redis-cache1", config);
-        configMap.put("my-redis-cache2", config.entryTtl(Duration.ofSeconds(120)));
+        configMap.put("my-redis-cache1", cn.van.redis.demo.config);
+        configMap.put("my-redis-cache2", cn.van.redis.demo.config.entryTtl(Duration.ofSeconds(120)));
 
         RedisCacheManager cacheManager = RedisCacheManager.builder(factory)     // 使用自定义的缓存配置初始化一个cacheManager
                 .initialCacheNames(cacheNames)  // 注意这两句的调用顺序，一定要先调用该方法设置初始化的缓存名，再初始化相关的配置
@@ -183,9 +183,9 @@ public class StringCache {
 ```java
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class StringCacheTest {
+public class cn.van.redis.demo.StringCacheTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(StringCacheTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(cn.van.redis.demo.StringCacheTest.class);
 
     @Autowired
     private StringCache stringCache;

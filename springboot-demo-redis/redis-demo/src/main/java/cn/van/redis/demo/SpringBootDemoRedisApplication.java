@@ -1,4 +1,4 @@
-package cn.van.redis;
+package cn.van.redis.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +18,6 @@ public class SpringBootDemoRedisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoRedisApplication.class);
-        logger.info("SpringBootDemoRedisApplication start!");
+        logger.info("cn.van.redis.demo.SpringBootDemoRedisApplication start!");
     }
 }
