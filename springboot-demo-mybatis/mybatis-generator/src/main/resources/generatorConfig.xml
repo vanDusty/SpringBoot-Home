@@ -20,7 +20,7 @@
     -->
 
     <!-- defaultModelType="flat" 设置复合主键时不单独为主键创建实体 -->
-    <context id="MySql" defaultModelType="flat" targetRuntime="MyBatis3Simple">
+    <context id="MySql" defaultModelType="flat">
 
         <!-- 生成的POJO实现java.io.Serializable接口 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
@@ -49,14 +49,14 @@
 
         <!-- 生成实体对象，并将类放到cn.van.generator.entity包下 -->
         <javaModelGenerator targetPackage="cn.van.mybatis.generator.entity" targetProject="src/main/java">
-            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
-            <property name="enableSubPackages" value="false"/>
-            <!-- 是否对model添加 构造函数 -->
-            <property name="constructorBased" value="true"/>
-            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
-            <property name="trimStrings" value="false"/>
-            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
-            <property name="immutable" value="false"/>
+            <!--&lt;!&ndash; 是否允许子包，即targetPackage.schemaName.tableName &ndash;&gt;-->
+            <!--<property name="enableSubPackages" value="false"/>-->
+            <!--&lt;!&ndash; 是否对model添加 构造函数 &ndash;&gt;-->
+            <!--<property name="constructorBased" value="true"/>-->
+            <!--&lt;!&ndash; 是否对类CHAR类型的列的数据进行trim操作 &ndash;&gt;-->
+            <!--<property name="trimStrings" value="false"/>-->
+            <!--&lt;!&ndash; 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 &ndash;&gt;-->
+            <!--<property name="immutable" value="false"/>-->
         </javaModelGenerator>
         <!-- 生成mapper xml文件，并放到resources下的mapper文件夹下 -->
         <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources"></sqlMapGenerator>
@@ -102,7 +102,7 @@
          -->
         <!-- table标签可以有多个，至少一个，tableName指定表名，可以使用_和%通配符 -->
         <!-- domainObjectName/mapperName 可以自定义实体名称和Mapper名称 enable**:不生成复杂的sql -->
-        <table tableName="tbl_user" domainObjectName = "UserDO" mapperName="UserMapper"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="user" domainObjectName = "UserDO" mapperName="UserMapper"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <!-- 是否只生成entity对象 -->
             <property name="modelOnly" value="false"/>
