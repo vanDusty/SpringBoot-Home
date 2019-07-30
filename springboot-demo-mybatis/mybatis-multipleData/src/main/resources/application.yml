@@ -1,0 +1,34 @@
+server:
+  port: 8084
+spring:
+  datasource:
+    master:
+      password: product_master
+      url: jdbc:mysql://47.98.178.84:3306/product_master?useUnicode=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: product_master
+      type: com.zaxxer.hikari.HikariDataSource
+    cluster:
+    - key: slave1
+      password: product_slave_1
+      url: jdbc:mysql://47.98.178.84:3306/product_slave_1?useUnicode=true&characterEncoding=UTF-8
+      idle-timeout: 20000
+      driver-class-name: com.mysql.jdbc.Driver
+      username: product_slave_1
+      type: com.zaxxer.hikari.HikariDataSource
+    - key: slave2
+      password: product_slave_2
+      url: jdbc:mysql://47.98.178.84:3306/product_slave_2?useUnicode=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: product_slave_2
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.van.mybatis.multipleData.entity
+
+logging:
+  level:
+    cn:
+      van:
+        mybatis:
+          multipleData:
+            mapper: debug
