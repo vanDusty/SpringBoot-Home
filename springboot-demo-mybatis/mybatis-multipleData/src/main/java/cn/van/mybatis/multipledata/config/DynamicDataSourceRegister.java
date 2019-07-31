@@ -1,4 +1,4 @@
-package cn.van.mybatis.multipleData.config;
+package cn.van.mybatis.multipledata.config;
 
 /**
  * Copyright (C), 2015-2019, 风尘博客
@@ -11,6 +11,7 @@ package cn.van.mybatis.multipleData.config;
  * Version： V1.0
  */
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.MutablePropertyValues;
@@ -62,7 +63,7 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
     /**
      * 存储我们注册的数据源
      */
-    private Map<String, DataSource> customDataSources = new HashMap<String, DataSource>();
+    private Map<String, DruidDataSource> customDataSources = new HashMap<>();
 
     /**
      * 参数绑定工具 springboot2.0新推出
@@ -80,28 +81,32 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         // 获取所有数据源配置
         Map config, defauleDataSourceProperties;
         defauleDataSourceProperties = binder.bind("spring.datasource.master", Map.class).get();
-        // 获取数据源类型
-        String typeStr = evn.getProperty("spring.datasource.master.type");
+        // 获取数据源类型(我这里都用druid连接池，所以修改下)
+        // String typeStr = evn.getProperty("spring.datasource.master.type");
+        String typeStr = evn.getProperty("spring.datasource.druid.type");
         // 获取数据源类型
         Class<? extends DataSource> clazz = getDataSourceType(typeStr);
         // 绑定默认数据源参数 也就是主数据源
         DataSource consumerDatasource, defaultDatasource = bind(clazz, defauleDataSourceProperties);
-        DynamicDataSourceContextHolder.dataSourceIds.add("master");
+        DynamicDataSourceContextHolder.keys.add("master");
         log.info("注册默认数据源成功");
         // 获取其他数据源配置
         List<Map> configs = binder.bind("spring.datasource.cluster", Bindable.listOf(Map.class)).get();
         // 遍历从数据源
         for (int i = 0; i < configs.size(); i++) {
             config = configs.get(i);
-            clazz = getDataSourceType((String) config.get("type"));
+            // 从库也都使用druid，所以也改动一下
+            // clazz = getDataSourceType((String) config.get("type"));
+            clazz = getDataSourceType(typeStr);
             defauleDataSourceProperties = config;
             // 绑定参数
             consumerDatasource = bind(clazz, defauleDataSourceProperties);
             // 获取数据源的key，以便通过该key可以定位到数据源
             String key = config.get("key").toString();
-            customDataSources.put(key, consumerDatasource);
+            DruidDataSource druidDataSource = (DruidDataSource) consumerDatasource;
+            customDataSources.put(key, druidDataSource);
             // 数据源上下文，用于管理数据源与记录已经注册的数据源key
-            DynamicDataSourceContextHolder.dataSourceIds.add(key);
+            DynamicDataSourceContextHolder.keys.add(key);
             log.info("注册数据源{}成功", key);
         }
         // bean定义类
@@ -185,5 +190,4 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         // 绑定配置器
         binder = Binder.get(evn);
     }
-
 }

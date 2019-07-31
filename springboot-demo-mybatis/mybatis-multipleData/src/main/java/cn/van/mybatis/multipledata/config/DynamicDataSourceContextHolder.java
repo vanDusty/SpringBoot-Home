@@ -1,8 +1,6 @@
-package cn.van.mybatis.multipleData.config;
+package cn.van.mybatis.multipledata.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +21,20 @@ public class DynamicDataSourceContextHolder {
     /**
      * 存储已经注册的数据源的key
      */
-    public static List<String> dataSourceIds = new ArrayList<String>();
+    public static List<String> keys = new ArrayList<>();
 
     /**
      * 线程级别的私有变量
      */
-    private static final ThreadLocal<String> HOLDER = new ThreadLocal<String>();
+    private static final ThreadLocal<String> HOLDER = new ThreadLocal<>();
 
     public static String getDataSourceRouterKey () {
         return HOLDER.get();
     }
 
-    public static void setDataSourceRouterKey (String dataSourceRouterKey) {
-        log.info("切换至{}数据源", dataSourceRouterKey);
-        HOLDER.set(dataSourceRouterKey);
+    public static void setDataSourceRouterKey (String key) {
+        log.info("切换至{}数据源", key);
+        HOLDER.set(key);
     }
 
     /**
@@ -49,11 +47,11 @@ public class DynamicDataSourceContextHolder {
     /**
      * 判断指定DataSource当前是否存在
      *
-     * @param dataSourceId
+     * @param key
      * @return
      */
-    public static boolean containsDataSource(String dataSourceId){
-        return dataSourceIds.contains(dataSourceId);
+    public static boolean containsDataSource(String key){
+        return keys.contains(key);
     }
 
 }

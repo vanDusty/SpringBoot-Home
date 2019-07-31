@@ -1,6 +1,6 @@
-package cn.van.mybatis.multipleData.aspect;
+package cn.van.mybatis.multipledata.aspect;
 
-import cn.van.mybatis.multipleData.annotation.DataSource;
+import cn.van.mybatis.multipledata.annotation.DataSource;
 import org.aopalliance.aop.Advice;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.AbstractPointcutAdvisor;

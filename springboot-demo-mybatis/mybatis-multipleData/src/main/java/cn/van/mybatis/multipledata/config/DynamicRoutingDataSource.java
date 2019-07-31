@@ -1,4 +1,4 @@
-package cn.van.mybatis.multipleData.config;
+package cn.van.mybatis.multipledata.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
@@ -11,6 +11,7 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  * @author: Van
  * Date:     2019-07-30 15:40
  * Description: 动态数据源路由配置
+ * 作用：通知Spring用key获取当前的数据源
  * Version： V1.0
  */
 @Slf4j

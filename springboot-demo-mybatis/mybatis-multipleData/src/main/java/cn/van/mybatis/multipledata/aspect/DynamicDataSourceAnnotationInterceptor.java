@@ -1,7 +1,7 @@
-package cn.van.mybatis.multipleData.aspect;
+package cn.van.mybatis.multipledata.aspect;
 
-import cn.van.mybatis.multipleData.annotation.DataSource;
-import cn.van.mybatis.multipleData.config.DynamicDataSourceContextHolder;
+import cn.van.mybatis.multipledata.annotation.DataSource;
+import cn.van.mybatis.multipledata.config.DynamicDataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -35,7 +35,7 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
     public Object invoke(MethodInvocation invocation) throws Throwable {
         try {
             String datasource = determineDatasource(invocation);
-            if (! DynamicDataSourceContextHolder.containsDataSource(datasource)) {
+            if (!DynamicDataSourceContextHolder.containsDataSource(datasource)) {
                 log.info("数据源[{}]不存在，使用默认数据源 >", datasource);
             }
             DynamicDataSourceContextHolder.setDataSourceRouterKey(datasource);

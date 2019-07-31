@@ -1,9 +1,9 @@
-package cn.van.mybatis.multipleData;
+package cn.van.mybatis.multipledata;
 
 
-import cn.van.mybatis.multipleData.aspect.DynamicDataSourceAnnotationAdvisor;
-import cn.van.mybatis.multipleData.config.DynamicDataSourceRegister;
-import cn.van.mybatis.multipleData.aspect.DynamicDataSourceAnnotationInterceptor;
+import cn.van.mybatis.multipledata.aspect.DynamicDataSourceAnnotationAdvisor;
+import cn.van.mybatis.multipledata.config.DynamicDataSourceRegister;
+import cn.van.mybatis.multipledata.aspect.DynamicDataSourceAnnotationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Import(DynamicDataSourceRegister.class)
-@MapperScan("cn.van.mybatis.multipleData.mapper")
+@MapperScan("cn.van.mybatis.multipledata.mapper")
 @SpringBootApplication
 @EnableTransactionManagement
 public class Application {
