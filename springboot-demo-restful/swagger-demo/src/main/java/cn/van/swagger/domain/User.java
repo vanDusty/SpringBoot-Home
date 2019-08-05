@@ -25,4 +25,16 @@ public class User {
     private String sex;
     @ApiModelProperty(value = "用户年龄")
     private int age;
+
+    /**
+     * 必填字段
+     */
+    @ApiModelProperty(value = "创建时间", required = true)
+    private Data gmtCreate;
+
+    /**
+     * 隐藏字段
+     */
+    @ApiModelProperty(value = "隐藏字段",hidden = true)
+    private String extra;
 }
