@@ -1,4 +1,4 @@
-package cn.van.start.web.controller;
+package cn.van.springboot.demo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

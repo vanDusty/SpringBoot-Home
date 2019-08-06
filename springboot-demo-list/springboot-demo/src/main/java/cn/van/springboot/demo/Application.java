@@ -1,7 +1,9 @@
-package cn.van.start;
+package cn.van.springboot.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Copyright (C), 2015-2019, 风尘博客
@@ -13,9 +15,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Description: ${DESCRIPTION}
  * Version： V1.0
  */
+@RestController
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @GetMapping("/demo")
+    public String demo() {
+        return "Hello SpringBoot!";
     }
 }
