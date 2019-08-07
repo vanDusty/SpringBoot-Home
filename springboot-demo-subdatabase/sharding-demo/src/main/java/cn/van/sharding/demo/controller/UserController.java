@@ -6,19 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * @Classname UserController
- * @Description 用户测试控制类
- * @Author 李号东 lihaodongmail@163.com
- * @Date 2019-05-26 17:36
+ * @Description
+ * @Author Van
+ * @Date 2019-07-26 17:39
  * @Version 1.0
  */
 @RestController
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     @GetMapping("/select")
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/insert")
-    public Boolean insert(User user) {
+    public int insert(User user) {
         return userService.save(user);
     }
 
