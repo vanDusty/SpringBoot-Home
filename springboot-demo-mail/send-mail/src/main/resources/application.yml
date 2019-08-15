@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  mail:
+    host: smtp.qq.com
+# 邮箱账号
+    username: van93@qq.com
+# 邮箱授权码
+    password: *********
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true

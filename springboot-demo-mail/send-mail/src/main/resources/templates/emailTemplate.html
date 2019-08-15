@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>邮件模版</title>
+</head>
+    <body>
+    您好，感谢您的注册！这是一封验证邮件，验证码为<span th:text="${verifyCode}"></span><br>
+    <a href="#" th:href="@{https://www.dustyblog.cn}">风尘博客</a>感谢您的支持！<br>
+
+    </body>
+</html>
