@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+# 自定义属性配置
+original:
+  config:
+    title: OriginalConfig
+    description: 主配置文件中属性
+
+# 指定激活的环境
+spring:
+  profiles:
+    active: gray
