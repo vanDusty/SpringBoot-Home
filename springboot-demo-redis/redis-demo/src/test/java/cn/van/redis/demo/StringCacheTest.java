@@ -35,6 +35,9 @@ public class StringCacheTest {
     @Autowired
     private StringCache stringCache;
 
+    /**
+     * 测试get/set/delete key
+     */
     @Test
     public void setAndGet() {
         stringCache.setValue("name","redis测试");
@@ -45,13 +48,18 @@ public class StringCacheTest {
         logger.info(name);
     }
 
+    /**
+     * 测试设置有效时长的key
+     */
     @Test
     public void getRemainingTime() {
         stringCache.setValue("hello","hello word", 40);
         logger.info("剩余存活时间:{}秒",stringCache.getRemainingTime("hello"));
     }
 
-
+    /**
+     * 测试过了有效时长的key，是否被删除
+     */
     @Test
     public void exist() {
         boolean i = stringCache.existKey("hello");

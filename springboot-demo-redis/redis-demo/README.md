@@ -1,14 +1,18 @@
-# SpringBoot 配置 redis
+# SpringBoot 配置 Redis
 
-## 一、StringRedisTemplate
+> 作为目前最火的的NoSql数据库,Redis现在已成为后台开发人员的标配，本文主要主要介绍`SpringBoot 2.* `和 `Redis` 的整合。
 
-### 1.1 StringRedisTemplate与RedisTemplate区别点
 
-1. StringRedisTemplate继承RedisTemplate;
-1. **两者的数据是不共通的**：StringRedisTemplate只能管理StringRedisTemplate里面的数据，RedisTemplate只能管理RedisTemplate中的数据；
-1. RedisTemplate 中存取数据都是字节数组，StringRedisTemplate 中存取数据都是字符串。
+## 一、`StringRedisTemplate``与`RedisTemplate`
 
-### 1.2 RedisTemplate中定义了5种数据结构操作
+### 1.1 两者区别
+
+1. `StringRedisTemplate`继承自`RedisTemplate`;
+1. **两者的数据是不共通的**：`StringRedisTemplate`只能管理`StringRedisTemplate`里面的数据，同样，`RedisTemplate`只能管理`RedisTemplate`中的数据；
+1. `RedisTemplate `中存取数据都是字节数组，`StringRedisTemplate `中存取数据都是字符串。
+
+### 1.2 `RedisTemplate`中定义了5种数据结构操作
+
 ```java 
 redisTemplate.opsForValue();　　//操作字符串
 redisTemplate.opsForHash();　　 //操作hash
@@ -17,13 +21,11 @@ redisTemplate.opsForSet();　　  //操作set
 redisTemplate.opsForZSet();　 　//操作有序set
 ```
 
-### 1.3 StringRedisTemplate的使用
+### 1.3 `StringRedisTemplate`的使用
  
-SpringBoot中使用注解@Autowired 即可
+为了演示，本文仅以`SpringBoot`中使用`StringRedisTemplate`为例。
 
 ## 二、上手实战
-
-> 这里演示String类型
 
 ### 2.1 导入依赖
 
@@ -47,17 +49,17 @@ SpringBoot中使用注解@Autowired 即可
 </dependency>
 ```
 
-### 2.2 application.yml中redis配置
+### 2.2 `application.yml`中`redis`参数配置
 
 ```yml
 spring:
   redis:
-    host: 47.112.2.235
+    host: 47.98.178.84
     port: 6379
     database: 0
-    password: password
+    password: van12345
     timeout: 60s  # 连接超时时间，2.0 中该参数的类型为Duration，这里在配置的时候需要指明单位
-    # 连接池配置，2.0中直接使用jedis或者lettuce配置连接池
+    # 连接池配置，2.0中直接使用jedis或者lettuce配置连接池（使用lettuce，依赖中必须包含commons-pool2包）
     lettuce:
       pool:
         # 最大空闲连接数
@@ -67,7 +69,8 @@ spring:
         # 等待可用连接的最大时间，负数为不限制
         max-wait:  -1s
         # 最大活跃连接数，负数为不限制
-        max-active: -1```
+        max-active: -1
+```
 
 ### 2.3 Redis配置类-RedisConfig
 
@@ -112,6 +115,8 @@ public class RedisConfig {
 ```
 
 ### 2.4 封装的redis操作String类型工具类-StringCache
+
+> 具体操作说明，见代码注释
 
 ```java
 @Component
@@ -183,16 +188,19 @@ public class StringCache {
 ```java
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class cn.van.redis.demo.StringCacheTest {
+public class StringCacheTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(cn.van.redis.demo.StringCacheTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(StringCacheTest.class);
 
     @Autowired
     private StringCache stringCache;
 
+    /**
+     * 测试get/set/delete key
+     */
     @Test
     public void setAndGet() {
-        stringCache.setValue("name","Van");
+        stringCache.setValue("name","redis测试");
         String name = stringCache.getValue("name");
         logger.info(name);
         stringCache.delKey("name");
@@ -200,13 +208,18 @@ public class cn.van.redis.demo.StringCacheTest {
         logger.info(name);
     }
 
+    /**
+     * 测试设置有效时长的key
+     */
     @Test
     public void getRemainingTime() {
         stringCache.setValue("hello","hello word", 40);
         logger.info("剩余存活时间:{}秒",stringCache.getRemainingTime("hello"));
     }
 
-
+    /**
+     * 测试过了有效时长的key，是否被删除
+     */
     @Test
     public void exist() {
         boolean i = stringCache.existKey("hello");
@@ -225,4 +238,4 @@ public class cn.van.redis.demo.StringCacheTest {
 
 > 通常情况下，我们可以在命令行下查看 Redis 数据库，但是可视化工具能更真实地让我们看到数据的结构。
 
-可见[rdm](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-redis/file/redis-desktop-manager-0.8.3-2550.dmg)下载
+这里分享我用的一个简单的客户端，打开[链接](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-redis/file/redis-desktop-manager-0.8.3-2550.dmg)，点击**Download**即可下载。
