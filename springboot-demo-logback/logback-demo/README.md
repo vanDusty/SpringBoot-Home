@@ -1,5 +1,7 @@
-# SpringBoot 配置 logback
+# SpringBoot 异步输出 Logback 日志
 
+
+> 本文介绍：日志输出到文件并根据LEVEL级别将日志分类保存到不同文件、通过异步输出日志减少磁盘IO提高性能
 
 ## 一、介绍
 
@@ -176,13 +178,18 @@ try{
 	    
 ### 2.2 标签说明
 
+- `<springProperty>` ：定义日志的根目录
+
+	- `name`: 变量的名称,下文可以使`${xxx}`来使用变量;
+	- `source`: 变量定义的值(放在配置文件中)。
+
 - `<root>`标签：指定最基础的日志输出级别；
 	- `<appender-ref>`标签，添加`append`
 
 
 - `<appender>`标签：指定日志的收集策略
-	1. `name`属性指定`appender`命名
-	1. `class`属性指定输出策略，通常有两种，控制台输出和文件输出，文件输出就是将日志进行一个持久化。`ConsoleAppender`将日志输出到控制台。
+	- `name`属性指定`appender`命名
+	- `class`属性指定输出策略，通常有两种，控制台输出和文件输出，文件输出就是将日志进行一个持久化。`ConsoleAppender`将日志输出到控制台。
 
 
 - `<filter>`标签：指定过滤策略
@@ -193,4 +200,16 @@ try{
 
 - `<rollingPolicy>`标签：指定收集策略，比如基于时间进行收集
 
-	- <fileNamePattern>标签指定生成日志保存地址，这样配置已经实现了分类分天手机日志的目标了。
+	- `<fileNamePattern>`标签指定生成日志保存地址，实现了按天分类以及日志的目标了。
+
+	
+### 2.3 打印sql语句
+
+其他如上，在我们的`logback-spring.xml`中进行如下配置：
+
+```xml
+<!-- 将sql语句输出到具体的日志文件中 -->
+<logger name="cn.van.logback" level="debug" additivity="false">
+    <appender-ref ref="SQL-APPENDER"/>
+</logger>
+```	
