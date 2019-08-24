@@ -1,0 +1,5 @@
+server:
+  port: 8082
+# 日志输出文件地址（相对路径）
+logging:
+  path: ./logs
