@@ -1,10 +1,23 @@
-# Spring处理跨域请求-Cors
+# SpringBoot：处理跨域请求
 
-## 一、何为跨域
+## 一、跨域背景
 
-前端请求于后端处理符合三个要求（同一域名，同一端口，同一协议）下，即可访问，有一个不符合就会出现跨域问题。
+### 1.1 何为跨域？
 
-### 1.1 一次正常的请求
+`Url`的一般格式： 
+
+`协议 + 域名（子域名 + 主域名） + 端口号 + 资源地址`
+
+示例：
+
+`https://www.dustyblog.cn:8080/say/Hello` 是由
+
+`https` + `www` + `dustyblog.cn` + `8080` + `say/Hello` 
+组成。
+
+> 只要协议，子域名，主域名，端口号这四项组成部分中有一项不同，就可以认为是不同的域，不同的域之间互相访问资源，就被称之为跨域。
+
+### 1.2 一次正常的请求
 
 * Controller层代码：
 
@@ -25,11 +38,11 @@ public class CorsTestController {
 
 可以打印出“hello world”
 
-### 1.2 跨域测试
+### 1.3 跨域测试
 
 > 以Chrome为例：
 
-* 打开任意网站，如：[https://blog.csdn.net/weixin_42036952/article/details/87983032](https://blog.csdn.net/weixin_42036952/article/details/87983032)
+* 打开任意网站，如：[https://blog.csdn.net](https://blog.csdn.net/weixin_42036952/article/details/88564647)
 
 * 按F12，打开【开发者工具】，在里面的【Console】可以直接输入js代码测试；
 
@@ -47,7 +60,7 @@ xhr.onload = function(e) {
 
 * 输入完后直接按回车键就可以返回结果:
 
-```js
+```javascript
 Access to XMLHttpRequest at 'http://127.0.0.1:8080/demo/sayHello' 
 from origin 'https://blog.csdn.net' has been blocked by CORS policy: 
 No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -59,15 +72,15 @@ No 'Access-Control-Allow-Origin' header is present on the requested resource.
 
 ### 2.1 Cors是什么
 
-> CORS全称为Cross Origin Resource Sharing（跨域资源共享）, 每一个页面需要返回一个名为`Access-Control-Allow-Origin`的http头来允许外域的站点访问，你可以仅仅暴露有限的资源和有限的外域站点访问。
+> `CORS`全称为`Cross Origin Resource Sharing`（跨域资源共享）, 每一个页面需要返回一个名为`Access-Control-Allow-Origin`的http头来允许外域的站点访问，你可以仅仅暴露有限的资源和有限的外域站点访问。
 
-我们可以理解为：如果一个请求需要允许跨域访问，则需要在http头中设置`Access-Control-Allow-Origin`来决定需要允许哪些站点来访问。如假设需要允许[www.dustyblog.c](www.dustyblog.cn)这个站点的请求跨域，则可以设置：
+我们可以理解为：如果一个请求需要允许跨域访问，则需要在`http`头中设置`Access-Control-Allow-Origin`来决定需要允许哪些站点来访问。如假设需要允许[https://www.dustyblog.c](https://www.dustyblog.cn)这个站点的请求跨域，则可以设置：
 
-`Access-Control-Allow-Origin:http://www.dustyblog.cn。`
+`Access-Control-Allow-Origin:https://www.dustyblog.cn。`
 
 ### 2.2 方案一：使用`@CrossOrigin`注解
 
-#### 2.2.1 在Controller上使用`@CrossOrigin`注解
+#### 2.2.1 在`Controller`上使用`@CrossOrigin`注解
 
 > 该类下的所有接口都可以通过跨域访问
 
@@ -85,9 +98,11 @@ public class CorsTest2Controller {
 }
 ```
 
-这里指定当前的CorsTest2Controller中所有的方法可以处理https://csdn.net域上的请求,这里可以测试一下：
+这里指定当前的`CorsTest2Controller`中所有的方法可以处理`https://csdn.net`域上的请求,这里可以测试一下：
 
-* 在[https://blog.csdn.net/weixin_42036952/article/details/87983032](https://blog.csdn.net/weixin_42036952/article/details/87983032)页面打开调试窗口，输入(注意：这里请求地址是`/demo2`，请区别于1.2 案例中的`/demo`)
+* 在[https://blog.csdn.net](https://blog.csdn.net/weixin_42036952/article/details/88564647)页面打开调试窗口，输入(注意：这里请求地址是`/demo2`，请区别于1.2 案例中的`/demo`)
+
+
 ```js
 var token= "LtSFVqKxvpS1nPARxS2lpUs2Q2IpGstidMrS8zMhNV3rT7RKnhLN6d2FFirkVEzVIeexgEHgI/PtnynGqjZlyGkJa4+zYIXxtDMoK/N+AB6wtsskYXereH3AR8kWErwIRvx+UOFveH3dgmdw1347SYjbL/ilGKX5xkoZCbfb1f0=,LZkg22zbNsUoHAgAUapeBn541X5OHUK7rLVNHsHWDM/BA4DCIP1f/3Bnu4GAElQU6cds/0fg9Li5cSPHe8pyhr1Ii/TNcUYxqHMf9bHyD6ugwOFTfvlmtp6RDopVrpG24RSjJbWy2kUOOjjk5uv6FUTmbrSTVoBEzAXYKZMM2m4=,R4QeD2psvrTr8tkBTjnnfUBw+YR4di+GToGjWYeR7qZk9hldUVLlZUsEEPWjtBpz+UURVmplIn5WM9Ge29ft5aS4oKDdPlIH8kWNIs9Y3r9TgH3MnSUTGrgayaNniY9Ji5wNZiZ9cE2CFzlxoyuZxOcSVfOxUw70ty0ukLVM/78=";
 var xhr = new XMLHttpRequest();
@@ -101,6 +116,7 @@ xhr.onload = function(e) {
 ```
 
 返回结果：
+
 ```js
 ƒ (e) {
     var xhr = e.target;
@@ -111,7 +127,7 @@ VM156:8 hello world --- 2
 
 说明跨域成功！
 
-* 在[https://www.baidu.com](https://www.baidu.com)按照上述方法测试一下，返回结果：
+* 换个域名测试一下看跨域是否还有效，在[https://www.baidu.com](https://www.baidu.com)按照上述方法测试一下，返回结果：
 
 ```js
 OPTIONS http://127.0.0.1:8080/demo2/sayHello 403
@@ -122,12 +138,11 @@ Response to preflight request doesn't pass access control check:
 No 'Access-Control-Allow-Origin' header is present on the requested resource.
 ```
 
-说明跨域失败！证明该方案成功！
-
+说明跨域失败！证明该方案成功指定了部分域名能跨域！
 
 ### 2.3 方案二：CORS全局配置-实现`WebMvcConfigurer`
 
-* 新建跨域配置类：`CorsConfig.class`:
+* 新建跨域配置类：`CorsConfig.java `:
 
 ```java
 /**
@@ -182,9 +197,50 @@ VM433:8 hello world --- 3
 
 ### 2.3 拦截器实现
 
-博主没有实现这种方式，原理和Cors差不多， 各位大佬自己去试试吧！
+通过实现`Fiter`接口在请求中添加一些`Header`来解决跨域的问题
 
+```java
+@Component
+public class CorsFilter implements Filter {
 
-## 三、源码
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.addHeader("Access-Control-Allow-Credentials", "true");
+        res.addHeader("Access-Control-Allow-Origin", "*");
+        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+        res.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,sessionToken,X-TOKEN");
+        if (((HttpServletRequest) request).getMethod().equals("OPTIONS")) {
+            response.getWriter().println("ok");
+            return;
+        }
+        chain.doFilter(request, response);
+    }
+    @Override
+    public void destroy() {
+    }
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+}
+```
 
-详见[https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-cors](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-cors)
+## 三、更多
+
+### 3.1 源码地址
+
+[Github 示例代码](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-list/cross-domain)
+
+### 3.2 更多文章
+
+1. [风尘博客](https://www.dustyblog.cn/)
+1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
+1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
+1. [风尘博客-SegmentFault](https://segmentfault.com/u/dustyblog)
+
+### 3.3 技术交流
+
+风尘博客公众号：
+
+![风尘博客](https://i.loli.net/2019/08/18/jiXBAot8fEWZd3p.png)

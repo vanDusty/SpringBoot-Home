@@ -1,4 +1,4 @@
-package cn.van.cros.config;
+package cn.van.cross.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,10 +9,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 跨域配置
  */
-@Configuration
+// @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
-    @Bean
+    // @Bean
     public WebMvcConfigurer corsConfigurer()
     {
         return new WebMvcConfigurer() {
