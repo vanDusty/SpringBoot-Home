@@ -32,7 +32,7 @@ public class ArticleViewTask {
     ArticleService articleService;
 
 
-    @Scheduled(cron = "0 55 23 * * ? ")
+    @Scheduled(cron = "0 0 1 * * ? ")
     @Transactional(rollbackFor=Exception.class)
     public void createHyperLog() {
         log.info("浏览量入库开始");
