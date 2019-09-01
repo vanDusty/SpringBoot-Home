@@ -444,4 +444,5 @@ Caused by: java.lang.RuntimeException: 实例已经存在，请通过 getInstanc
 
 关注公众号，了解更多：
 
-![风尘博客](https://i.loli.net/2019/08/18/jiXBAot8fEWZd3p.png)
+
+![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)
