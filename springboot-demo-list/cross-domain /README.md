@@ -232,15 +232,13 @@ public class CorsFilter implements Filter {
 
 [Github 示例代码](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-list/cross-domain)
 
-### 3.2 更多文章
+### 3.2 技术交流
 
 1. [风尘博客](https://www.dustyblog.cn/)
 1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
 1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
-1. [风尘博客-SegmentFault](https://segmentfault.com/u/dustyblog)
 
-### 3.3 技术交流
+关注公众号，了解更多：
 
-风尘博客公众号：
 
-![风尘博客](https://i.loli.net/2019/08/18/jiXBAot8fEWZd3p.png)
+![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)
