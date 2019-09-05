@@ -1,0 +1,8 @@
+qr:
+  code:
+    charset: utf-8
+    width: 300
+    height: 300
+    logoWidth: 60
+    logoHeight: 60
+    picType: jpg

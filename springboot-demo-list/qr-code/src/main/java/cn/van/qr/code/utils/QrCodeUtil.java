@@ -1,11 +1,14 @@
 package cn.van.qr.code.utils;
 
+import cn.van.qr.code.config.QrCodeConfiguration;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
@@ -26,21 +29,6 @@ import java.util.Hashtable;
  */
 public class QrCodeUtil {
 
-    private static final String CHARSET = "utf-8";
-
-    private static final String FORMAT_NAME = "JPG";
-    /**
-     * 二维码尺寸
-     */
-    private static final int QR_CODE_SIZE = 300;
-    /**
-     * LOGO宽度
-     */
-    private static final int WIDTH = 60;
-    /**
-     * LOGO高度
-     */
-    private static final int HEIGHT = 60;
 
     /**
      * 生成二维码图片
@@ -53,10 +41,11 @@ public class QrCodeUtil {
      */
     private static BufferedImage createImage(String content, String imgPath, boolean needCompress) throws Exception {
         Hashtable hints = new Hashtable();
+
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
-        hints.put(EncodeHintType.CHARACTER_SET, CHARSET);
+        hints.put(EncodeHintType.CHARACTER_SET, QrCodeConfiguration.charset);
         hints.put(EncodeHintType.MARGIN, 1);
-        BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, QR_CODE_SIZE, QR_CODE_SIZE,
+        BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, QrCodeConfiguration.width, QrCodeConfiguration.height,
                 hints);
         int width = bitMatrix.getWidth();
         int height = bitMatrix.getHeight();
@@ -93,11 +82,11 @@ public class QrCodeUtil {
         int height = src.getHeight(null);
         // 压缩logo
         if (needCompress) {
-            if (width > WIDTH) {
-                width = WIDTH;
+            if (width > QrCodeConfiguration.logoWidth) {
+                width = QrCodeConfiguration.logoWidth;
             }
-            if (height > HEIGHT) {
-                height = HEIGHT;
+            if (height > QrCodeConfiguration.logoHeight) {
+                height = QrCodeConfiguration.logoHeight;
             }
             Image image = src.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -109,8 +98,8 @@ public class QrCodeUtil {
         }
         // 插入LOGO
         Graphics2D graph = source.createGraphics();
-        int x = (QR_CODE_SIZE - width) / 2;
-        int y = (QR_CODE_SIZE - height) / 2;
+        int x = (QrCodeConfiguration.width - width) / 2;
+        int y = (QrCodeConfiguration.height - height) / 2;
         graph.drawImage(src, x, y, width, height, null);
         Shape shape = new RoundRectangle2D.Float(x, y, width, width, 6, 6);
         graph.setStroke(new BasicStroke(3f));
@@ -144,7 +133,7 @@ public class QrCodeUtil {
             throws Exception {
 
         BufferedImage image = QrCodeUtil.createImage(content, imgPath, needCompress);
-        ImageIO.write(image, FORMAT_NAME, output);
+        ImageIO.write(image, QrCodeConfiguration.picType, output);
     }
 
     /**

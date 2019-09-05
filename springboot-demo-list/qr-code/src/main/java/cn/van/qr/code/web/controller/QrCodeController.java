@@ -32,8 +32,6 @@ public class QrCodeController {
             stream = response.getOutputStream();
             //使用工具类生成二维码
             QrCodeUtil.encode(url, stream);
-        } catch (Exception e) {
-            e.getStackTrace();
         } finally {
             if (stream != null) {
                 stream.flush();
@@ -56,8 +54,6 @@ public class QrCodeController {
             // String logoPath = "springboot-demo-list/qr-code/src/main/resources/templates/advator.jpg";
             //使用工具类生成二维码
             QrCodeUtil.encode(url, logoPath, stream, true);
-        } catch (Exception e) {
-            e.getStackTrace();
         } finally {
             if (stream != null) {
                 stream.flush();
