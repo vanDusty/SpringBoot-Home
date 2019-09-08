@@ -14,7 +14,6 @@
 1. [风尘博客-个人博客](https://www.dustyblog.cn/)
 1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
 1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
-1. [风尘博客-SegmentFault](https://segmentfault.com/u/dustyblog)
 
 
 
