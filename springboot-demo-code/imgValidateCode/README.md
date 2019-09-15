@@ -301,3 +301,13 @@ public class ValidateCodeController {
 - 返回结果：验证码输入正确/验证码输入错误/图片验证码已过期，请重新获取
 - 说明：前端需将请求验证码时返回的`imgCodeKey ` 字段的值以及用户数据的验证码请求到后端，进行校验；验证码有效期为五分钟，可按照实际需求配置。
 
+#### 3.3 技术交流
+
+1. [风尘博客-个人博客](https://www.dustyblog.cn/)
+1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
+1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
+
+
+最新文章，欢迎关注：公众号-风尘博客
+
+![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)
