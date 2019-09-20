@@ -2,8 +2,6 @@
 
 > 本案例主要讲解`Redis`实现分布式锁的两种实现方式：`Jedis`实现、`Redlock`实现。网上关于这方面讲解太多了，Van自认为文笔没他们好，还是用示例代码说明。
 
-
-
 ## 一、`jedis` 实现
 
 > 该方案只考虑`Redis`单机部署的场景
@@ -22,7 +20,7 @@ jedis.set(String key, String value, String nxxx, String expx, int time)
 1. 	`expx`: 这个参数我传的是`PX`，意思是我们要给这个`key`加一个过期的设置，具体时间由第五个参数决定;
 1. 	`time`: 与第四个参数相呼应，代表`key`的过期时间。
 
-#### 1.1.2 总结
+#### 1.1.2 小结
 
 - `set()`加入了`NX`参数，可以保证如果已有`key`存在，则函数不会调用成功，也就是只有一个客户端能持有锁，满足互斥性;
 - 其次，由于我们对锁设置了过期时间，即使锁的持有者后续发生崩溃而没有解锁，锁也会因为到了过期时间而自动解锁（即`key`被删除），不会发生死锁;
@@ -36,7 +34,7 @@ jedis.set(String key, String value, String nxxx, String expx, int time)
 1. 首先,写了一个简单`Lua`脚本代码,作用是：获取锁对应的`value`值，检查是否与`requestId`相等，如果相等则删除锁（解锁）;
 1. 然后,将`Lua`代码传到`jedis.eval()`方法里，并使参数`KEYS[1]`赋值为`lockKey`，`ARGV[1]`赋值为`requestId`。`eval()`方法是将`Lua`代码交给Redis服务端执行。
 
-## 1.3 案例（家庭多人领取奖励的场景）
+### 1.3 案例（家庭多人领取奖励的场景）
 
 > 这里放出的是关键代码，详细可运行的代码可至文末地址下载示例代码。
 
@@ -62,7 +60,6 @@ CREATE TABLE `family_reward_record` (
 - `application.yml`
 
 ```xml
-# 数据库配置
 spring:
   datasource:
     url: jdbc:mysql://47.98.178.84:3306/dev
@@ -163,7 +160,6 @@ public class RedisDistributedLock {
                 return true;
             }
         } finally {
-            //归还 jedis 连接
             if(jedis != null){
                 jedis.close();
             }
@@ -187,7 +183,6 @@ public class RedisDistributedLock {
                 return true;
             }
         } finally {
-            //归还 jedis 连接
             if(jedis != null){
                 jedis.close();
             }
@@ -197,19 +192,17 @@ public class RedisDistributedLock {
 }
 ```
 
-- 不加锁时
+- 不加锁时：模拟 familyId = 1 的家庭同时领取奖励
 
 ```java
 @Override
 public HttpResult receiveAward() {
-    // 模拟 familyId = 1 的家庭同时领取奖励
     Long familyId = 1L;
     Map<String, Object> params = new HashMap<String, Object>(16);
     params.put("familyId", familyId);
     params.put("rewardType", 1);
     int count = familyRewardRecordMapper.selectCountByFamilyIdAndRewardType(params);
     if (count == 0) {
-        // 没有记录则创建领取记录
         FamilyRewardRecordDO recordDO = new FamilyRewardRecordDO(familyId,1,0,LocalDateTime.now());
         int num = familyRewardRecordMapper.insert(recordDO);
         if (num == 1) {
@@ -221,12 +214,11 @@ public HttpResult receiveAward() {
 }
 ```
 
-- 加锁的实现
+- 加锁的实现：模拟 familyId = 2 的家庭同时领取奖励
 
 ```java
 @Override
 public HttpResult receiveAwardLock() {
-    // 模拟 familyId = 2 的家庭同时领取奖励
     Long familyId = 2L;
     Map<String, Object> params = new HashMap<String, Object>(16);
     params.put("familyId", familyId);
@@ -293,7 +285,7 @@ public HttpResult receiveAward() {
 - 请求地址：[http://localhost:8080/redisLock/receiveAward](http://localhost:8080/redisLock/receiveAward)
 - 返回结果：插入了五条记录
 
-![图一]()
+![图一](https://github.com/vanDusty/SpringBoot-Home/blob/master/springboot-demo-lock/redis-lock/img/redis_lock_1.png?raw=true)
 
 #### 1.3.3.2 加锁
 
@@ -312,7 +304,7 @@ public HttpResult receiveAwardLock() {
 - 请求地址：[http://localhost:8080/redisLock/receiveAwardLock](http://localhost:8080/redisLock/receiveAwardLock)
 - 返回结果：只插入了一条记录
 
-![图二]()
+![图二](https://github.com/vanDusty/SpringBoot-Home/blob/master/springboot-demo-lock/redis-lock/img/redis_lock_02.png?raw=true)
 
 > 通过对比，说明分布式锁起作用了。
 
@@ -335,7 +327,7 @@ public HttpResult receiveAwardLock() {
 
 在`Redis`的分布式环境中，我们假设有`N`个`Redis master`。这些节点完全互相独立，不存在主从复制或者其他集群协调机制。我们确保将在`N`个实例上使用与在`Redis`单实例下相同方法获取和释放锁。现在我们假设有`5`个`Redis master`节点，同时我们需要在`5`台服务器上面运行这些`Redis`实例，这样保证他们不会同时都宕掉。
 
-#### 2.1.1 加锁
+### 2.1.1 加锁
 
 为了取到锁，客户端应该执行以下操作(`RedLock`算法加锁步骤):
 
@@ -345,7 +337,7 @@ public HttpResult receiveAwardLock() {
 1. 如果取到了锁，`key`的真正有效时间等于有效时间减去获取锁所使用的时间（步骤`3`计算的结果）。
 1. 如果因为某些原因，获取锁失败（没有在至少`N/2+1`个`Redis`实例取到锁或者取锁时间已经超过了有效时间），客户端应该在所有的`Redis`实例上进行解锁（即便某些`Redis`实例根本就没有加锁成功，防止某些节点获取到锁但是客户端没有得到响应而导致接下来的一段时间不能被重新获取锁）。
 
-#### 2.1.2 解锁
+### 2.1.2 解锁
 
 向所有的`Redis`实例发送释放锁命令即可，不用关心之前有没有从`Redis`实例成功获取到锁.
 
@@ -354,7 +346,7 @@ public HttpResult receiveAwardLock() {
 > 这部分以最常见的案例：抢购时的商品超卖（库存数减少为负数）为例
 
 
-#### 2.2.1 准备
+### 2.2.1 准备
 
 - `good`表
 
@@ -373,7 +365,7 @@ INSERT INTO `good` VALUES (2, '卫龙', 5, '2019-09-20 17:39:06');
 
 - 配置文件跟上面一样
 
-#### 2.2.2 核心实现
+### 2.2.2 核心实现
 
 - `Redisson` 配置类 `RedissonConfig.java`
 
@@ -398,6 +390,7 @@ public class RedissonConfig {
     @Bean
     public RedissonClient redissonSentinel() {
         //支持单机，主从，哨兵，集群等模式,此为单机模式
+        
         Config config = new Config();
         config.useSingleServer()
                 .setAddress("redis://" + host + ":" + port)
@@ -413,6 +406,7 @@ public class RedissonConfig {
 @Override
 public HttpResult saleGoods(){
     // 以指定goodId = 1：哇哈哈为例
+    
     Long goodId = 1L;
     GoodDO goodDO = goodMapper.selectByPrimaryKey(goodId);
     int goodStock = goodDO.getGoodCounts();
@@ -481,7 +475,7 @@ public HttpResult saleGoods() {
 - 请求地址：[http://localhost:8080/redisLock/saleGoods](http://localhost:8080/redisLock/saleGoods)
 - 返回结果：`id =1`的商品库存减为`-5`
 
-![图三]()
+![图三](https://github.com/vanDusty/SpringBoot-Home/blob/master/springboot-demo-lock/redis-lock/img/redis_lock_03.png?raw=true)
 
 #### 2.3.2 加锁
 
@@ -500,14 +494,31 @@ public HttpResult saleGoodsLock() {
 - 请求地址：[http://localhost:8080/redisLock/saleGoodsLock](http://localhost:8080/redisLock/saleGoodsLock)
 - 返回结果：`id =1`的商品库存减为`0`
 
-![图四]()
+![图四](https://github.com/vanDusty/SpringBoot-Home/blob/master/springboot-demo-lock/redis-lock/img/redis_lock_04.png?raw=true)
 
 #### 2.3.3 小结
 
-通过`2.3.1`和`2.3.2`的结果对比很明显：前者出现了超卖情况，库存数卖到了`-5`，这是决不允许的；而加了锁的情况后，库存只会减少到`0`，便不在销售。
+通过`2.3.1`和`2.3.2`的结果对比很明显：前者出现了超卖情况，库存数卖到了`-5`，这是决不允许的；而加了锁的情况后，库存只会减少到`0`，便不再销售。
 
 ## 三、总结
 
 **再次说明：以上代码不全，如需尝试，请前往Van 的 Github 查看完整示例代码**
 
 第一种基于`Redis`的分布式锁并不适合用于生产环境。`Redisson` 可用于生产环境。当然，分布式的选择还有`Zookeeper`的选项，Van后续会整理出来供大家参考。
+
+
+### 3.1 示例源码地址
+
+[https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-lock/redis-lock](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-lock/redis-lock)
+
+### 3.2 技术交流
+
+
+1. [风尘博客](https://www.dustyblog.cn/)
+1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
+1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
+1. [风尘博客-掘金](https://juejin.im/userDO/5d5ea68e6fb9a06afa328f56)
+
+关注公众号，了解更多：
+
+![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)
