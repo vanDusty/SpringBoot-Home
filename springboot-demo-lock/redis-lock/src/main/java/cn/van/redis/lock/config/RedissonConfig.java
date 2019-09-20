@@ -8,10 +8,8 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.redisLock.redisson.config;
+package cn.van.redis.lock.config;
 
-import cn.van.redisLock.redisson.redisson.RedissonLocker;
-import cn.van.redisLock.redisson.utils.LockUtil;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -22,13 +20,17 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 /**
- * 〈redisson客户端 配置〉<br>
- * 〈https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95〉
+ * Copyright (C), 2015-2019, 风尘博客
+ * 公众号 : 风尘博客
+ * FileName: RedisConfig
  *
- * @author zhangfan
- * @create 2019-06-18
- * @since 1.0.0
+ * @author: Van
+ * Date:     2019-09-19 23:47
+ * Description: Redisson 配置，详见
+ * https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95
+ * Version： V1.0
  */
+
 @Configuration
 public class RedissonConfig {
 
@@ -44,19 +46,13 @@ public class RedissonConfig {
      * @return
      * @throws IOException
      */
-    @Bean(destroyMethod = "shutdown")
-    public RedissonClient redisson() throws IOException {
+    @Bean
+    public RedissonClient redissonSentinel() {
+        //支持单机，主从，哨兵，集群等模式,此为单机模式
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://" + host + ":" + port).setPassword(password);
+        config.useSingleServer()
+                .setAddress("redis://" + host + ":" + port)
+                .setPassword(password);
         return Redisson.create(config);
     }
-
-    @Bean
-    public RedissonLocker redissonLocker(RedissonClient redissonClient){
-        RedissonLocker locker = new RedissonLocker(redissonClient);
-        //设置LockUtil的锁处理对象
-        LockUtil.setLocker(locker);
-        return locker;
-    }
-
 }

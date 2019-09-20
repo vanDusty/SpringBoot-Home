@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.van.redis.lock.mapper.GoodMapper">
+  <resultMap id="BaseResultMap" type="cn.van.redis.lock.entity.GoodDO">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="good_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="good_counts" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, good_name, good_counts, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from good
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <update id="saleOneGood" parameterType="java.lang.Long">
+    update good
+    set good_counts = good_counts - 1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
