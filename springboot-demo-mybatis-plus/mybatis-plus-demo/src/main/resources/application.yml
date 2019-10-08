@@ -1,0 +1,26 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.178.84:3306/dev
+    username: dev
+    password: dev
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# mybatis-plus 配置：https://mp.baomidou.com/config/#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.van.mybatis.plus.demo.entity
+
+
+
+
+
+# sql log
+logging:
+  level:
+    cn:
+      van:
+        mybatis:
+          plus:
+            demo:
+              mapper: debug
