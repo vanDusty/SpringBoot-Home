@@ -1,4 +1,4 @@
-package cn.van.swagger.domain;
+package cn.van.swagger.demo.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Copyright (C), 2015-2019, 风尘博客
  * 公众号 : 风尘博客
- * FileName: User
+ * FileName: UserDTO
  *
  * @author: Van
  * Date:     2019-04-05 16:06
@@ -16,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value = "用户信息对象", description = "姓名、性别、年龄")
-public class User {
+public class UserDTO {
     @ApiModelProperty(value = "主键id")
     private Long id;
     @ApiModelProperty(value = "用户名")
@@ -24,14 +24,7 @@ public class User {
     @ApiModelProperty(value = "用户性别")
     private String sex;
     @ApiModelProperty(value = "用户年龄")
-    private int age;
-
-    /**
-     * 必填字段
-     */
-    @ApiModelProperty(value = "创建时间", required = true)
-    private Data gmtCreate;
-
+    private Integer age;
     /**
      * 隐藏字段
      */

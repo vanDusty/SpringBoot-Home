@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.swagger.config;
+package cn.van.swagger.demo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -37,7 +37,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定controller存放的目录路径
-                .apis(RequestHandlerSelectors.basePackage("cn.van.swagger.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.van.swagger.demo.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

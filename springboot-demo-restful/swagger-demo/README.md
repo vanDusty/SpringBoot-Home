@@ -1,8 +1,9 @@
-# SpringBoot 配置 Swagger2
+# Spring Boot 配置 Swagger2
 
 ## 一、背景介绍
 
 ### 1.1 Swagger 介绍
+
 `Swagger` 是一套基于 `OpenAPI` 规范构建的开源工具，可以帮助我们设计、构建、记录以及使用 `Rest API`。`Swagger` 主要包含了以下三个部分：
 
 1. `Swagger Editor`：基于浏览器的编辑器，我们可以使用它编写我们 `OpenAPI` 规范。
@@ -10,12 +11,12 @@
 1. `Swagger Codegen`：它可以通过为 `OpenAPI`（以前称为 Swagger）规范定义的任何 `API` 生成服务器存根和客户端 `SDK` 来简化构建过程。
 
 
-### 1.2 Swagger优缺点
+### 1.2 Swagger 优缺点
 
 * 优点
 
-1. 易用性好，`Swagger UI`提供很好的API接口的UI界面，可以很方面的进行API接口的调用。
-1. 时效性和可维护性好，`API`文档随着代码变更而变更。 `Swagger`是根据注解来生成文`API`档的，我们可以在变更代码的时候顺便更改相应的注解即可。
+1. 易用性好。`Swagger UI`提供很好的`API`接口的`UI`界面，可以很方面的进行`API`接口的调用;
+1. 时效性和可维护性好，`API`文档随着代码变更而变更。 `Swagger`是根据注解来生成文`API`档的，我们可以在变更代码的时候顺便更改相应的注解即可；
 1. 易于测试，可以将文档规范导入相关的工具（例如 `SoapUI`）, 这些工具将会为我们自动地创建自动化测试。
 
 * 缺点
@@ -29,17 +30,13 @@
 1. Swagger官网：[http://swagger.io](http://swagger.io)
 1. Swagger的GitHub地址：[https://github.com/swagger-api](https://github.com/swagger-api)
 
-## 二、 上手使用
+## 二、上手使用
 
 ### 2.1 项目准备
 
 * 项目依赖
 
 ```pom
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-</dependency>
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
@@ -55,6 +52,12 @@
     <artifactId>springfox-swagger-ui</artifactId>
     <version>2.9.2</version>
 </dependency>
+<!-- lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <scope>1.8.4</scope>
+</dependency>
 ```
 
 * 项目配置
@@ -67,11 +70,10 @@ server:
     context-path: /swagger
 ```
 
-
-### 2.2 Swagger全局配置
+### 2.2 Swagger2 配置
 
 > 在启动的时候添加`@EnableSwagger2`注解开启，然后再使用`@Bean`注解初始化一些相应的配置。
- 
+
 
 ```java
 @EnableSwagger2
@@ -84,7 +86,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定controller存放的目录路径
-                .apis(RequestHandlerSelectors.basePackage("cn.van.swagger.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.van.swagger.demo.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -100,10 +102,11 @@ public class Swagger2Config {
                 .version("v1.0")
                 .build();
     }
+
 }
 ```
 
-### 2.3 `Controller` 控制层
+### 2.3 接口编写（控制器）
 
 `Swagger` 主要的使用就是在控制层这块，它是通过一些注解来为接口提供`API`文档。下列是`Swagger`的一些注解说明，更详细的可以查看官方的wiki文档。
 
@@ -127,12 +130,12 @@ public class Swagger2Config {
 
 [https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations](https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations)
 
-#### 2.3.1 参数实体`User`
+#### 2.3.1 参数实体`UserDTO`
 
 ```java
 @Data
 @ApiModel(value = "用户信息对象", description = "姓名、性别、年龄")
-public class User {
+public class UserDTO {
     @ApiModelProperty(value = "主键id")
     private Long id;
     @ApiModelProperty(value = "用户名")
@@ -140,11 +143,16 @@ public class User {
     @ApiModelProperty(value = "用户性别")
     private String sex;
     @ApiModelProperty(value = "用户年龄")
-    private int age;
+    private Integer age;
+    /**
+     * 隐藏字段
+     */
+    @ApiModelProperty(value = "隐藏字段",hidden = true)
+    private String extra;
 }
 ```
 
-#### 2.3.2 控制层示例
+#### 2.3.2 接口方法示例
 
 ```java
 @RestController
@@ -191,50 +199,51 @@ public class SwaggerController {
 
     /**
      * 参数是实体类的方法（需要在实体类中增加注解进行参数说明）
-     * @param user
+     * @param userDTO
      * @return
      */
     @ApiOperation(value = "实体参数方法", httpMethod = "PUT")
     @PutMapping("/entityParam")
-    public User entityParam(@RequestBody User user) {
-        return user;
+    public UserDTO entityParam(@RequestBody UserDTO userDTO) {
+        return userDTO;
     }
 
+    /**
+     * 被忽略的接口，该接口不会在Swagger上显示
+     * @return
+     */
+    @DeleteMapping(path = "/ignore")
+    @ApiIgnore(value = "这是被忽略的接口，将不会在Swagger上显示")
+    public String ignoreApi() {
+        return "测试";
+    }
 }
 ```
 
 ### 2.4 测试
 
-启动项目，打开项目文档地址：[http://localhost:8081/swagger/swagger-ui.html](http://localhost:8081/swagger/swagger-ui.html)
+启动项目，打开`swagger`接口地址：[http://localhost:8081/swagger/swagger-ui.html](http://localhost:8081/swagger/swagger-ui.html)
 
 
 
-## 三 新增访问密码
+## 三、新增访问密码
 
-> 接口文档我们往往需要让有权限的人查看，所以我们可以根据 Spring-Security增加账号密码管理
+> 该方法不常用，且存在问题，故博主将此部分删除了
 
-#### 3.1.1 新增依赖
 
-```xml
-<!--Swagger-ui 密码配置配置-->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-```
+## 四、总结
 
-#### 3.1.2 配置文件中增加账号密码配置
+### 4.1 示例代码
 
-```yml
-# Swagger-ui 密码配置配置
-Spring:
-  security:
-    basic:
-      path: /swagger-ui.html
-      enabled: true
-    user:
-      name: admin
-      password: 123456
-```
+[Github 示例代码](https://github.com/vanDusty/SpringBoot-Home/tree/master/springboot-demo-restful/swagger-demo)
 
-> 增加了依赖和账号密码后重启项目，再次打开文档地址就要去输入账号和密码输入对应的账号和密码就可以登录了。
+### 4.2 技术交流
+
+1. [风尘博客](https://www.dustyblog.cn/)
+1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
+1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
+1. [风尘博客-掘金](https://juejin.im/user/5d5ea68e6fb9a06afa328f56/posts)
+
+关注公众号，了解更多：
+
+![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)

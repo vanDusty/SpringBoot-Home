@@ -3,12 +3,3 @@ server:
   port: 8081
   servlet:
     context-path: /swagger
-# Swagger-ui 密码配置配置
-Spring:
-  security:
-    basic:
-      path: /swagger-ui.html
-      enabled: true
-    user:
-      name: admin
-      password: 123456
