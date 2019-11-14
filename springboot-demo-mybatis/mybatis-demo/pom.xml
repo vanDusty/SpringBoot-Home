@@ -11,9 +11,6 @@
 
     <artifactId>mybatis-demo</artifactId>
     <description>
-    多表关联查询 https://blog.csdn.net/kisscatforever/article/details/79476614#commentBox
-        https://blog.csdn.net/xiaolyuh123/article/details/73506189
-
     </description>
 
     <dependencies>
