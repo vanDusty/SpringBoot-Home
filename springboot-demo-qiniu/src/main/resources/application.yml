@@ -1,9 +1,9 @@
 # 七牛云相关配置
 qinNiuCloud:
-  ACCESS_KEY: 你的ACCESS_KEY
-  SECRET_KEY: 你的SECRET_KEY
-  bucketName: 你的空间名称
-  bucketNameUrl: 该空间对应的域名
+  ACCESS_KEY: fm9bOrvx95CCHaxFmcwpA47OCtD5bQVRytaKjtvi
+  SECRET_KEY: Nh6gW_xGhcawlPc-Z9Bzu3PU82vfh9q4FVn_2aTH
+  bucketName: wechat_number
+  bucketNameUrl: wechat.dustyblog.cn
   imgStyle: 自定义的图片样式（本文未用到）
 
 # 上传图片的限制

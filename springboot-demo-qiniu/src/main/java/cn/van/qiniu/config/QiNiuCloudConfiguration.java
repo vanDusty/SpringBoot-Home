@@ -1,6 +1,7 @@
 package cn.van.qiniu.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +16,7 @@ import javax.annotation.PostConstruct;
  * Description: 七牛云配置文件类（用于将配置数据转换成静态数据）
  * Version： V1.0
  */
-@Component
+@Configuration
 public class QiNiuCloudConfiguration {
     /**
      * 设置账号的AK和SK
@@ -39,7 +40,7 @@ public class QiNiuCloudConfiguration {
     public static Double maxSize;
 
     @Value("${qinNiuCloud.ACCESS_KEY}")
-    private static String tempAccessKey;
+    private String tempAccessKey;
     @Value("${qinNiuCloud.SECRET_KEY}")
     private String tempSecretKEY;
 
