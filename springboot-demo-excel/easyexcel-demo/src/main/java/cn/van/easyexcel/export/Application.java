@@ -1,14 +1,14 @@
 /**
- * Copyright (C), 2015-2019, XXX有限公司
- * FileName: UserApplication
- * Author:   zhangfan
- * Date:     2019-01-29 17:09
- * Description: 用户模块启动类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
+ * Copyright (C), 2015-2019, 风尘博客
+ * 公众号 : 风尘博客
+ * FileName: Application
+ *
+ * @author: Van
+ * Date:     2019-10-11 14:15
+ * Description: ${DESCRIPTION}
+ * Version： V1.0
  */
-package cn.van.swagger;
+package cn.van.easyexcel.export;
 
 
 import org.springframework.boot.SpringApplication;
@@ -25,10 +25,10 @@ import java.io.IOException;
  * @since 1.0.0
  */
 @SpringBootApplication
-public class SwaggerApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SwaggerApplication.class, args);
+        SpringApplication.run(Application.class, args);
         try {
             System.in.read();
         } catch (IOException e) {
