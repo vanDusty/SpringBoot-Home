@@ -2,6 +2,7 @@ package cn.van.easyexcel.export.service.impl;
 
 
 import cn.van.easyexcel.export.expection.ExcelException;
+import cn.van.easyexcel.export.model.ImportModel;
 import cn.van.easyexcel.export.service.ReadExcelService;
 import cn.van.easyexcel.export.util.ExcelListener;
 import cn.van.easyexcel.export.util.ImportExcelUtil;
@@ -31,14 +32,19 @@ import java.util.List;
 public class ReadExcelServiceImpl implements ReadExcelService {
 
     @Override
-    public List<Object> readExcel(MultipartFile excel, BaseRowModel rowModel) {
-        return ImportExcelUtil.readExcel(excel, rowModel);
+    public List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel) {
+        return ImportExcelUtil.readExcel(excel, importModel);
     }
 
     @Override
-    public List<Object> readExcel(MultipartFile excel, BaseRowModel rowModel, int sheetNo,
+    public List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel, int sheetNo,
                                          int headLineNum) {
-        return ImportExcelUtil.readExcel(excel, rowModel, sheetNo, headLineNum);
+        return ImportExcelUtil.readExcel(excel, importModel, sheetNo, headLineNum);
+    }
+
+    @Override
+    public List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel, int sheetNo) {
+        return ImportExcelUtil.readExcel(excel, importModel, sheetNo);
     }
 
 

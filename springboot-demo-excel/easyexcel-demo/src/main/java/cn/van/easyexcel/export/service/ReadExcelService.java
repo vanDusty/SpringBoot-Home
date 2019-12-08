@@ -1,6 +1,7 @@
 package cn.van.easyexcel.export.service;
 
 
+import cn.van.easyexcel.export.model.ImportModel;
 import com.alibaba.excel.metadata.BaseRowModel;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,23 +21,33 @@ import java.util.List;
 public interface ReadExcelService {
 
     /**
-     * 读取 Excel(多个 sheet)
+     * 读取 整个Excel(多个 sheet 需要 各个 sheet 字段相同)
      *
      * @param excel    文件
-     * @param rowModel 实体类映射，继承 BaseRowModel 类
+     * @param importModel 实体类映射，继承 BaseRowModel 类
      * @return Excel 数据 list
      */
-    List<Object> readExcel(MultipartFile excel, BaseRowModel rowModel);
+    List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel);
 
     /**
-     * 读取某个 sheet 的 Excel
+     * 读取 Excel 的指定 sheet 指定数据
      *
      * @param excel       文件
-     * @param rowModel    实体类映射，继承 BaseRowModel 类
-     * @param sheetNo     sheet 的序号 从1开始
-     * @param headLineNum 表头行数，默认为1
+     * @param importModel 实体类映射，继承 BaseRowModel 类
+     * @param sheetNo     sheet 的序号（从第几个 sheet 开始读）
+     * @param headLineNum 表头行数（从第几行开始读）
      * @return Excel 数据 list
      */
-    List<Object> readExcel(MultipartFile excel, BaseRowModel rowModel, int sheetNo,
-                           int headLineNum);
+    List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel, int sheetNo,
+                                int headLineNum);
+
+    /**
+     * 读取 Excel 的指定 sheet 全部数据
+     *
+     * @param excel       文件
+     * @param importModel 实体类映射，继承 BaseRowModel 类
+     * @param sheetNo     sheet 的序号（从第几个 sheet 开始读）
+     * @return Excel 数据 list
+     */
+    List<ImportModel> readExcel(MultipartFile excel, ImportModel importModel, int sheetNo);
 }

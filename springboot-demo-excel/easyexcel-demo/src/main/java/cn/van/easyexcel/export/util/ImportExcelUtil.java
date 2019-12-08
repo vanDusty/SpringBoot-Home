@@ -34,7 +34,7 @@ public class ImportExcelUtil {
      * @param baseRowModel 实体类映射，继承 BaseRowModel 类
      * @return Excel 数据 list
      */
-    public static List<Object> readExcel(MultipartFile excel, BaseRowModel baseRowModel) {
+    public static List readExcel(MultipartFile excel, BaseRowModel baseRowModel) {
         ExcelListener excelListener = new ExcelListener();
         ExcelReader reader = getReader(excel, excelListener);
         if (reader == null) {
@@ -50,7 +50,7 @@ public class ImportExcelUtil {
     }
 
     /**
-     * 读取 Excel 的指定 sheet
+     * 读取 Excel 的指定 sheet 指定数据
      *
      * @param excel       文件
      * @param baseRowModel    实体类映射，继承 BaseRowModel 类
@@ -58,7 +58,7 @@ public class ImportExcelUtil {
      * @param headLineNum 表头行数（从第几行开始读）
      * @return Excel 数据 list
      */
-    public static List<Object> readExcel(MultipartFile excel, BaseRowModel baseRowModel,
+    public static List readExcel(MultipartFile excel, BaseRowModel baseRowModel,
                                          int sheetNo, int headLineNum) {
         ExcelListener excelListener = new ExcelListener();
         ExcelReader reader = getReader(excel, excelListener);
@@ -77,7 +77,7 @@ public class ImportExcelUtil {
      * @param sheetNo     sheet 的序号（从第几个 sheet 开始读）
      * @return Excel 数据 list
      */
-    public static List<Object> readExcel(MultipartFile excel, BaseRowModel baseRowModel, int sheetNo) {
+    public static List readExcel(MultipartFile excel, BaseRowModel baseRowModel, int sheetNo) {
         return readExcel(excel, baseRowModel, sheetNo, 1);
     }
 

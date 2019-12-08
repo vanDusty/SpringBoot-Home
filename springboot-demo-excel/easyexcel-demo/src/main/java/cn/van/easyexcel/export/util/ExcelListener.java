@@ -45,8 +45,6 @@ public class ExcelListener extends AnalysisEventListener {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        // 解析结束销毁不用的资源
-        datas.clear();
         log.info("所有数据解析完成！");
     }
 
