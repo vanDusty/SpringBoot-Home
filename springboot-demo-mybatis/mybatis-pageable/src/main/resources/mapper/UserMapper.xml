@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.van.mybatis.pageable.mapper.UserMapper">
+
+    <select id="findAll" resultType="cn.van.mybatis.pageable.entity.UserInfoDO">
+        SELECT id,user_name as userName,age,create_time as createTime
+        FROM user_info
+    </select>
+</mapper>
