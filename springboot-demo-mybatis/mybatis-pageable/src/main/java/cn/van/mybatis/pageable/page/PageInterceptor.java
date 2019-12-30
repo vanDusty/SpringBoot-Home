@@ -1,5 +1,6 @@
-package cn.van.mybatis.pageable.interceptor;
+package cn.van.mybatis.pageable.page;
 
+import cn.van.mybatis.pageable.dialect.Dialect;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.builder.StaticSqlSource;
 import org.apache.ibatis.executor.Executor;
@@ -26,13 +27,13 @@ import java.util.Properties;
  *
  * @author: Van
  * Date:     2019-12-28 19:03
- * Description: ${DESCRIPTION}
+ * Description: 分页拦截器
  * Version： V1.0
  */
 @Intercepts({
         @Signature(
-                type = Executor.class,method = "query",
-                args = {MappedStatement.class,Object.class, RowBounds.class, ResultHandler.class}
+                type = Executor.class, method = "query",
+                args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
         )
 })
 @Component
@@ -42,10 +43,10 @@ public class PageInterceptor implements Interceptor {
 
     static int MAPPED_STATEMENT_INDEX = 0;
     static int PARAMETER_INDEX = 1;
-    static int ROWBOUNDS_INDEX = 2;
-    static int RESULT_HANDLER_INDEX = 3;
 
     private final Dialect dialect;
+
+    public static final ThreadLocal<PageInterceptor.PageParam> PARM_THREAD_LOCAL = new ThreadLocal<>();
 
     public PageInterceptor(Dialect dialect) {
         this.dialect = dialect;
@@ -54,28 +55,26 @@ public class PageInterceptor implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         final Object[] args = invocation.getArgs();
-//        ResultHandler handler = e ->{
-//            System.out.println(e.getResultObject());
-//        };
-//        args[3] =  handler;
 
-        PageInterceptor.PageParm pageParm = PARM_THREAD_LOCAL.get();
-        //判断是否需要进分页
-        if(pageParm != null){
-            final MappedStatement ms = (MappedStatement)args[MAPPED_STATEMENT_INDEX];
+        PageInterceptor.PageParam pageParam = PARM_THREAD_LOCAL.get();
+        //判断是否需要分页
+        if (pageParam != null) {
+            final MappedStatement ms = (MappedStatement) args[MAPPED_STATEMENT_INDEX];
             Object param = args[PARAMETER_INDEX];
             BoundSql boundSql = ms.getBoundSql(param);
             // 获取总数
-            pageParm.totalSize = queryTotal(ms,boundSql);
+            pageParam.totalSize = queryTotal(ms, boundSql);
             // 重新设置SQL语句映射
-            args[MAPPED_STATEMENT_INDEX] = copyPageableMappedStatement(ms,boundSql);
+            args[MAPPED_STATEMENT_INDEX] = copyPageableMappedStatement(ms, boundSql);
         }
+        //执行拦截对象真正的方法
         Object proceed = invocation.proceed();
         return proceed;
     }
 
     /**
      * 查询总记录数
+     *
      * @param mappedStatement
      * @param boundSql
      * @return
@@ -137,7 +136,7 @@ public class PageInterceptor implements Interceptor {
 
 
     /**
-     * 对SQL参数(?)设值
+     * 对分页SQL参数(?)设值
      *
      * @param ps
      * @param mappedStatement
@@ -152,31 +151,32 @@ public class PageInterceptor implements Interceptor {
     }
 
     private MappedStatement copyPageableMappedStatement(MappedStatement ms, BoundSql boundSql) {
-        PageInterceptor.PageParm pageParm = PARM_THREAD_LOCAL.get();
-        String pageSql = dialect.getLimitSql(boundSql.getSql(),pageParm.offset,pageParm.limit);
-        SqlSource source = new StaticSqlSource(ms.getConfiguration(),pageSql,boundSql.getParameterMappings());
-        return copyFromMappedStatement(ms,source);
+        PageInterceptor.PageParam pageParm = PARM_THREAD_LOCAL.get();
+        String pageSql = dialect.getLimitSql(boundSql.getSql(), pageParm.offset, pageParm.limit);
+        SqlSource source = new StaticSqlSource(ms.getConfiguration(), pageSql, boundSql.getParameterMappings());
+        return copyFromMappedStatement(ms, source);
     }
 
     /**
-     * 利用新生成的SQL语句去替换原来的MappedStatement
+     * 利用方言接口替换原始的SQL语句
+     *
      * @param ms
      * @param newSqlSource
      * @return
      */
-    private MappedStatement copyFromMappedStatement(MappedStatement ms,SqlSource newSqlSource) {
-        MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(),ms.getId(),newSqlSource,ms.getSqlCommandType());
+    private MappedStatement copyFromMappedStatement(MappedStatement ms, SqlSource newSqlSource) {
+        MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), ms.getId(), newSqlSource, ms.getSqlCommandType());
 
         builder.resource(ms.getResource());
         builder.fetchSize(ms.getFetchSize());
         builder.statementType(ms.getStatementType());
         builder.keyGenerator(ms.getKeyGenerator());
-        if(ms.getKeyProperties() != null && ms.getKeyProperties().length !=0){
+        if (ms.getKeyProperties() != null && ms.getKeyProperties().length != 0) {
             StringBuffer keyProperties = new StringBuffer();
-            for(String keyProperty : ms.getKeyProperties()){
+            for (String keyProperty : ms.getKeyProperties()) {
                 keyProperties.append(keyProperty).append(",");
             }
-            keyProperties.delete(keyProperties.length()-1, keyProperties.length());
+            keyProperties.delete(keyProperties.length() - 1, keyProperties.length());
             builder.keyProperty(keyProperties.toString());
         }
 
@@ -198,20 +198,18 @@ public class PageInterceptor implements Interceptor {
         return builder.build();
     }
 
-
-
+    //包装目标对象 为目标对象创建动态代理 按照从前到后的顺序执行
     @Override
     public Object plugin(Object target) {
-        return Plugin.wrap(target,this);
+        return Plugin.wrap(target, this);
     }
 
+    //获取插件初始化参数
     @Override
     public void setProperties(Properties properties) {
     }
 
-    public static final ThreadLocal<PageInterceptor.PageParm> PARM_THREAD_LOCAL = new ThreadLocal<>();
-
-    public static class PageParm{
+    public static class PageParam {
         // 分页开始位置
         int offset;
 
@@ -224,16 +222,17 @@ public class PageInterceptor implements Interceptor {
 
     /**
      * 开始分页
-     * @param pageNum 当前页码 从0开始
+     *
+     * @param pageNum  当前页码(从0开始)
      * @param pageSize 每页长度
      */
-    public static void startPage(int pageNum,int pageSize){
+    public static void startPage(int pageNum, int pageSize) {
         int offset = pageNum * pageSize;
         int limit = pageSize;
-        PageInterceptor.PageParm pageParm = new PageInterceptor.PageParm();
-        pageParm.offset = offset;
-        pageParm.limit = limit;
-        PARM_THREAD_LOCAL.set(pageParm);
+        PageInterceptor.PageParam pageParam = new PageInterceptor.PageParam();
+        pageParam.offset = offset;
+        pageParam.limit = limit;
+        PARM_THREAD_LOCAL.set(pageParam);
     }
 }
 

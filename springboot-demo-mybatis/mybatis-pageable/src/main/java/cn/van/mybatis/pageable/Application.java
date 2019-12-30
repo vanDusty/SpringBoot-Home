@@ -1,12 +1,9 @@
 /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: UserApplication
- * Author:   zhangfan
+ * FileName: Application
+ * Author:   Van
  * Date:     2019-01-29 17:09
- * Description: 用户模块启动类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
+ * Description: 启动类
  */
 package cn.van.mybatis.pageable;
 

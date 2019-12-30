@@ -1,4 +1,4 @@
-package cn.van.mybatis.pageable.interceptor;
+package cn.van.mybatis.pageable.dialect;
 
 import org.springframework.stereotype.Component;
 
