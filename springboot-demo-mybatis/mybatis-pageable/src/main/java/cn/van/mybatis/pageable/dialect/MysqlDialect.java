@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  *
  * @author: Van
  * Date:     2019-12-28 19:06
- * Description: ${DESCRIPTION}
+ * Description: Mysql 分页方言
  * Version： V1.0
  */
 @Component

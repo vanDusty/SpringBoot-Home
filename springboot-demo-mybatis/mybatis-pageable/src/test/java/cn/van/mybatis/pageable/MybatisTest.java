@@ -30,13 +30,13 @@ public class MybatisTest {
     // UserService userService;
 
     @Resource
-    private UserMapper dao;
+    private UserMapper userMapper;
 
     @Test
     public void selectForPage() {
         // 该查询进行分页，指定第几页和每页数量
-        PageInterceptor.startPage(1,0);
-        List<UserInfoDO> all = dao.findAll();
+        PageInterceptor.startPage(1,2);
+        List<UserInfoDO> all = userMapper.findAll();
         PageResult<UserInfoDO> result = new PageResult<>(all);
         // 分页结果打印
         System.out.println("总记录数：" + result.getTotal());
