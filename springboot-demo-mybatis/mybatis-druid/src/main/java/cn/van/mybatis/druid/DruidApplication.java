@@ -20,9 +20,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("cn.van.mybatis.druid.mapper")
-public class Application {
+public class DruidApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(DruidApplication.class, args);
     }
 }

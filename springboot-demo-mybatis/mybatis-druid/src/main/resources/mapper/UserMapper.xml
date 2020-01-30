@@ -13,13 +13,13 @@
 
     <select id="selectById" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"/>
-        from tb_user
+        from user_info
         where id = #{id}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
       select <include refid="Base_Column_List"/>
-      from tb_user
+      from user_info
     </select>
 
 </mapper>
