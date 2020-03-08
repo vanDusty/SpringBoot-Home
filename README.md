@@ -22,4 +22,4 @@
 
 最新文章，欢迎关注：公众号-风尘博客
 
-![风尘博客](https://github.com/vanDusty/SpringBoot-Home/blob/master/dusty_blog.png?raw=true)
+![](dusty_blog.png)

@@ -24,5 +24,6 @@
         <module>springboot-demo-generator</module>
         <module>springboot-demo-annotation</module>
         <module>springboot-demo-redisLock</module>
+        <module>springboot-demo-rocketMQ</module>
     </modules>
 </project>
