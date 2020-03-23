@@ -1,4 +1,4 @@
-package cn.van.restful.config;
+package cn.van.restful.web.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

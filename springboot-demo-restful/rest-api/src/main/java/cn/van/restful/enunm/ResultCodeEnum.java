@@ -25,6 +25,7 @@ public enum ResultCodeEnum {
     // 3000～3999 区间表示商品模块错误
     // 。。。
 
+    TOKEN_VERIFICATION_ERROR(4000, "token verification error"),
     ;
     /**
      * 响应状态码
@@ -46,5 +47,9 @@ public enum ResultCodeEnum {
 
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
