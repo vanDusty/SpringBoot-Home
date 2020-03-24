@@ -1,5 +1,0 @@
-# 保存一般日志的地址
-logging:
-  path: '/Users/zhangfan/Documents/Git-public/Springboot-Home/springboot-demo-aop/log'
-# 保存数据库日志的地址
-logger_dao_level: '/Users/zhangfan/Documents/log/dao_log'
