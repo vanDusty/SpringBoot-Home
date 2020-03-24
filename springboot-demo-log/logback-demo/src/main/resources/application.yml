@@ -1,0 +1,5 @@
+server:
+  port: 8088
+# 日志输出文件地址
+logging:
+  path: ./springboot-demo-log/logback-demo/logs

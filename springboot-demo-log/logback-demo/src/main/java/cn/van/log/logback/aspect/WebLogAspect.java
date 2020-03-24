@@ -1,4 +1,4 @@
-package cn.van.log.aop.aspect;
+package cn.van.log.logback.aspect;
 
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +13,11 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 /**
- * Service 请求的AOP日志处理
- *
- * @author Van
- * @since 2019.2.25
+ * @公众号： 风尘博客
+ * @Classname WebLogAspect
+ * @Description Web 日志切面
+ * @Date 2019/2/14 19:59 下午
+ * @Author by Van
  */
 @Aspect
 @Component
@@ -39,7 +40,7 @@ public class WebLogAspect {
     /**
      * 定义请求日志切入点，其切入点表达式有多种匹配方式,这里是指定路径
      */
-    @Pointcut("execution(public * cn.van.log.aop.controller.*.*(..))")
+    @Pointcut("execution(public * cn.van.log.logback.web.controller.*.*(..))")
     public void webLogPointcut() {
     }
 
@@ -65,7 +66,6 @@ public class WebLogAspect {
         log.info("请求Url : {}" , request.getRequestURL().toString());
         log.info("请求方式 : {}" , request.getMethod());
         log.info("请求ip : {}" , request.getRemoteAddr());
-        log.info("请求方法 : " , joinPoint.getSignature().getDeclaringTypeName() , "." , joinPoint.getSignature().getName());
         log.info("请求参数 : {}" , Arrays.toString(joinPoint.getArgs()));
         // 系统信息
         log.info("浏览器：{}", userAgent.getBrowser().toString());
@@ -85,7 +85,7 @@ public class WebLogAspect {
     public void doAfterReturning(Object ret) throws Throwable {
         endTime = System.currentTimeMillis();
         log.info("请求结束时间：{}" , LocalDateTime.now());
-        log.info("请求耗时：{}" , (endTime - startTime));
+        log.info("请求耗时：{}ms" , (endTime - startTime));
         // 处理完请求，返回内容
         log.info("请求返回 : {}" , ret);
     }
@@ -118,22 +118,23 @@ public class WebLogAspect {
     //     //获取请求头中的User-Agent
     //     UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
     //     //打印请求的内容
-    //     startTime = LocalDateTime.now();
+    //     startTime = System.currentTimeMillis();
     //     log.info("请求Url : {}" , request.getRequestURL().toString());
     //     log.info("请求方式 : {}" , request.getMethod());
     //     log.info("请求ip : {}" , request.getRemoteAddr());
-    //     log.info("请求方法 : " , joinPoint.getSignature().getDeclaringTypeName() , "." , joinPoint.getSignature().getName());
-    //     log.info("请求参数 : {}" , Arrays.toString(joinPoint.getArgs()));
+    //     log.info("请求参数 : {}" , Arrays.toString(pjp.getArgs()));
     // // 系统信息
     //     log.info("浏览器：{}", userAgent.getBrowser().toString());
     //     log.info("浏览器版本：{}",userAgent.getBrowserVersion());
     //     log.info("操作系统: {}", userAgent.getOperatingSystem().toString());
     //     // pjp.proceed()：当我们执行完切面代码之后，还有继续处理业务相关的代码。proceed()方法会继续执行业务代码，并且其返回值，就是业务处理完成之后的返回值。
     //     Object ret = pjp.proceed();
-    //     log.info("请求结束时间："+ endTime.now());
+    //     log.info("请求结束时间："+ LocalDateTime.now());
+    //     log.info("请求耗时：{}ms" , (System.currentTimeMillis() - startTime));
     //     // 处理完请求，返回内容
     //     log.info("请求返回 : " , ret);
     //     return ret;
     // }
 
 }
+

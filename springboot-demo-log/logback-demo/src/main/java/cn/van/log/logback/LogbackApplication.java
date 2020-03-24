@@ -1,4 +1,4 @@
-package cn.van.logback;
+package cn.van.log.logback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,10 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 启动类
- *
- * @author Van
- * @since 2019.2.26
+ * @公众号： 风尘博客
+ * @Classname TestController
+ * @Description 启动类
+ * @Date 2019/2/14 19:59 下午
+ * @Author by Van
  */
 @SpringBootApplication
 public class LogbackApplication {
