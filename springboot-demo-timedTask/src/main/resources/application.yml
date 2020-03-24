@@ -1,4 +1,0 @@
-myProps:
-  corePoolSize: 10
-  maxPoolSize: 100
-  queueCapacity: 10
