@@ -8,29 +8,26 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.shiro;
+package cn.van.scaffold;
 
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
 
 /**
- * 〈一句话功能简述〉<br> 
- * 〈用户模块启动类〉
- *
- * @author zhangfan
- * @create 2019-01-29
- * @since 1.0.0
+ * @公众号： 风尘博客
+ * @Classname Application
+ * @Description
+ * @Date 2020/1/19 11:32 下午
+ * @Author by Van
  */
 @SpringBootApplication
-@MapperScan("cn.van.shiro.mapper")
-public class ShiroApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShiroApplication.class, args);
+        SpringApplication.run(Application.class, args);
         try {
             System.in.read();
         } catch (IOException e) {

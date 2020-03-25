@@ -1,0 +1,5 @@
+server:
+  port: 8080
+# 日志输出文件地址
+logging:
+  path: ./springboot-scaffold/logs
