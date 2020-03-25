@@ -7,14 +7,11 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: IdentityCardNumberValidator
- *
- * @author: Van
- * Date:     2019-09-11 21:08
- * Description: 身份证校验 Validator
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname IdentityCardNumberValidator
+ * @Description 身份证校验 Validator
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 public class IdentityCardNumberValidator implements ConstraintValidator<IdentityCardNumber, Object> {
 

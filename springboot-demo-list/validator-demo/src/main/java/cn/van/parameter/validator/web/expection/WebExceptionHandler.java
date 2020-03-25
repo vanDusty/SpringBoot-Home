@@ -19,19 +19,15 @@ import javax.validation.UnexpectedTypeException;
 import javax.validation.ValidationException;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: WebExceptionHandler
- *
- * @author: Van
- * Date:     2019-09-09 21:15
- * Description:
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname WebExceptionHandler
+ * @Description 统一异常捕获
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 @RestControllerAdvice
 @Slf4j
 public class WebExceptionHandler {
-
 
     /**
      * 方法参数校验

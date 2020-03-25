@@ -5,14 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: HttpResult
- *
- * @author: Van
- * Date:     2019-06-09 15:35
- * Description: 统一结果集封装
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname HttpResult
+ * @Description 统一结果集
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 @Data
 public class HttpResult<T> implements Serializable {

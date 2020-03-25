@@ -8,14 +8,11 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.*;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: UserDTO
- *
- * @author: Van
- * Date:     2019-09-09 21:04
- * Description: ${DESCRIPTION}
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname UserDTO
+ * @Description
+ * @Date 2019/9/09 11:32 下午
+ * @Author by Van
  */
 @Data
 public class UserDTO {

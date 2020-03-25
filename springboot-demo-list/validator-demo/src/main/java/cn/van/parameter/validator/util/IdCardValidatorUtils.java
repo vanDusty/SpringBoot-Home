@@ -7,14 +7,11 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: IdCardValidatorUtils
- *
- * @author: Van
- * Date:     2019-09-11 21:10
- * Description: 身份证校验工具类
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname IdCardValidatorUtils
+ * @Description 身份证校验工具类
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 public class IdCardValidatorUtils {
 

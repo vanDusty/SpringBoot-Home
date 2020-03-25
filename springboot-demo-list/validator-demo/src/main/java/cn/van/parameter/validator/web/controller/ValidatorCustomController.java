@@ -8,21 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: ValidatorController
- *
- * @author: Van
- * Date:     2019-05-09 20:41
- * Description: 注解校验
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname ValidatorCustomController
+ * @Description 自定义注解参数校验
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 @RestController
-@RequestMapping("/demo")
-public class ValidatorDemoController {
+@RequestMapping("/custom")
+public class ValidatorCustomController {
 
     /**
-     * 注解参数校验案例
+     * 自定义注解参数校验案例
      * @param userDTO
      * @return
      */

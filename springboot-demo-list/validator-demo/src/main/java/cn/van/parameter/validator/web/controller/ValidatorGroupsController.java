@@ -10,14 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: ValidatorController
- *
- * @author: Van
- * Date:     2019-09-09 20:41
- * Description: 分组校验
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname ValidatorGroupsController
+ * @Description 分组校验
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 @RestController
 @RequestMapping("/groups")

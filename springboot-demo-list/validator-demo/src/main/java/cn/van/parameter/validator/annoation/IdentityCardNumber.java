@@ -7,14 +7,11 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * Copyright (C), 2015-2019, 风尘博客
- * 公众号 : 风尘博客
- * FileName: IdentityCardNumber
- *
- * @author: Van
- * Date:     2019-09-11 21:06
- * Description: ${DESCRIPTION}
- * Version： V1.0
+ * @公众号： 风尘博客
+ * @Classname IdentityCardNumber
+ * @Description 身份证校验注解
+ * @Date 2019/9/09 9:32 下午
+ * @Author by Van
  */
 @Documented
 @Target({ElementType.PARAMETER, ElementType.FIELD})
