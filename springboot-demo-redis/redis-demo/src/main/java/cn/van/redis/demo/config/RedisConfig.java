@@ -10,6 +10,7 @@
  */
 package cn.van.redis.demo.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisOperations;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -25,16 +27,22 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 〈redis配置类〉<br>
- * 〈〉
- *
- * @author zhangfan
- * @create 2019-03-21
- * @since 1.0.0
+ * @公众号： 风尘博客
+ * @Classname RedisConfig
+ * @Description Redis 配置类
+ * @Date 2019/3/19 11:32 下午
+ * @Author by Van
  */
 @Configuration
+@ConditionalOnClass(RedisOperations.class)
 @EnableCaching
 public class RedisConfig {
+
+    /**
+     * 采用RedisCacheManager作为缓存管理器
+     * @param factory
+     * @return
+     */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
         // 生成一个默认配置，通过config对象即可对缓存进行自定义配置

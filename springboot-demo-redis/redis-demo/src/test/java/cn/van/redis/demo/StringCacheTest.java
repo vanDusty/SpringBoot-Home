@@ -9,22 +9,24 @@ package cn.van.redis.demo; /**
  * 作者姓名           修改时间           版本号              描述
  */
 
-import cn.van.redis.demo.utils.StringCache;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+
 /**
- * 〈一句话功能简述〉<br> 
- * 〈〉
- *
- * @author zhangfan
- * @create 2019-03-22
- * @since 1.0.0
+ * @公众号： 风尘博客
+ * @Classname StringCacheTest
+ * @Description Redis 测试
+ * @Date 2019/3/19 11:32 下午
+ * @Author by Van
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -32,43 +34,35 @@ public class StringCacheTest {
 
     private static final Logger logger = LoggerFactory.getLogger(StringCacheTest.class);
 
-    @Autowired
-    private StringCache stringCache;
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
-     * 测试get/set/delete key
+     * 测试 StringRedisTemplate
      */
     @Test
-    public void setAndGet() {
-        stringCache.setValue("name","redis测试");
-        String name = stringCache.getValue("name");
+    public void stringRedisTemplateTest() {
+        stringRedisTemplate.opsForValue().set("name","redis测试");
+        String name = stringRedisTemplate.opsForValue().get("name");
         logger.info(name);
-        stringCache.delKey("name");
-        name = stringCache.getValue("name");
+        stringRedisTemplate.delete("name");
+        name = stringRedisTemplate.opsForValue().get("name");
         logger.info(name);
     }
-
     /**
-     * 测试设置有效时长的key
+     * 测试 RedisTemplate
      */
     @Test
-    public void getRemainingTime() {
-        stringCache.setValue("hello","hello word", 40);
-        logger.info("剩余存活时间:{}秒",stringCache.getRemainingTime("hello"));
-    }
-
-    /**
-     * 测试过了有效时长的key，是否被删除
-     */
-    @Test
-    public void exist() {
-        boolean i = stringCache.existKey("hello");
-        if (i) {
-            logger.info("该键还存在");
-            logger.info("剩余存活时间:{}秒",stringCache.getRemainingTime("hello"));
-        }else {
-            logger.info("该键已过期");
-        }
+    public void redisTemplateTest() {
+        redisTemplate.opsForValue().set("name","redis测试");
+        String name = (String) redisTemplate.opsForValue().get("name");
+        logger.info(name);
+        redisTemplate.delete("name");
+        name = (String) redisTemplate.opsForValue().get("name");
+        logger.info(name);
     }
 
 }
