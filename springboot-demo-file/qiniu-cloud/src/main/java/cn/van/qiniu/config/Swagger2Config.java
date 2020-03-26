@@ -38,7 +38,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定controller存放的目录路径
-                .apis(RequestHandlerSelectors.basePackage("cn.van.qiniu.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.van.qiniu.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
 //                .globalOperationParameters(pars);
@@ -50,7 +50,7 @@ public class Swagger2Config {
                 .title("这里是Swagger文档标题")
                 // 文档描述
                 .description("这里是文档描述")
-                .termsOfServiceUrl("https://www.dustyblog.cn")
+                .termsOfServiceUrl("https://www.dusty.vip")
                 .version("v1.0")//定义版本号
                 .build();
     }

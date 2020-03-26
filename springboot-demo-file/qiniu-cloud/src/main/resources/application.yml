@@ -1,0 +1,11 @@
+# 七牛云相关配置
+qinNiuCloud:
+  ACCESS_KEY: ACCESS_KEY
+  SECRET_KEY: SECRET_KEY
+  bucketName: bucketName
+  bucketNameUrl: bucketNameUrl
+  imgStyle: 自定义的图片样式（本文未用到）
+
+# 上传图片的限制
+upload:
+  maxSize: 3.0
