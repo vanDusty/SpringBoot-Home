@@ -16,13 +16,13 @@ import javax.mail.MessagingException;
  */
 public interface MailService {
     /**
-     * 发送普通邮件
+     * 发送纯文本邮件
      * @param mail
      */
     void sendSimpleMail(Mail mail);
 
     /**
-     * 发送附件邮件
+     * 发送邮件并携带附件
      * @param mail
      * @throws MessagingException
      */
@@ -32,5 +32,5 @@ public interface MailService {
      * 发送模版邮件
      * @param mail
      */
-    void sendTemplateMail(Mail mail);
+    void sendTemplateMail(Mail mail) throws MessagingException;
 }

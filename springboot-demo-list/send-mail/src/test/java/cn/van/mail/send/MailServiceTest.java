@@ -29,7 +29,7 @@ public class MailServiceTest {
     MailService mailService;
 
     /**
-     * 测试简单邮件
+     * 发送纯文本邮件
      */
     @Test
     public void sendSimpleMail() {
@@ -41,7 +41,7 @@ public class MailServiceTest {
     }
 
     /**
-     * 测试附件邮件
+     * 发送邮件并携带附件
      */
     @Test
     public void sendAttachmentsMail() throws MessagingException {
@@ -49,7 +49,7 @@ public class MailServiceTest {
         mail.setReceiver("17098705205@163.com");
         mail.setSubject("测试附件邮件");
         mail.setText("附件邮件内容");
-        mail.setFilePath("static/dusty_blog.jpg");
+        mail.setFilePath("file/dusty_blog.jpg");
         mailService.sendAttachmentsMail(mail);
     }
 
@@ -57,7 +57,7 @@ public class MailServiceTest {
      * 测试模版邮件邮件
      */
     @Test
-    public void sendTemplateMail(){
+    public void sendTemplateMail() throws MessagingException {
         Mail mail = new Mail();
         mail.setReceiver("17098705205@163.com");
         mail.setSubject("测试模版邮件邮件");

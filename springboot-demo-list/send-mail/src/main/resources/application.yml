@@ -6,7 +6,7 @@ spring:
 # 邮箱账号
     username: van93@qq.com
 # 邮箱授权码
-    password: *********
+    password: oyquvbkargluhdgi
     default-encoding: UTF-8
     properties:
       mail:

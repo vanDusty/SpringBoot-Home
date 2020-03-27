@@ -54,11 +54,6 @@ public class MailServiceImpl implements MailService {
         mailSender.send(mailMessage);
     }
 
-    /**
-     * ResourceUtil 来自 Hutool工具包
-     * @param mail
-     * @throws MessagingException
-     */
     @Override
     public void sendAttachmentsMail(Mail mail) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -67,31 +62,23 @@ public class MailServiceImpl implements MailService {
         helper.setTo(mail.getReceiver());
         helper.setSubject(mail.getSubject());
         helper.setText(mail.getText());
-        URL resource = ResourceUtil.getResource(mail.getFilePath());
-        String filePath = resource.getPath();
-        String fileName = filePath.substring(filePath.lastIndexOf(File.separator)).substring(1);
-        FileSystemResource file = new FileSystemResource(new File(filePath));
-        helper.addAttachment(fileName, file);
+        File file = new File(mail.getFilePath());
+        helper.addAttachment(file.getName(), file);
         mailSender.send(mimeMessage);
     }
 
     @Override
-    public void sendTemplateMail(Mail mail){
+    public void sendTemplateMail(Mail mail) throws   MessagingException {
         // templateEngine 替换掉动态参数，生产出最后的html
         String emailContent = templateEngine.process(mail.getEmailTemplateName(), mail.getEmailTemplateContext());
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-        MimeMessageHelper helper = null;
-        try {
-            helper = new MimeMessageHelper(mimeMessage, true);
-            helper.setFrom(sender);
-            helper.setTo(mail.getReceiver());
-            helper.setSubject(mail.getSubject());
-            helper.setText(emailContent, true);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        helper.setFrom(sender);
+        helper.setTo(mail.getReceiver());
+        helper.setSubject(mail.getSubject());
+        helper.setText(emailContent, true);
         mailSender.send(mimeMessage);
     }
 

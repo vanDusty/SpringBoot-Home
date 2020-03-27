@@ -3,6 +3,8 @@ package cn.van.mail.send.domain;
 import lombok.Data;
 import org.thymeleaf.context.Context;
 
+import java.util.Date;
+
 /**
 * @Title: Mail
 * @Description: 邮件实体类
@@ -12,18 +14,29 @@ import org.thymeleaf.context.Context;
 */
 @Data
 public class Mail {
-	
-	/** 发送者*/
+	/** 邮件id */
+	private String id;
+
+	/** 邮件发送人 */
 	private String sender;
 	
-	/** 接受者  */
+	/** 邮件接收人 （多个邮箱则用逗号","隔开） */
 	private String receiver;
 	
-	/** 消息主题 */
+	/** 邮件主题 */
 	private String subject;
 	
-	/** 消息内容*/
+	/** 邮件内容*/
 	private String text;
+
+	private Date sentDate;//发送时间
+
+	private String cc;//抄送（多个邮箱则用逗号","隔开）
+	private String bcc;//密送（多个邮箱则用逗号","隔开）
+	private String status;//状态
+	private String error;//报错信息
+//	private MultipartFile[] multipartFiles;//邮件附件
+
 	/**
 	 * 附件/文件地址
 	 */
