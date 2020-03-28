@@ -7,16 +7,13 @@
 
 ## 二、目录
 
-正在整理中，即将显示
+整理完成，即将发布
 
 ## 三、更多文章
 
-1. [风尘博客-个人博客](https://www.dustyblog.cn/)
+1. [风尘博客-个人博客](https://www.dusty.vip/)
 1. [风尘博客-博客园](https://www.cnblogs.com/vandusty)
-1. [风尘博客-CSDN](https://blog.csdn.net/weixin_42036952)
-
-
-
+1. [风尘博客-掘金](https://juejin.im/user/5d5ea68e6fb9a06afa328f56/posts)
 
 ### 四 技术交流
 
