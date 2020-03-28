@@ -1,6 +1,6 @@
-package cn.van.mail.send.service;
+package cn.van.mail.service;
 
-import cn.van.mail.send.domain.Mail;
+import cn.van.mail.domain.Mail;
 
 import javax.mail.MessagingException;
 
@@ -31,6 +31,7 @@ public interface MailService {
     /**
      * 发送模版邮件
      * @param mail
+     * @throws MessagingException
      */
     void sendTemplateMail(Mail mail) throws MessagingException;
 }

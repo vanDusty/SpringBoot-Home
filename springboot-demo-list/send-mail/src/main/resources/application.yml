@@ -1,12 +1,29 @@
 server:
   port: 8081
+#spring:
+#  mail:
+#    # QQ 邮箱 https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28
+#    host: smtp.qq.com
+#    # 邮箱账号
+#    username: van93@qq.com
+#    # 邮箱授权码（不是密码）
+#    password: password
+#    default-encoding: UTF-8
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
 spring:
   mail:
-    host: smtp.qq.com
-# 邮箱账号
-    username: van93@qq.com
-# 邮箱授权码
-    password: oyquvbkargluhdgi
+    # 163 邮箱 http://help.mail.163.com/faqDetail.do?code=d7a5dc8471cd0c0e8b4b8f4f8e49998b374173cfe9171305fa1ce630d7f67ac2cda80145a1742516
+    host: smtp.163.com
+    # 邮箱账号
+    username: 17098705205@163.com
+    # 邮箱授权码（不是密码）
+    password: password
     default-encoding: UTF-8
     properties:
       mail:

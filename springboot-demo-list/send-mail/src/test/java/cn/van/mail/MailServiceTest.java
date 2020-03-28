@@ -1,7 +1,8 @@
-package cn.van.mail.send;
+package cn.van.mail;
 
-import cn.van.mail.send.domain.Mail;
-import cn.van.mail.send.service.MailService;
+import cn.van.mail.domain.Mail;
+import cn.van.mail.service.MailService;
+import cn.van.mail.util.EmailUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +35,8 @@ public class MailServiceTest {
     @Test
     public void sendSimpleMail() {
         Mail mail = new Mail();
-        mail.setReceiver("17098705205@163.com");
+//        mail.setReceiver("17098705205@163.com");
+        mail.setReceiver("van93@qq.com");
         mail.setSubject("测试简单邮件");
         mail.setText("测试简单内容");
         mailService.sendSimpleMail(mail);
@@ -46,7 +48,8 @@ public class MailServiceTest {
     @Test
     public void sendAttachmentsMail() throws MessagingException {
         Mail mail = new Mail();
-        mail.setReceiver("17098705205@163.com");
+//        mail.setReceiver("17098705205@163.com");
+        mail.setReceiver("van93@qq.com");
         mail.setSubject("测试附件邮件");
         mail.setText("附件邮件内容");
         mail.setFilePath("file/dusty_blog.jpg");
@@ -59,7 +62,8 @@ public class MailServiceTest {
     @Test
     public void sendTemplateMail() throws MessagingException {
         Mail mail = new Mail();
-        mail.setReceiver("17098705205@163.com");
+//        mail.setReceiver("17098705205@163.com");
+        mail.setReceiver("van93@qq.com");
         mail.setSubject("测试模版邮件邮件");
         //创建模版正文
         Context context = new Context();
