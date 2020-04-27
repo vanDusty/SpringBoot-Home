@@ -230,7 +230,7 @@ public class User implements Serializable {
 ```java
 package cn.van.dubbo.service;
 
-import cn.van.dubbo.domain.User;
+import cn.van.dubbo.domain.UserDomain;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -257,8 +257,8 @@ public interface TestService {
 ```java
 package cn.van.dubbo.service.impl;
 
-import cn.van.dubbo.domain.User;
-import cn.van.dubbo.service.TestService;
+import cn.van.dubbo.domain.UserDomain;
+import cn.van.dubbo.service.DubboService;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -283,13 +283,13 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public User findUser() {
-        User user = new User();
-        user.setId(1001);
-        user.setUsername("scott");
-        user.setPassword("tiger");
-        user.setAge(20);
-        user.setGender(0);
-        return user;
+        User userDomain = new User();
+        userDomain.setId(1001);
+        userDomain.setUsername("scott");
+        userDomain.setPassword("tiger");
+        userDomain.setAge(20);
+        userDomain.setGender(0);
+        return userDomain;
     }
 }
 ```
@@ -313,7 +313,7 @@ public class TestServiceImpl implements TestService {
     <!-- 协议/端口-->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
     <!-- 暴露的接口 -->
-    <dubbo:service ref="testService" interface="cn.van.dubbo.service.TestService"
+    <dubbo:service ref="testService" interface="cn.van.dubbo.service.DubboService"
                    timeout="3000" />
 </beans>
 ```
@@ -369,8 +369,8 @@ dubbo:
 ```
 package cn.van.dubbo.controller;
 
-import cn.van.dubbo.domain.User;
-import cn.van.dubbo.service.TestService;
+import cn.van.dubbo.domain.UserDomain;
+import cn.van.dubbo.service.DubboService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -397,8 +397,8 @@ public class TestController {
         return testService.sayHello("Hello springboot and dubbo!");
     }
 
-    @GetMapping("user")
-    public User user() {
+    @GetMapping("userDomain")
+    public User userDomain() {
         return testService.findUser();
     }
 }
@@ -424,7 +424,7 @@ public class TestController {
     <!-- 消费方用什么协议获取服务（用dubbo协议在20880端口暴露服务）-->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
     <!-- 消费的服务 -->
-    <dubbo:reference id="testService" interface="cn.van.dubbo.service.TestService" check="false" timeout="5000" lazy="true" />
+    <dubbo:reference id="testService" interface="cn.van.dubbo.service.DubboService" check="false" timeout="5000" lazy="true" />
 
 </beans>
 ```
@@ -484,7 +484,7 @@ dubbo:
 3. 启动消费者项目`dubbo-consumer`
 4. 访问测试：
 
-[http://localhost:8090/dubbo/user](http://localhost:8090/dubbo/user)
+[http://localhost:8090/dubbo/userDomain](http://localhost:8090/dubbo/userDomain)
 
 [http://localhost:8090/dubbo/hello](http://localhost:8090/dubbo/hello)
 

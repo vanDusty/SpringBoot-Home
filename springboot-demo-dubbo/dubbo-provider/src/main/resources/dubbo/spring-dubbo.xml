@@ -13,6 +13,6 @@
     <!-- 协议/端口-->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
     <!-- 暴露的接口 -->
-    <dubbo:service ref="testService" interface="cn.van.dubbo.service.TestService"
+    <dubbo:service ref="dubboService" interface="cn.van.dubbo.service.DubboService"
                    timeout="3000" />
 </beans>

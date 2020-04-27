@@ -13,6 +13,6 @@
     <!-- 消费方用什么协议获取服务（用dubbo协议在20880端口暴露服务）-->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
     <!-- 消费的服务 -->
-    <dubbo:reference id="testService" interface="cn.van.dubbo.service.TestService" check="false" timeout="5000" lazy="true" />
+    <dubbo:reference id="dubboService" interface="cn.van.dubbo.service.DubboService" check="false" timeout="5000" lazy="true" />
 
 </beans>

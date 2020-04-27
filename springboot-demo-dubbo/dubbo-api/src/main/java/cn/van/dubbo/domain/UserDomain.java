@@ -22,7 +22,7 @@ import java.io.Serializable;
  */
 
 @Data
-public class User implements Serializable {
+public class UserDomain implements Serializable {
     private Integer id;
     private String username;
     private String password;

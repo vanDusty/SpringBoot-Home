@@ -17,33 +17,6 @@
             <artifactId>dubbo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--&lt;!&ndash; Dubbo依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>dubbo</artifactId>-->
-            <!--<version>${dubbo.version}</version>-->
-        <!--</dependency>-->
-
-        <!--&lt;!&ndash; zookeeper的客户端依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.101tec</groupId>-->
-            <!--<artifactId>zkclient</artifactId>-->
-            <!--<version>${zkclient.version}</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; Springboot-web依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-web</artifactId>-->
-            <!--<version>${spring-boot.version}</version>-->
-        <!--</dependency>-->
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

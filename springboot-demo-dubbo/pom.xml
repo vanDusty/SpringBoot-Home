@@ -23,7 +23,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
-
     </parent>
 
     <!-- 设置我们项目的一些版本属性 -->
@@ -32,12 +31,11 @@
         <java.version>1.8</java.version>
         <dubbo.version>2.5.5</dubbo.version>
         <zkclient.version>0.10</zkclient.version>
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
     </properties>
 
     <!-- 声明一些项目依赖管理，方便我们的依赖版本管理 -->
-
     <dependencies>
         <!--&lt;!&ndash; Springboot依赖 &ndash;&gt;-->
         <dependency>
@@ -45,14 +43,12 @@
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <!-- Springboot-web依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <!-- 使用lombok实现JavaBean的get、set、toString、hashCode、equals等方法的自动生成  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -60,20 +56,17 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Dubbo依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
-
         <!-- zookeeper的客户端依赖 -->
         <dependency>
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
         </dependency>
-
     </dependencies>
 </project>

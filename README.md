@@ -28,6 +28,7 @@
 1. [Spring Boot 参数校验之 Validator](https://www.dusty.vip/2019/09/19/9557ef76.html)
 1. [Spring Boot 整合JWT](https://www.dusty.vip/2019/10/04/540271f6.html)
 1. Spring Boot 整合 easyExcel(待完善)
+1. [SpringBoot 整合 Dubbo](#)
 
 > 整理不易，如果觉得写的还不错，点个✨，谢谢大佬！
 
@@ -60,7 +61,7 @@
 ## 我活跃在
 
 1. [个人博客](https://www.dusty.vip/)
-1. <a href="https://juejin.im/user/5d5ea68e6fb9a06afa328f56/posts"><img alt="JueJin: Vip-Augus" src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" target="_blank" height="25" width="60" /></a>
+1. <a href="https://juejin.im/userDomain/5d5ea68e6fb9a06afa328f56/posts"><img alt="JueJin: Vip-Augus" src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" target="_blank" height="25" width="60" /></a>
 1. [CSDN](https://blog.csdn.net/weixin_42036952)
 1. [博客园](https://www.cnblogs.com/vandusty)
 

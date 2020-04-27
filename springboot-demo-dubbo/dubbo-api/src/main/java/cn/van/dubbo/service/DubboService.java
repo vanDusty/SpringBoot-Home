@@ -10,7 +10,7 @@
  */
 package cn.van.dubbo.service;
 
-import cn.van.dubbo.domain.User;
+import cn.van.dubbo.domain.UserDomain;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -20,9 +20,6 @@ import cn.van.dubbo.domain.User;
  * @create 2019-04-19
  * @since 1.0.0
  */
-public interface TestService {
-
-    String sayHello(String str);
-
-    User findUser();
+public interface DubboService {
+    UserDomain findUser();
 }

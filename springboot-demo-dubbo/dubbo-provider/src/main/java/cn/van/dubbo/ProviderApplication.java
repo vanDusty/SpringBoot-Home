@@ -1,5 +1,6 @@
 package cn.van.dubbo;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +15,11 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication
 @ImportResource({"classpath:dubbo/spring-dubbo.xml"})
+@Slf4j
 public class ProviderApplication {
-
-    private static final Logger logger = LoggerFactory.getLogger(ProviderApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ProviderApplication.class);
-        logger.info("ProviderApplication start!");
+        log.info("ProviderApplication start!");
     }
 }
