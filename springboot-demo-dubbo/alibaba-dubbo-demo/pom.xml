@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo</artifactId>
     <groupId>cn.van</groupId>
+    <artifactId>dubbo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!--在这里设置打包类型为pom，作用是为了实现多模块项目-->

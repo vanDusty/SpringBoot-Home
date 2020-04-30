@@ -61,7 +61,7 @@
 ## 我活跃在
 
 1. [个人博客](https://www.dusty.vip/)
-1. <a href="https://juejin.im/userDomain/5d5ea68e6fb9a06afa328f56/posts"><img alt="JueJin: Vip-Augus" src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" target="_blank" height="25" width="60" /></a>
+1. <a href="https://juejin.im/orderDomain/5d5ea68e6fb9a06afa328f56/posts"><img alt="JueJin: Vip-Augus" src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" target="_blank" height="25" width="60" /></a>
 1. [CSDN](https://blog.csdn.net/weixin_42036952)
 1. [博客园](https://www.cnblogs.com/vandusty)
 
