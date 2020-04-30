@@ -1,0 +1,11 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: order-consumer
+# dubbo 相关配置
+dubbo:
+  application:
+    name: order-consumer
+  registry:
+    address: zookeeper://127.0.0.1:2181

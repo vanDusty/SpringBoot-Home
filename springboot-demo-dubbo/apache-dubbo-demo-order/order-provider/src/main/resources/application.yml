@@ -1,0 +1,16 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: order-provider
+# dubbo 相关配置
+dubbo:
+  application:
+    name: order-provider
+  scan:
+    base-packages: cn.van.order.service.impl
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20880

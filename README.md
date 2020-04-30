@@ -29,6 +29,7 @@
 1. [Spring Boot 整合JWT](https://www.dusty.vip/2019/10/04/540271f6.html)
 1. Spring Boot 整合 easyExcel(待完善)
 1. [SpringBoot 整合 Dubbo](#)
+1. [SpringBoot 整合 Dubbo(最新版 Apache Dubbo)](#)
 
 > 整理不易，如果觉得写的还不错，点个✨，谢谢大佬！
 
