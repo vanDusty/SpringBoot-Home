@@ -1,16 +1,22 @@
 server:
+  # 服务端口
   port: 7777
 spring:
   application:
     name: order-provider
-# dubbo 相关配置
+# dubbo 相关配置(dubbo 的配置不再以 Spring 开头)
 dubbo:
   application:
+    # 应用名称
     name: order-provider
   scan:
+    # 接口实现者（服务实现）包
     base-packages: cn.van.order.service.impl
+  # 注册中心信息
   registry:
     address: zookeeper://127.0.0.1:2181
   protocol:
+    # 协议名称
     name: dubbo
+    # 协议端口
     port: 20880

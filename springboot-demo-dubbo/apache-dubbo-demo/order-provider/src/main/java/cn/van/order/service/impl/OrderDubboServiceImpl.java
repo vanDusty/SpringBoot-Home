@@ -10,6 +10,7 @@
  */
 package cn.van.order.service.impl;
 
+import cn.van.order.result.RpcResult;
 import cn.van.order.service.OrderDubboService;
 import cn.van.order.domain.OrderDomain;
 import org.apache.dubbo.config.annotation.Service;
@@ -17,19 +18,17 @@ import org.apache.dubbo.config.annotation.Service;
 import java.time.LocalDateTime;
 
 /**
- * 〈一句话功能简述〉<br> 
- * 〈〉
- *
- * @author zhangfan
- * @create 2019-04-19
- * @since 1.0.0
+ * @公众号： 风尘博客
+ * @Classname ResultCodeEnum
+ * @Description 服务实现接口
+ * @Date 2020/4/30 8:55 下午
+ * @Author by Van
  */
-@Service(version = "1.0.0")
+@Service
 public class OrderDubboServiceImpl implements OrderDubboService {
 
-
     @Override
-    public OrderDomain getOrder() {
-        return new OrderDomain(1, 10086, LocalDateTime.now());
+    public RpcResult<OrderDomain> getOrder() {
+        return RpcResult.success(new OrderDomain(1, 10086, LocalDateTime.now()));
     }
 }

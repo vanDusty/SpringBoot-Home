@@ -4,34 +4,67 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- 父级引用 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
+    <!-- 基本信息 -->
     <groupId>cn.van.order</groupId>
     <artifactId>order</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <description>Demo project for Spring Boot</description>
+    <name>${project.artifactId}</name>
+    <description>Apache Dubbo 根项目</description>
 
+    <!--配置-->
+    <properties>
+        <java.version>1.8</java.version>
+        <dubbo.version>2.7.5</dubbo.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
+    </properties>
+
+    <!-- 子项目 -->
     <modules>
         <module>order-api</module>
         <module>order-provider</module>
         <module>order-consumer</module>
     </modules>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <!--声明全局依赖（子项目需要显示的引用才会继承依赖）-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- dubbo-start依赖 -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!--zookeeper 注册中心客户端引入 使用的是curator客户端 -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
+    <!--声明全局依赖（子项目不需要显示的引用，自动继承依赖）-->
     <dependencies>
+        <!-- spring boot 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -45,6 +78,7 @@
         </dependency>
     </dependencies>
 
+    <!-- 打包插件 -->
     <build>
         <plugins>
             <plugin>
@@ -53,5 +87,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

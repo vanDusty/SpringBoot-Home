@@ -6,10 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 启动类
- *
- * @author Van
- * @since 2019.2.26
+ * @公众号： 风尘博客
+ * @Classname ResultCodeEnum
+ * @Description 启动类
+ * @Date 2020/4/30 8:55 下午
+ * @Author by Van
  */
 @SpringBootApplication
 public class OrderConsumerApplication {

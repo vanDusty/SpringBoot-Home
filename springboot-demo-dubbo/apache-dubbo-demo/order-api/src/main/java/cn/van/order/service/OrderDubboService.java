@@ -11,6 +11,7 @@
 package cn.van.order.service;
 
 import cn.van.order.domain.OrderDomain;
+import cn.van.order.result.RpcResult;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -21,5 +22,5 @@ import cn.van.order.domain.OrderDomain;
  * @since 1.0.0
  */
 public interface OrderDubboService {
-    OrderDomain getOrder();
+    RpcResult<OrderDomain> getOrder();
 }
