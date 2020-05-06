@@ -28,8 +28,8 @@
 1. [Spring Boot 参数校验之 Validator](https://www.dusty.vip/2019/09/19/9557ef76.html)
 1. [Spring Boot 整合JWT](https://www.dusty.vip/2019/10/04/540271f6.html)
 1. Spring Boot 整合 easyExcel(待完善)
-1. [SpringBoot 整合 Dubbo](#)
-1. [SpringBoot 整合 Dubbo(最新版 Apache Dubbo)](#)
+1. [Spring Boot 整合 Alibaba Dubbo](https://www.dusty.vip/2019/04/23/89fa83a3.html)
+1. [Spring Boot 整合 Apache Dubbo](https://www.dusty.vip/2020/05/01/db934a06.html)
 
 > 整理不易，如果觉得写的还不错，点个✨，谢谢大佬！
 
@@ -55,6 +55,8 @@
 1. [Spring Boot 系列：图片验证码及校验](https://blog.csdn.net/weixin_42036952/article/details/100867525)
 1. [Spring Boot 系列：参数校验之 Validator](https://blog.csdn.net/weixin_42036952/article/details/100753410)
 1. [Spring Boot 系列：整合JWT](https://blog.csdn.net/weixin_42036952/article/details/102106034)
+1. [Spring Boot 系列：整合 Alibaba Dubbo](https://blog.csdn.net/weixin_42036952/article/details/89473680)
+1. [Spring Boot 系列：整合 Apache Dubbo](https://blog.csdn.net/weixin_42036952/article/details/105960404)
 
 
 </details>
