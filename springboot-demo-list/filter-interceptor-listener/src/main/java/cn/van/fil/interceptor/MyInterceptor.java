@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * @公众号： 风尘博客
  * @Classname MyInterceptor
  * @Description 拦截器示例
- * @Date 2019/3/31 3:49 下午
+ * @Date 2020/3/31 8:49 下午
  * @Author by Van
  */
 @Component
@@ -29,10 +29,10 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception{
-        if (!request.getRequestURI().contains("/online")) {
+        if (!request.getRequestURI().contains("/getUserCount")) {
             HttpSession session = request.getSession();
             String sessionName = (String) session.getAttribute("name");
-            if ("haixiang".equals(sessionName)) {
+            if ("Van".equals(sessionName)) {
                 log.info("【MyInterceptor】当前浏览器存在 session:{}",sessionName);
             }
         }

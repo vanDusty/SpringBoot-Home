@@ -11,8 +11,8 @@ import java.io.IOException;
 /**
  * @公众号： 风尘博客
  * @Classname MyFilter
- * @Description 拦截器示例
- * @Date 2019/3/31 3:47 下午
+ * @Description 过滤器示例
+ * @Date 2020/3/31 8:47 下午
  * @Author by Van
  */
 @Slf4j
@@ -24,20 +24,20 @@ public class MyFilter implements Filter {
         log.info("MyFilter init()");
     }
 
+    // 每次请求都会调用该方法
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
         String requestUri = request.getRequestURI();
-        log.info("请求地址是："+requestUri);
+        log.info("本次请求地址是：{}", requestUri);
         if (requestUri.contains("/addSession")
                 || requestUri.contains("/removeSession")
-                || requestUri.contains("/online")
-                || requestUri.contains("/ex")) {
+                || requestUri.contains("/getUserCount")) {
             filterChain.doFilter(servletRequest, response);
         } else {
-            // 除了以上三个链接，其他请求转发到 /online
-            wrapper.sendRedirect("/online");
+            // 除了以上三个链接，其他请求转发到 /redirectUrl
+            wrapper.sendRedirect("/redirectUrl");
         }
     }
 

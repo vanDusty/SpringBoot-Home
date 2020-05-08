@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @公众号： 风尘博客
  * @Classname Application
- * @Description TODO
- * @Date 2020/3/31 3:45 下午
+ * @Description 启动类
+ * @Date 2020/3/31 8:45 下午
  * @Author by Van
  */
 @SpringBootApplication

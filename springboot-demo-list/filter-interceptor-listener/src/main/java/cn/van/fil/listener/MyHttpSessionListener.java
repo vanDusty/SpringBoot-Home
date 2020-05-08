@@ -9,13 +9,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @公众号： 风尘博客
  * @Classname MyHttpSessionListener
- * @Description TODO
- * @Date 2020/3/31 3:50 下午
+ * @Description 监听对象属性监听器
+ * @Date 2020/3/31 8:50 下午
  * @Author by Van
  */
 @Slf4j
 public class MyHttpSessionListener implements HttpSessionListener {
 
+    /**
+     * 在线人数
+     */
     public static AtomicInteger userCount = new AtomicInteger(0);
 
     @Override
@@ -23,9 +26,6 @@ public class MyHttpSessionListener implements HttpSessionListener {
         userCount.getAndIncrement();
         se.getSession().getServletContext().setAttribute("sessionCount", userCount.get());
         log.info("【在线人数】人数增加为:{}",userCount.get());
-
-        //此处可以在ServletContext域对象中为访问量计数，然后传入过滤器的销毁方法
-        //在销毁方法中调用数据库入库，因为过滤器生命周期与容器一致
     }
 
     @Override
