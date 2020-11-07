@@ -10,7 +10,7 @@
         <version>2.1.1.RELEASE</version>
     </parent>
 
-    <groupId>cn.van</groupId>
+    <groupId>cn.van.springboot</groupId>
     <artifactId>springboot-demo-config</artifactId>
     <version>1.0-SNAPSHOT</version>
     <description>SpringBoot 配置说明</description>
