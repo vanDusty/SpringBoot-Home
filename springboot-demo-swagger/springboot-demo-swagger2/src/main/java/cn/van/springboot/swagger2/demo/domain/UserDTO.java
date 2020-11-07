@@ -1,4 +1,4 @@
-package cn.van.swagger.demo.domain;
+package cn.van.springboot.swagger2.demo.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

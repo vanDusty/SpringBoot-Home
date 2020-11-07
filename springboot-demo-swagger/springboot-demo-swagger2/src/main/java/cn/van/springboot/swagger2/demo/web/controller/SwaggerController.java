@@ -8,9 +8,9 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.swagger.demo.web.controller;
+package cn.van.springboot.swagger2.demo.web.controller;
 
-import cn.van.swagger.demo.domain.UserDTO;
+import cn.van.springboot.swagger2.demo.domain.UserDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

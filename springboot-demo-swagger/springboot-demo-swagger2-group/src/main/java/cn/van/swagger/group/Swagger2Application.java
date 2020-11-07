@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.swagger.demo;
+package cn.van.swagger.group;
 
 
 import org.springframework.boot.SpringApplication;
@@ -25,10 +25,10 @@ import java.io.IOException;
  * @since 1.0.0
  */
 @SpringBootApplication
-public class SwaggerApplication {
+public class Swagger2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SwaggerApplication.class, args);
+        SpringApplication.run(Swagger2Application.class, args);
         try {
             System.in.read();
         } catch (IOException e) {
