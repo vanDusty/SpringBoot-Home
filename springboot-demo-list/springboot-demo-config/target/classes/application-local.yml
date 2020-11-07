@@ -1,4 +1,0 @@
-title: local配置文件
-server:
-  servlet:
-    context-path: /local
