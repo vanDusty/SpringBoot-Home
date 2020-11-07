@@ -1,4 +1,4 @@
-package cn.van.config.config;
+package cn.van.springboot.config.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

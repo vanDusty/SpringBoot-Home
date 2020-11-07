@@ -1,8 +1,8 @@
-package cn.van.config;
+package cn.van.springboot.config;
 
-import cn.van.config.config.CustomizeConfig;
-import cn.van.config.config.EnvConfig;
-import cn.van.config.config.OriginalConfig;
+import cn.van.springboot.config.config.CustomizeConfig;
+import cn.van.springboot.config.config.EnvConfig;
+import cn.van.springboot.config.config.OriginalConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
