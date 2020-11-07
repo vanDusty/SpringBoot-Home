@@ -1,4 +1,4 @@
-package cn.van.restful.handler;
+package cn.van.springboot.restful.handler;
 
 /**
  * @公众号： 风尘博客

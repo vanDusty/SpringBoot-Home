@@ -1,7 +1,7 @@
-package cn.van.restful.web.controller;
+package cn.van.springboot.restful.web.controller;
 
-import cn.van.restful.handler.TokenVerificationException;
-import cn.van.restful.util.HttpResult;
+import cn.van.springboot.restful.handler.TokenVerificationException;
+import cn.van.springboot.restful.util.HttpResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -11,6 +11,8 @@
 
     <modules>
         <module>springboot-demo-config</module>
+        <module>springboot-demo-swagger</module>
+        <module>springboot-demo-restful</module>
     </modules>
 
 </project>

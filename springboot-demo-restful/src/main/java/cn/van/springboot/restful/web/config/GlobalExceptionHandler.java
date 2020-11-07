@@ -1,8 +1,8 @@
-package cn.van.restful.web.config;
+package cn.van.springboot.restful.web.config;
 
-import cn.van.restful.enunm.ResultCodeEnum;
-import cn.van.restful.handler.TokenVerificationException;
-import cn.van.restful.util.HttpResult;
+import cn.van.springboot.restful.enunm.ResultCodeEnum;
+import cn.van.springboot.restful.handler.TokenVerificationException;
+import cn.van.springboot.restful.util.HttpResult;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
