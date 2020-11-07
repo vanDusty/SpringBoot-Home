@@ -1,4 +1,4 @@
-package cn.van.swagger.group.web.controller;
+package cn.van.springboot.swagger2.group.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

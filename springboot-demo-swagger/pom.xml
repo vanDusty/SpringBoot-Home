@@ -12,4 +12,9 @@
     <groupId>cn.van.springboot</groupId>
     <artifactId>springboot-demo-swagger</artifactId>
     <version>1.0</version>
+
+    <modules>
+        <module>springboot-demo-swagger2</module>
+        <module>springboot-demo-swagger2-group</module>
+    </modules>
 </project>

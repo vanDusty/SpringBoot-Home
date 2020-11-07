@@ -1,4 +1,4 @@
-package cn.van.swagger.group.api;
+package cn.van.springboot.swagger2.group.api;
 
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
