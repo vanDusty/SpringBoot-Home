@@ -14,6 +14,12 @@
         <module>springboot-demo-swagger</module>
         <module>springboot-demo-restful</module>
         <module>springboot-demo-log</module>
+        <module>springboot-demo-task</module>
+        <module>springboot-demo-cross-domain</module>
+        <module>springboot-demo-redis</module>
+        <module>springboot-demo-qiniu</module>
+        <module>springboot-demo-aliyun</module>
+        <module>springboot-demo-qcloudsms</module>
     </modules>
 
 </project>

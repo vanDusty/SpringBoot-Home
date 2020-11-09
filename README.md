@@ -16,7 +16,7 @@
 1. [Spring Boot 配置 Swagger2](https://www.dusty.vip/2019/01/29/407a3637.html)
 1. [Spring Boot 整合 Logback 异步打印 Web 请求参数](https://www.dusty.vip/2019/02/12/7e5b5007.html)
 1. [Spring Boot 实现定时任务](https://www.dusty.vip/2019/03/09/e04b0a96.html)
-1. [Spring Boot 处理跨域请求](https://www.dusty.vip/2019/03/12/69fe966b.html)
+1. [Spring Boot 处理跨域请求](https://www.dusty.vip/2019/02/21/69fe966b.html)
 1. [RestFul API 统一格式返回 + 全局异常处理](https://www.dusty.vip/2019/03/23/88181d97.html)
 1. [Spring Boot 配置 Redis](https://www.dusty.vip/2019/03/25/25bbf14c.html)
 1. [Spring Boot 整合七牛云上传文件](https://www.dusty.vip/2019/06/21/13487beb.html)

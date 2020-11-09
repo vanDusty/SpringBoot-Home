@@ -1,8 +1,7 @@
-package cn.van.aliyun.sms.utils;
+package cn.van.springboot.aliyun.utils;
 
-import cn.van.aliyun.sms.domain.SmsParams;
+import cn.van.springboot.aliyun.domain.SmsParams;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
@@ -14,7 +13,6 @@ import com.aliyuncs.profile.DefaultProfile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 

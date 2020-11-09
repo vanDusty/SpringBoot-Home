@@ -8,27 +8,17 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.aliyun.sms;
+package cn.van.springboot.aliyun;
 
 
-import cn.van.aliyun.sms.domain.SmsParams;
-import cn.van.aliyun.sms.utils.AliYunSmsUtils;
-import com.aliyuncs.CommonRequest;
-import com.aliyuncs.CommonResponse;
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
-import com.aliyuncs.http.MethodType;
-import com.aliyuncs.profile.DefaultProfile;
+import cn.van.springboot.aliyun.domain.SmsParams;
+import cn.van.springboot.aliyun.utils.AliYunSmsUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**

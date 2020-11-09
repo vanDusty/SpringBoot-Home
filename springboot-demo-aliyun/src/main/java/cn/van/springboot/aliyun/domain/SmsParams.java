@@ -1,4 +1,4 @@
-package cn.van.aliyun.sms.domain;
+package cn.van.springboot.aliyun.domain;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
