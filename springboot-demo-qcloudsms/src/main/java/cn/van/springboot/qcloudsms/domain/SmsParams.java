@@ -1,4 +1,4 @@
-package cn.van.tx.sms.domain;
+package cn.van.springboot.qcloudsms.domain;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

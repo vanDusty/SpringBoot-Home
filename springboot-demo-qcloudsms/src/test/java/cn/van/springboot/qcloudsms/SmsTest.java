@@ -8,10 +8,10 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.tx.sms;
+package cn.van.springboot.qcloudsms;
 
-import cn.van.tx.sms.domain.SmsParams;
-import cn.van.tx.sms.utils.TxCloudSmsUtil;
+import cn.van.springboot.qcloudsms.domain.SmsParams;
+import cn.van.springboot.qcloudsms.utils.TxCloudSmsUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

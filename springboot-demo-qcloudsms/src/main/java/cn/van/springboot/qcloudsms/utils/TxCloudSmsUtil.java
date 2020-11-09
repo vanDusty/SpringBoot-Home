@@ -1,6 +1,6 @@
-package cn.van.tx.sms.utils;
+package cn.van.springboot.qcloudsms.utils;
 
-import cn.van.tx.sms.domain.SmsParams;
+import cn.van.springboot.qcloudsms.domain.SmsParams;
 import com.alibaba.fastjson.JSONException;
 import com.github.qcloudsms.*;
 import com.github.qcloudsms.httpclient.HTTPException;
