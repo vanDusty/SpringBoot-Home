@@ -1,4 +1,4 @@
-package cn.van.qiniu;
+package cn.van.springboot.qiniu;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

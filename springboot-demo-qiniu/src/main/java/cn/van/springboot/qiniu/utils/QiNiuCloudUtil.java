@@ -1,10 +1,6 @@
-package cn.van.qiniu.utils;
+package cn.van.springboot.qiniu.utils;
 
-import cn.van.qiniu.config.QiNiuCloudConfiguration;
-import com.qiniu.common.QiniuException;
-import com.qiniu.http.Response;
-import com.qiniu.storage.BucketManager;
-import com.qiniu.storage.UploadManager;
+import cn.van.springboot.qiniu.config.QiNiuCloudConfiguration;
 import com.qiniu.util.Auth;
 import com.qiniu.util.Base64;
 import com.qiniu.util.StringMap;
@@ -12,9 +8,7 @@ import com.qiniu.util.UrlSafeBase64;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import org.springframework.util.StringUtils;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 /**

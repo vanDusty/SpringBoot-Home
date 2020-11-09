@@ -9,10 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>cn.van</groupId>
-	<artifactId>qiniu-cloud</artifactId>
+	<groupId>cn.van.springboot</groupId>
+	<artifactId>springboot-demo-qiniu</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>qiniu-cloud</name>
 	<description>七牛云项目</description>
 
 	<properties>

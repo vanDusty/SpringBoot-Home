@@ -1,4 +1,4 @@
-package cn.van.qiniu;
+package cn.van.springboot.qiniu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package cn.van.qiniu.config;
+package cn.van.springboot.qiniu.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

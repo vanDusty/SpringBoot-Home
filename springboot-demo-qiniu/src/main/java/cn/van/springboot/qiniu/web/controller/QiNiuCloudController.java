@@ -1,7 +1,7 @@
-package cn.van.qiniu.web.controller;
+package cn.van.springboot.qiniu.web.controller;
 
-import cn.van.qiniu.config.QiNiuCloudConfiguration;
-import cn.van.qiniu.utils.QiNiuCloudUtil;
+import cn.van.springboot.qiniu.config.QiNiuCloudConfiguration;
+import cn.van.springboot.qiniu.utils.QiNiuCloudUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

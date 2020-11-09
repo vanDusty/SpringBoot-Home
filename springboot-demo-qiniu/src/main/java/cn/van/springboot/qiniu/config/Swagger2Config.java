@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.van.qiniu.config;
+package cn.van.springboot.qiniu.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +38,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定controller存放的目录路径
-                .apis(RequestHandlerSelectors.basePackage("cn.van.qiniu.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.van.springboot.qiniu.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
 //                .globalOperationParameters(pars);
