@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cross-domain</artifactId>
+    <artifactId>springboot-demo-cross-domain</artifactId>
 
     <description>SpringBoot 跨域问题,了解更多[风尘博客](https://www.dutyblog.cn)</description>
 

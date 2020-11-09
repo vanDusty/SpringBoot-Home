@@ -1,4 +1,4 @@
-package cn.van.cross;
+package cn.van.springboot.cross.domain;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

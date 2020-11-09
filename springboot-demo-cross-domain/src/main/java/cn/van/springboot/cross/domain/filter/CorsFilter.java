@@ -1,4 +1,4 @@
-package cn.van.cross.filter;
+package cn.van.springboot.cross.domain.filter;
 
 import org.springframework.stereotype.Component;
 
