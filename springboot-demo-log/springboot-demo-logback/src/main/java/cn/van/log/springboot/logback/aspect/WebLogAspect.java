@@ -1,4 +1,4 @@
-package cn.van.log.logback.aspect;
+package cn.van.log.springboot.logback.aspect;
 
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +40,7 @@ public class WebLogAspect {
     /**
      * 定义请求日志切入点，其切入点表达式有多种匹配方式,这里是指定路径
      */
-    @Pointcut("execution(public * cn.van.log.logback.web.controller.*.*(..))")
+    @Pointcut("execution(public * cn.van.log.springboot.logback.web.controller.*.*(..))")
     public void webLogPointcut() {
     }
 
