@@ -1,6 +1,6 @@
-package cn.van.code.img.web.controller;
+package cn.van.springboot.img.code.web.controller;
 
-import cn.van.code.img.util.ImgValidateCodeUtil;
+import cn.van.springboot.img.code.util.ImgValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;

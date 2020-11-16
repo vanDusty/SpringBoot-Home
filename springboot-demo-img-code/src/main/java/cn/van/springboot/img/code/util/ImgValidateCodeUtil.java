@@ -1,4 +1,4 @@
-package cn.van.code.img.util;
+package cn.van.springboot.img.code.util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
