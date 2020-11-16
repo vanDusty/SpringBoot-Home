@@ -1,6 +1,6 @@
-package cn.van.parameter.validator.annoation;
+package cn.van.springboot.validator.annoation;
 
-import cn.van.parameter.validator.annoation.service.IdentityCardNumberValidator;
+import cn.van.springboot.validator.annoation.service.IdentityCardNumberValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

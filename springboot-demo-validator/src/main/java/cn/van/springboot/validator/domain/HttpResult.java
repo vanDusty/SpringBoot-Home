@@ -1,4 +1,4 @@
-package cn.van.parameter.validator.domain;
+package cn.van.springboot.validator.domain;
 
 import lombok.Data;
 

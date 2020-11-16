@@ -1,7 +1,7 @@
-package cn.van.parameter.validator.DTO;
+package cn.van.springboot.validator.DTO;
 
-import cn.van.parameter.validator.annoation.IdentityCardNumber;
-import cn.van.parameter.validator.domain.assist.Update;
+import cn.van.springboot.validator.annoation.IdentityCardNumber;
+import cn.van.springboot.validator.domain.assist.Update;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

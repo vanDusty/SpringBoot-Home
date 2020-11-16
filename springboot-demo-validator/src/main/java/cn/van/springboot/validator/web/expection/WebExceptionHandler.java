@@ -1,22 +1,12 @@
-package cn.van.parameter.validator.web.expection;
+package cn.van.springboot.validator.web.expection;
 
-import cn.van.parameter.validator.domain.HttpResult;
+import cn.van.springboot.validator.domain.HttpResult;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.UnexpectedTypeException;
-import javax.validation.ValidationException;
 
 /**
  * @公众号： 风尘博客

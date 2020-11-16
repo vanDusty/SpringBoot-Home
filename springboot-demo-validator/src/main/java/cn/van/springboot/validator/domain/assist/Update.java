@@ -1,4 +1,4 @@
-package cn.van.parameter.validator.domain.assist;
+package cn.van.springboot.validator.domain.assist;
 
 /**
  * @公众号： 风尘博客

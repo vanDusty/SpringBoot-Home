@@ -1,4 +1,4 @@
-package cn.van.parameter.validator.util;
+package cn.van.springboot.validator.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

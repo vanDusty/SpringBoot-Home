@@ -1,7 +1,7 @@
-package cn.van.parameter.validator.web.controller;
+package cn.van.springboot.validator.web.controller;
 
-import cn.van.parameter.validator.DTO.UserDTO;
-import cn.van.parameter.validator.domain.HttpResult;
+import cn.van.springboot.validator.DTO.UserDTO;
+import cn.van.springboot.validator.domain.HttpResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
