@@ -20,6 +20,11 @@
         <module>springboot-demo-qiniu</module>
         <module>springboot-demo-aliyun</module>
         <module>springboot-demo-qcloudsms</module>
+        <module>springboot-demo-mail</module>
+        <module>springboot-demo-zxing</module>
+        <module>springboot-demo-img-code</module>
+        <module>springboot-demo-validator</module>
+        <module>springboot-demo-jwt</module>
     </modules>
 
 </project>
