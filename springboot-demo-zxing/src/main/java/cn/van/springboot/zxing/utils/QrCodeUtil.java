@@ -1,14 +1,12 @@
-package cn.van.qr.code.utils;
+package cn.van.springboot.zxing.utils;
 
-import cn.van.qr.code.config.QrCodeConfiguration;
+import cn.van.springboot.zxing.config.QrCodeConfiguration;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration;
 
-import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;

@@ -1,4 +1,4 @@
-package cn.van.qr.code;
+package cn.van.springboot.zxing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

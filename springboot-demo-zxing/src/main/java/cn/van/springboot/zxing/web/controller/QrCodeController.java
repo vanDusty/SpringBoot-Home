@@ -1,6 +1,6 @@
-package cn.van.qr.code.web.controller;
+package cn.van.springboot.zxing.web.controller;
 
-import cn.van.qr.code.utils.QrCodeUtil;
+import cn.van.springboot.zxing.utils.QrCodeUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

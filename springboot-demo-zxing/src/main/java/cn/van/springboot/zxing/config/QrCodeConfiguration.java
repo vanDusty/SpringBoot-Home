@@ -1,4 +1,4 @@
-package cn.van.qr.code.config;
+package cn.van.springboot.zxing.config;
 
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.client.j2se.MatrixToImageConfig;
