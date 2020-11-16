@@ -1,4 +1,4 @@
-package cn.van.mail.domain;
+package cn.van.springboot.mail.domain;
 
 import lombok.Data;
 import org.thymeleaf.context.Context;

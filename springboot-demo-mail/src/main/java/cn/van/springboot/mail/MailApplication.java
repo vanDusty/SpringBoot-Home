@@ -1,4 +1,4 @@
-package cn.van.mail;
+package cn.van.springboot.mail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

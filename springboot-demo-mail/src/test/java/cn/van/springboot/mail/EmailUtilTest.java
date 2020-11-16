@@ -1,8 +1,7 @@
-package cn.van.mail;
+package cn.van.springboot.mail;
 
-import cn.van.mail.domain.Mail;
-import cn.van.mail.domain.MailDomain;
-import cn.van.mail.util.EmailUtil;
+import cn.van.springboot.mail.domain.MailDomain;
+import cn.van.springboot.mail.util.EmailUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

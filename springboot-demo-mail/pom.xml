@@ -9,8 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>send-mail</artifactId>
+    <groupId>cn.van.springboot</groupId>
+    <artifactId>springboot-demo-mail</artifactId>
     <description>SpringBoot 发送邮件</description>
+
     <build>
         <plugins>
             <plugin>

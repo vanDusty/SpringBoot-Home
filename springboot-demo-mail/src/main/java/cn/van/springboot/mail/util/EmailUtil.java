@@ -1,7 +1,6 @@
-package cn.van.mail.util;
+package cn.van.springboot.mail.util;
 
-import cn.van.mail.domain.Mail;
-import cn.van.mail.domain.MailDomain;
+import cn.van.springboot.mail.domain.MailDomain;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,7 +11,6 @@ import org.thymeleaf.TemplateEngine;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import java.io.File;
-import java.util.Date;
 
 /**
  * @公众号： 风尘博客

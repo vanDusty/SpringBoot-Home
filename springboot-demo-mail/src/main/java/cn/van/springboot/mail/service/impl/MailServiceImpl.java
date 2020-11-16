@@ -1,7 +1,7 @@
-package cn.van.mail.service.impl;
+package cn.van.springboot.mail.service.impl;
 
-import cn.van.mail.domain.Mail;
-import cn.van.mail.service.MailService;
+import cn.van.springboot.mail.domain.Mail;
+import cn.van.springboot.mail.service.MailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;

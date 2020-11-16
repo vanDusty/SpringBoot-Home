@@ -1,6 +1,6 @@
-package cn.van.mail.service;
+package cn.van.springboot.mail.service;
 
-import cn.van.mail.domain.Mail;
+import cn.van.springboot.mail.domain.Mail;
 
 import javax.mail.MessagingException;
 
