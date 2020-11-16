@@ -1,4 +1,4 @@
-package cn.van.jwt.demo.annotation;
+package cn.van.springboot.jwt.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

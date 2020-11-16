@@ -1,17 +1,12 @@
-package cn.van.jwt.demo.web.controller;
-import cn.van.jwt.demo.annotation.JwtToken;
-import cn.van.jwt.demo.util.JwtUtil;
+package cn.van.springboot.jwt.web.controller;
+import cn.van.springboot.jwt.annotation.JwtToken;
+import cn.van.springboot.jwt.util.JwtUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Copyright (C), 2015-2019, 风尘博客

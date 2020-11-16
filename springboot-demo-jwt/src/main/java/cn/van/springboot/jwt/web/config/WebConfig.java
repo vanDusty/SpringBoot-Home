@@ -1,6 +1,6 @@
-package cn.van.jwt.demo.web.config;
+package cn.van.springboot.jwt.web.config;
 
-import cn.van.jwt.demo.interceptor.JwtInterceptor;
+import cn.van.springboot.jwt.interceptor.JwtInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

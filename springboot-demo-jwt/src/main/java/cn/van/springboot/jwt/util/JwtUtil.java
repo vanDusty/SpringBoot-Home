@@ -1,4 +1,4 @@
-package cn.van.jwt.demo.util;
+package cn.van.springboot.jwt.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

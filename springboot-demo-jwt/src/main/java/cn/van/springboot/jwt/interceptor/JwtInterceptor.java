@@ -1,13 +1,7 @@
-package cn.van.jwt.demo.interceptor;
+package cn.van.springboot.jwt.interceptor;
 
-import cn.van.jwt.demo.annotation.JwtToken;
-import cn.van.jwt.demo.util.JwtUtil;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import cn.van.springboot.jwt.annotation.JwtToken;
+import cn.van.springboot.jwt.util.JwtUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

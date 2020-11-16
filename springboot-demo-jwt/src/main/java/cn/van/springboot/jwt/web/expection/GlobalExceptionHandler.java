@@ -1,4 +1,4 @@
-package cn.van.jwt.demo.web.expection;
+package cn.van.springboot.jwt.web.expection;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.ControllerAdvice;
