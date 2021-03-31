@@ -9,22 +9,23 @@
     <version>1.0</version>
     <description> Spring Boot 示例仓库</description>
 
-    <modules>
-        <module>springboot-demo-config</module>
-        <module>springboot-demo-swagger</module>
-        <module>springboot-demo-restful</module>
-        <module>springboot-demo-log</module>
-        <module>springboot-demo-task</module>
-        <module>springboot-demo-cross-domain</module>
-        <module>springboot-demo-redis</module>
-        <module>springboot-demo-qiniu</module>
-        <module>springboot-demo-aliyun</module>
-        <module>springboot-demo-qcloudsms</module>
-        <module>springboot-demo-mail</module>
-        <module>springboot-demo-zxing</module>
-        <module>springboot-demo-img-code</module>
-        <module>springboot-demo-validator</module>
-        <module>springboot-demo-jwt</module>
-    </modules>
+<!--    <modules>-->
+<!--        <module>springboot-demo-config</module>-->
+<!--        <module>springboot-demo-swagger</module>-->
+<!--        <module>springboot-demo-restful</module>-->
+<!--        <module>springboot-demo-log</module>-->
+<!--        <module>springboot-demo-task</module>-->
+<!--        <module>springboot-demo-cross-domain</module>-->
+<!--        <module>springboot-demo-redis</module>-->
+<!--        <module>springboot-demo-qiniu</module>-->
+<!--        <module>springboot-demo-aliyun</module>-->
+<!--        <module>springboot-demo-qcloudsms</module>-->
+<!--        <module>springboot-demo-mail</module>-->
+<!--        <module>springboot-demo-zxing</module>-->
+<!--        <module>springboot-demo-img-code</module>-->
+<!--        <module>springboot-demo-validator</module>-->
+<!--        <module>springboot-demo-jwt</module>-->
+<!--        <module>springboot-demo-rocketMQ</module>-->
+<!--    </modules>-->
 
 </project>
