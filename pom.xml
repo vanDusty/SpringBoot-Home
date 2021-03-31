@@ -26,6 +26,7 @@
 <!--        <module>springboot-demo-validator</module>-->
 <!--        <module>springboot-demo-jwt</module>-->
 <!--        <module>springboot-demo-rocketMQ</module>-->
+<!--        <module>springboot-scaffold</module>-->
 <!--    </modules>-->
 
 </project>
