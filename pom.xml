@@ -9,7 +9,8 @@
     <version>1.0</version>
     <description> Spring Boot 示例仓库</description>
 
-<!--    <modules>-->
+    <modules>
+        <module>springboot-demo-funny</module>
 <!--        <module>springboot-demo-config</module>-->
 <!--        <module>springboot-demo-swagger</module>-->
 <!--        <module>springboot-demo-restful</module>-->
@@ -27,6 +28,6 @@
 <!--        <module>springboot-demo-jwt</module>-->
 <!--        <module>springboot-demo-rocketMQ</module>-->
 <!--        <module>springboot-scaffold</module>-->
-<!--    </modules>-->
+    </modules>
 
 </project>
