@@ -1,4 +1,4 @@
-package cn.van.springboot.restful.enunm;
+package cn.van.springboot.restful.util;
 
 /**
  * @公众号： 风尘博客

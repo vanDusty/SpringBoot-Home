@@ -1,6 +1,6 @@
 package cn.van.springboot.restful.web.controller;
 
-import cn.van.springboot.restful.enunm.ResultCodeEnum;
+import cn.van.springboot.restful.util.ResultCodeEnum;
 import cn.van.springboot.restful.util.HttpResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

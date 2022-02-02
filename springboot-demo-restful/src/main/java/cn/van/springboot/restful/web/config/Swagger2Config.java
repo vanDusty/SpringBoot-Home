@@ -27,7 +27,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定controller存放的目录路径
-                .apis(RequestHandlerSelectors.basePackage("cn.van.restful.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.van.springboot.restful.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

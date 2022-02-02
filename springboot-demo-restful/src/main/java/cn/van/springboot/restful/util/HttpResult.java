@@ -1,7 +1,5 @@
 package cn.van.springboot.restful.util;
 
-import cn.van.springboot.restful.enunm.ResultCodeEnum;
-
 import java.io.Serializable;
 
 /**

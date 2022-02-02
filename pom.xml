@@ -4,16 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.van.springboot</groupId>
+    <groupId>cn.van</groupId>
     <artifactId>spring-boot-home</artifactId>
     <version>1.0</version>
     <description> Spring Boot 示例仓库</description>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.12.RELEASE</version>
+    </parent>
 
     <modules>
         <module>springboot-demo-funny</module>
-<!--        <module>springboot-demo-config</module>-->
-<!--        <module>springboot-demo-swagger</module>-->
-<!--        <module>springboot-demo-restful</module>-->
+        <module>springboot-demo-restful</module>
+        <!--        <module>springboot-demo-config</module>-->
+        <!--        <module>springboot-demo-swagger</module>-->
 <!--        <module>springboot-demo-log</module>-->
 <!--        <module>springboot-demo-task</module>-->
 <!--        <module>springboot-demo-cross-domain</module>-->
@@ -29,5 +36,20 @@
 <!--        <module>springboot-demo-rocketMQ</module>-->
 <!--        <module>springboot-scaffold</module>-->
     </modules>
-
+    <dependencies>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>1.8.20</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
