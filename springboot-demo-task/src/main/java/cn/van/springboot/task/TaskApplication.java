@@ -1,5 +1,6 @@
 package cn.van.springboot.task;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +15,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling // 开启定时
-public class SpringBootDemoTimeTaskApplication {
-
-    private static final Logger logger = LoggerFactory.getLogger(SpringBootDemoTimeTaskApplication.class);
+@Slf4j
+public class TaskApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoTimeTaskApplication.class);
-        logger.info("SpringBootDemoTimeTaskApplication start!");
+        SpringApplication.run(TaskApplication.class);
+        log.info("TaskApplication start!");
     }
 }
