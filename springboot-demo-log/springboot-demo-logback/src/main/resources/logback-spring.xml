@@ -3,7 +3,7 @@
     <!-- 定义日志的根目录
     name: 变量的名称,下文可以使“${}”来使用变量;
     source: 变量定义的值(放在配置文件中) -->
-    <springProperty scope="context" name="logPath" source="logging.path"/>
+    <springProperty scope="context" name="logPath" source="logPath"/>
 
     <!-- 输出到控制台 -->
     <appender name="CONSOLE-LOG" class="ch.qos.logback.core.ConsoleAppender">
