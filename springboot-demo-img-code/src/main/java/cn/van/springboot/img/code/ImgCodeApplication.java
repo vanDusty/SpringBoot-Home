@@ -1,5 +1,6 @@
 package cn.van.springboot.img.code;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Copyright (C), 2015-2019, 风尘博客
  * 公众号 : 风尘博客
- * FileName: Application
+ * FileName: ImgCodeApplication
  *
  * @author: Van
  * Date:     2019-09-15 13:47
@@ -16,12 +17,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Version： V1.0
  */
 @SpringBootApplication
-public class Application {
+@Slf4j
+public class ImgCodeApplication {
 
-    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
-        logger.info("Application start!");
+        SpringApplication.run(ImgCodeApplication.class);
     }
 }
