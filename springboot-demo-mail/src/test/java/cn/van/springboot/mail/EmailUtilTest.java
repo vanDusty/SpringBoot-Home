@@ -10,6 +10,7 @@ import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
+import java.util.Date;
 
 /**
  * @公众号： 风尘博客
@@ -28,9 +29,10 @@ public class EmailUtilTest {
     @Test
     public void sendMail() throws MessagingException {
         MailDomain mail = new MailDomain();
-        mail.setReceiver("17098705205@163.com,vanzhangf@gmail.com");
+        mail.setReceiver("vanzhangf@gmail.com");
         mail.setSubject("测试简单邮件");
         mail.setText("测试简单内容");
+        mail.setSentDate(new Date());
 //        mailService.sendSimpleMail(mail);
         emailUtil.sendMail(mail);
     }

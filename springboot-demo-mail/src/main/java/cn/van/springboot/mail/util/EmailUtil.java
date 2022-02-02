@@ -15,7 +15,7 @@ import java.io.File;
 /**
  * @公众号： 风尘博客
  * @Classname EmailUtil
- * @Description TODO
+ * @Description 邮件发送工具类
  * Date:     2019-08-09 18:18
  * @Author by Van
  */
@@ -53,7 +53,7 @@ public class EmailUtil {
             // templateEngine 替换掉动态参数，生产出最后的html
             String emailContent = templateEngine.process(mail.getEmailTemplateName(), mail.getEmailTemplateContext());
             messageHelper.setText(emailContent, true);
-        }else {
+        } else {
             messageHelper.setText(mail.getText());
         }
         //抄送
@@ -70,10 +70,10 @@ public class EmailUtil {
             messageHelper.addAttachment(file.getName(), file);
         }
         //发送时间
-        if (StringUtils.isEmpty(mail.getSentDate())) {
+        if (!StringUtils.isEmpty(mail.getSentDate())) {
             messageHelper.setSentDate(mail.getSentDate());
         }
-        //正式发送邮件
+        //发送邮件
         mailSender.send(messageHelper.getMimeMessage());
     }
 
