@@ -21,11 +21,10 @@
         <module>springboot-demo-restful</module>
         <module>/springboot-demo-excel/easyexcel-one-demo</module>
         <module>/springboot-demo-log/springboot-demo-logback</module>
-        <!--        <module>springboot-demo-config</module>-->
+        <module>springboot-demo-config</module>
         <module>springboot-demo-swagger/springboot-demo-swagger2</module>
         <module>springboot-demo-swagger/springboot-demo-swagger2-group</module>
         <module>springboot-demo-swagger/springboot-demo-swagger2-auth</module>
-<!--        <module>springboot-demo-log</module>-->
         <module>springboot-demo-task</module>
         <module>springboot-demo-cors-domain</module>
         <module>springboot-demo-redis</module>

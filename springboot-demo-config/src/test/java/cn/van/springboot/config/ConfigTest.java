@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+
 /**
  * Copyright (C), 2015-2019, 风尘博客
  * 公众号 : 风尘博客
@@ -23,7 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ConfigTest {
 
-    @Autowired
+    @Resource
     OriginalConfig originalConfig;
 
     /**
@@ -38,7 +40,7 @@ public class ConfigTest {
         System.out.println("application.yml 文件的属性读取完毕！");
     }
 
-    @Autowired
+    @Resource
     CustomizeConfig customizeConfig;
 
     /**
@@ -52,7 +54,7 @@ public class ConfigTest {
         System.out.println("myConfig.properties 文件的属性读取完毕！");
     }
 
-    @Autowired
+    @Resource
     EnvConfig envConfig;
 
     /**

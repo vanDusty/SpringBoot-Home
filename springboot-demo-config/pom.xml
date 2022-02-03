@@ -4,17 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>springboot-demo-config</artifactId>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter</artifactId>
-        <version>2.1.1.RELEASE</version>
+        <groupId>cn.van</groupId>
+        <artifactId>spring-boot-home</artifactId>
+        <version>1.0</version>
     </parent>
 
-    <groupId>cn.van.springboot</groupId>
-    <artifactId>springboot-demo-config</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <description>SpringBoot 配置说明</description>
-
 
     <dependencies>
         <!-- 测试包,当我们使用 mvn package 的时候该包并不会被打入,因为它的生命周期只在 test 之内-->
@@ -33,12 +30,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <!-- lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
