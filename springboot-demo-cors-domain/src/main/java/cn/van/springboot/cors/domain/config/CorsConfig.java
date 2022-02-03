@@ -1,4 +1,4 @@
-package cn.van.springboot.cross.domain.config;
+package cn.van.springboot.cors.domain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
