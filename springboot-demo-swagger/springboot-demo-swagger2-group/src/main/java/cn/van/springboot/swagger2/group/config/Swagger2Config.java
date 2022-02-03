@@ -51,7 +51,7 @@ public class Swagger2Config {
                 // 单个路径
                 // .apis(RequestHandlerSelectors.basePackage("cn.van.swagger.group.web.controller"))
                 // 多个路径
-                .apis(basePackage("cn.van.swagger.group.web.controller" + SEPARATE +"cn.van.swagger.group.api"))
+                .apis(basePackage("cn.van.springboot.swagger2.group.web.controller" + SEPARATE +"cn.van.springboot.swagger2.group.api"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -62,7 +62,7 @@ public class Swagger2Config {
                 .title("这里是Swagger2构建Restful APIs")
                 // 文档描述
                 .description("这里是文档描述")
-                .termsOfServiceUrl("https://www.dustyblog.cn")
+                .termsOfServiceUrl("https://www.dusty.vip")
                 //定义版本号
                 .version("v1.0")
                 .build();
