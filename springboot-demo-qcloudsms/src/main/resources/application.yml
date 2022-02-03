@@ -1,7 +1,0 @@
-tx:
-  sms:
-    appId: appId
-    appKey: appKey
-    templateId: 1
-    smsSign: 风尘博客
-    smsEffectiveTime: 5

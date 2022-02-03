@@ -1,0 +1,18 @@
+tx:
+  sms:
+    # 应用 appId/appKey
+    appId: appId
+    appKey: appKey
+    # 模版id
+    templateId: 350978
+    # 签名
+    smsSign: 风尘博客
+    # 超时时间
+    smsEffectiveTime: 5
+aliyun:
+  sms:
+    accessKeyId: accessKeyId
+    accessKeySecret: accessKeySecret
+    signName: 风尘博客
+    templateCode: SMS_170181587
+    smsEffectiveTime: 5
