@@ -73,7 +73,6 @@ public class JwtUtil {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
             JWTVerifier verifier = JWT.require(algorithm)
-                    // .withClaim("username", username)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
             return true;

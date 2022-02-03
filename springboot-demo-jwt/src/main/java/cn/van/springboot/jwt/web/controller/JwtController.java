@@ -2,6 +2,8 @@ package cn.van.springboot.jwt.web.controller;
 import cn.van.springboot.jwt.annotation.JwtToken;
 import cn.van.springboot.jwt.util.JwtUtil;
 import com.alibaba.fastjson.JSONObject;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,15 +22,11 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/jwt")
+@Api(tags = "JWT 测试接口")
 public class JwtController {
 
-    /**
-     * 登录并获取token
-     * @param userName
-     * @param passWord
-     * @return
-     */
     @PostMapping("/login")
+    @ApiOperation(value = "登录并获取token", httpMethod = "POST")
     public Object login( String userName, String passWord){
         JSONObject jsonObject=new JSONObject();
         // 检验用户是否存在(为了简单，这里假设用户存在，并制造一个uuid假设为用户id)
@@ -44,12 +42,9 @@ public class JwtController {
         return jsonObject;
     }
 
-    /**
-     * 该接口需要带签名才能访问
-     * @return
-     */
     @JwtToken
     @GetMapping("/getMessage")
+    @ApiOperation(value = "该接口需要带签名才能访问")
     public String getMessage(){
         return "你已通过验证";
     }
