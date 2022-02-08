@@ -1,0 +1,5 @@
+springfox:
+  documentation:
+    swagger-ui:
+      # 是否启用
+      enabled: true

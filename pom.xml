@@ -25,6 +25,7 @@
         <module>springboot-demo-swagger/springboot-demo-swagger2</module>
         <module>springboot-demo-swagger/springboot-demo-swagger2-group</module>
         <module>springboot-demo-swagger/springboot-demo-swagger2-auth</module>
+        <module>springboot-demo-swagger/springboot-demo-swagger3-starter</module>
         <module>springboot-demo-task</module>
         <module>springboot-demo-cors-domain</module>
         <module>springboot-demo-redis</module>
