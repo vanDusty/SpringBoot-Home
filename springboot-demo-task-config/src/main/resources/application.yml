@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.111.118.152:3306/mybatis_plus
+    username: mybatis_plus
+    password: mybatis_plus
+    driverClassName: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: cn.van.springboot.task.config.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/*Mapper.xml
