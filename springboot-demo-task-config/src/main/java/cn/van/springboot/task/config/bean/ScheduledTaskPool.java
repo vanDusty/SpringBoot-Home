@@ -1,4 +1,4 @@
-package cn.van.springboot.task.config.config;
+package cn.van.springboot.task.config.bean;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 /**
  * Copyright (C), 2017-2022, 风尘博客
  * 公众号 : 风尘博客
- * FileName: ScheduledConfig
+ * FileName: ScheduledTaskPool
  * @Author:   VanFan
  * Date:     2022/2/9 8:11 PM
  * Description: 定时任务线程池
@@ -16,7 +16,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  */
 @Configuration
 @Slf4j
-public class ScheduledConfig {
+public class ScheduledTaskPool {
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {

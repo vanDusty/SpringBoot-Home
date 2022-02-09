@@ -3,6 +3,8 @@ package cn.van.springboot.task.config.service;
 import cn.van.springboot.task.config.entity.ScheduledJob;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * Copyright (C), 2017-2022, 风尘博客
  * 公众号 : 风尘博客
@@ -21,5 +23,11 @@ public interface ScheduledJobService{
      * @return
      */
     boolean updateOne(ScheduledJob scheduledJob);
+
+    /**
+     * 查询所有定时任务
+     * @return
+     */
+    List<ScheduledJob> selectAll();
 
 }

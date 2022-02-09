@@ -22,12 +22,24 @@ public class ScheduledJob {
     @TableId(value = "job_id",type = IdType.AUTO)
     private Integer jobId;
 
+    /**
+     * 定时任务完整类名（唯一）
+     */
     private String jobKey;
 
+    /**
+     * cron表达式
+     */
     private String cronExpression;
 
+    /**
+     * 任务描述
+     */
     private String taskExplain;
 
+    /**
+     * 状态,1:正常;-1:停用
+     */
     private Integer status;
 
 }

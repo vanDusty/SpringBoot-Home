@@ -3,14 +3,14 @@ package cn.van.springboot.task.config.job;
 /**
  * Copyright (C), 2017-2022, 风尘博客
  * 公众号 : 风尘博客
- * FileName: ScheduledOfTask
+ * FileName: ScheduledTaskBase
  *
  * @Author: VanFan
  * Date:     2022/2/9 8:24 PM
- * Description:
+ * Description: 定时任务公共接口
  * Version： V1.0
  */
-public interface ScheduledOfTask extends Runnable{
+public interface ScheduledTaskBase extends Runnable{
 
     /**
      * 任务

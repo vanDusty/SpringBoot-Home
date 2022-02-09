@@ -9,16 +9,35 @@ import cn.van.springboot.task.config.entity.ScheduledJob;
  *
  * @Author: VanFan
  * Date:     2022/2/9 8:26 PM
- * Description:
+ * Description: 定时任务管理接口
  * Version： V1.0
  */
 public interface ScheduledTaskService{
 
+    /**
+     * 初始化定时任务
+     */
+    void initTask();
+
+    /**
+     * 启动定时任务
+     * @param scheduledJob
+     * @return
+     */
     Boolean start(ScheduledJob scheduledJob);
 
+    /**
+     * 停止任务
+     * @param jobKey
+     * @return
+     */
     Boolean stop(String jobKey);
 
+    /**
+     * 重启定时任务
+     * @param scheduledJob
+     * @return
+     */
     Boolean restart(ScheduledJob scheduledJob);
 
-    void initTask();
 }

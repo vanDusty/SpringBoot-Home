@@ -14,4 +14,4 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * Version： V1.0
  */
 public interface ScheduledJobMapper extends BaseMapper<ScheduledJob> {
- }
+}

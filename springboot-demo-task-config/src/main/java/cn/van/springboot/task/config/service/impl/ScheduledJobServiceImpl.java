@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Copyright (C), 2017-2022, 风尘博客
@@ -25,16 +26,22 @@ import javax.annotation.Resource;
 @Slf4j
 public class ScheduledJobServiceImpl implements ScheduledJobService {
 
-    @Autowired
+    @Resource
     private ScheduledTaskService scheduledTaskService;
+
     @Resource
     private ScheduledJobMapper scheduledJobMapper;
 
     @Override
     public boolean updateOne(ScheduledJob scheduledJob) {
         if(1 == scheduledJobMapper.updateById(scheduledJob)){
-            scheduledTaskService.restart(scheduledJobMapper.selectById(scheduledJob.getJobId()));
+            return scheduledTaskService.restart(scheduledJobMapper.selectById(scheduledJob.getJobId()));
         }
         return true;
+    }
+
+    @Override
+    public List<ScheduledJob> selectAll() {
+        return scheduledJobMapper.selectList(null);
     }
 }
