@@ -11,3 +11,27 @@ original:
 spring:
   profiles:
     active: gray
+
+
+
+# 集合配置
+aggregate:
+  collection:
+    # 数组
+    arr: van,vanfan,dusty
+    list:
+      - van
+      - vanfan
+      - dusty
+#    list:
+#      [van, vanfan, dusty]
+  # 对象集合
+    bean:
+      - appKey: vandusty
+        appSecret: dusty.vip
+      - appKey: van
+        appSecret: VanFan
+    map: {key: van, value: 风尘博客}
+  #  map:
+  #    key: van
+  #    value: 风尘博客

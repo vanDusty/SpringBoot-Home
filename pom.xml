@@ -35,6 +35,8 @@
         <module>springboot-demo-mail</module>
         <module>springboot-demo-img-code</module>
         <module>springboot-demo-jwt</module>
+        <module>springboot-demo-websocket</module>
+        <module>springboot-demo-task-config</module>
         <!--        <module>springboot-demo-rocketMQ</module>-->
 <!--        <module>springboot-scaffold</module>-->
     </modules>
@@ -46,6 +48,17 @@
             <scope>1.8.20</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
