@@ -12,7 +12,7 @@
     <artifactId>springboot-demo-task-config</artifactId>
 
     <properties>
-        <mysql.version>8.0.26</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
     </properties>
 
