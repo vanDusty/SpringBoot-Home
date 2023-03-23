@@ -14,5 +14,4 @@
 最新文章，欢迎关注：公众号-风尘博客；交流观点，欢迎添加：个人微信
 
 ![](imgs/dusty_blog.png)
-![](imgs/Van_Fan.png)
 ![](imgs/Wechat_Appreciate.png)
