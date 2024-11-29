@@ -32,7 +32,7 @@
         <dubbo.version>2.5.5</dubbo.version>
         <zkclient.version>0.10</zkclient.version>
         <lombok.version>1.18.4</lombok.version>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
     </properties>
 
     <!-- 声明一些项目依赖管理，方便我们的依赖版本管理 -->
